@@ -8,21 +8,9 @@
 
 import UIKit
 
-
 final class SignUpController: ViewModelController<AuthViewModel, ScrollViewWrapped<SignUpView>> {
 
-    
     // MARK: - View Life Cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-    }
 
     override func bindToViewModel() {
         super.bindToViewModel()
@@ -45,8 +33,4 @@ final class SignUpController: ViewModelController<AuthViewModel, ScrollViewWrapp
         (viewModel.password <-> rootView.wrappedView.rx.password).disposed(by: disposeBag)
         viewModel.isSignUpEnabled.bind(to: rootView.wrappedView.rx.isSignUpEnabled).disposed(by: disposeBag)
     }
-
-    
-    // MARK: - User Actions
-
 }

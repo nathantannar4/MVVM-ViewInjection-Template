@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class EULAController: ViewModelController<EULAViewModel, EULAView> {
+final class EULAController: ViewModelController<EULAViewModel, EULAView> {
     
     // MARK: - View Life Cycle
     
