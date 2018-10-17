@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  ___PROJECTNAME___
+
+  Created by ___FULLUSERNAME___ on ___DATE___.
+  Copyright © 2018 ___FULLUSERNAME___. All rights reserved.
+*/
+
+// Common
+"ok" = "OK";
+"done" = "Done";
+"cancel" = "Cancel";
+"search" = "Search";
+"delete" = "Delete";
+
+// Auth
+"email" = "Email";
+"password" = "Password";
+"passwordVerify" = "Verify Password";
+"phoneNumber" = "Phone Number";
+"termsOfUse" = "Terms of Use";
+"termsOfUsePrompt" = "By proceeding you agree to the";
+"eula" = "End-User License Agreement";
+"signUpPrompt" = "Don't have an account?";
+"signUpHere" = "Sign up here";
+"signUp" = "Sign Up";
+"forgotPassword" = "Forgot Password?";
+"login" = "Login";
+"firstLastName" = "First and Last Name";
