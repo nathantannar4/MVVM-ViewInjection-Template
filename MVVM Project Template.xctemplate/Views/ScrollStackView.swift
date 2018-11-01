@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScrollStackView: UIScrollView, IView {
+final class ScrollStackView: UIScrollView, IView {
 
     // MARK: - Properties
 
@@ -59,7 +59,8 @@ class ScrollStackView: UIScrollView, IView {
 
     func viewDidLoad() {
         addSubview(stackView)
-        stackView.fillSuperview()
+        stackView.anchor(topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
+        stackView.anchorWidthToItem(self)
     }
 
     func viewWillAppear(_ animated: Bool) {

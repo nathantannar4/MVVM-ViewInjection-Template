@@ -122,7 +122,21 @@ class GradientView: UIView {
     
     
     // MARK: - UIView
-    
+
+    convenience init(colors: UIColor..., locations: [CGFloat]? = nil) {
+        self.init(frame: .zero)
+        self.colors = colors
+        self.locations = locations
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         let size = bounds.size

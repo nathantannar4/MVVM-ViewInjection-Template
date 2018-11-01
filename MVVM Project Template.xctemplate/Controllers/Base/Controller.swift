@@ -45,6 +45,7 @@ class BaseController<RootViewType: IView>: UIViewController {
 
     override func loadView() {
         view = RootViewType(frame: UIScreen.main.bounds)
+        view.setNeedsLayout()
         view.layoutIfNeeded()
     }
 

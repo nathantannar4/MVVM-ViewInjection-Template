@@ -29,7 +29,7 @@ final class ScrollViewWrapped<ViewType: IView>: UIScrollView, IView {
         contentInsetAdjustmentBehavior = .never
         addSubview(wrappedView)
         wrappedView.anchor(topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
-        wrappedView.anchorHeightToItem(self)
+        wrappedView.anchorHeightToItem(self, multiplier: 1.01)
         wrappedView.anchorWidthToItem(self)
     }
 

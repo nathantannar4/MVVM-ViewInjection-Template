@@ -11,6 +11,7 @@ import UIKit
 enum RoundingMethod {
     case complete
     case partial(radius: CGFloat)
+    case none
 }
 
 protocol Roundable where Self: UIView {
@@ -30,6 +31,8 @@ extension Roundable where Self: UIView {
             round(corners: roundedCorners, radius: bounds.height / 2)
         case .partial(let radius):
             round(corners: roundedCorners, radius: radius)
+        case .none:
+            layer.mask = nil
         }
     }
 }

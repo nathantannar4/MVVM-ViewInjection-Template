@@ -109,6 +109,33 @@ extension UIColor {
         
         return isBlack || isWhite
     }
+
+    public func add(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
+        var (oldHue, oldSat, oldBright, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
+        getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
+
+        // make sure new values doesn't overflow
+        var newHue = oldHue + hue
+        while newHue < 0.0 { newHue += 1.0 }
+        while newHue > 1.0 { newHue -= 1.0 }
+
+        let newBright: CGFloat = max(min(oldBright + brightness, 1.0), 0)
+        let newSat: CGFloat = max(min(oldSat + saturation, 1.0), 0)
+        let newAlpha: CGFloat = max(min(oldAlpha + alpha, 1.0), 0)
+
+        return UIColor(hue: newHue, saturation: newSat, brightness: newBright, alpha: newAlpha)
+    }
+
+    public func add(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
+        var (oldRed, oldGreen, oldBlue, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
+        getRed(&oldRed, green: &oldGreen, blue: &oldBlue, alpha: &oldAlpha)
+        // make sure new values doesn't overflow
+        let newRed: CGFloat = max(min(oldRed + red, 1.0), 0)
+        let newGreen: CGFloat = max(min(oldGreen + green, 1.0), 0)
+        let newBlue: CGFloat = max(min(oldBlue + blue, 1.0), 0)
+        let newAlpha: CGFloat = max(min(oldAlpha + alpha, 1.0), 0)
+        return UIColor(red: newRed, green: newGreen, blue: newBlue, alpha: newAlpha)
+    }
     
     var toImage: UIImage? {
         let rect = CGRect(x: 0, y: 0, width: 10, height: 10)

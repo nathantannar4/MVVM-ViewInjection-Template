@@ -25,6 +25,10 @@ protocol IViewModel: Interface {
     func viewModelDidLoad()
 }
 
+protocol IReusableView: Interface, Class where Self: UIView {
+    func prepareForReuse()
+}
+
 protocol IView: Interface, Class where Self: UIView {
     func viewDidLoad()
     func viewWillAppear(_ animated: Bool)

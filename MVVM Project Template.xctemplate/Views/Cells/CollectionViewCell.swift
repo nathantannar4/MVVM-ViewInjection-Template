@@ -1,5 +1,5 @@
 //
-//  ViewView.swift
+//  CollectionViewCell.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -8,30 +8,34 @@
 
 import UIKit
 
-final class ViewWrapped<ViewType: UIView>: View {
+final class CollectionViewCell<ViewType: IReusableView>: UICollectionViewCell {
 
     let wrappedView: ViewType!
 
-    required override init(frame: CGRect) {
+    override init(frame: CGRect) {
         wrappedView = ViewType(frame: frame)
         super.init(frame: frame)
-        viewDidLoad()
+        cellDidLoad()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        wrappedView = ViewType(coder: aDecoder)
+        wrappedView = ViewType()
         super.init(coder: aDecoder)
-        viewDidLoad()
+        cellDidLoad()
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addSubview(wrappedView)
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        wrappedView.prepareForReuse()
+    }
+
+    func cellDidLoad() {
+        contentView.addSubview(wrappedView)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        wrappedView.frame = bounds
+        wrappedView.frame = contentView.bounds
     }
-}
 
+}

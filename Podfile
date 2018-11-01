@@ -14,8 +14,10 @@ target 'MVVM-Template' do
   pod 'SwiftKeychainWrapper'
   pod 'IGListKit'
   pod 'SVProgressHUD'
-  pod 'PinLayout'
+  pod 'Kingfisher'
   pod 'FontAwesome.swift'
+  pod 'MessageKit', :git => 'https://github.com/MessageKit/MessageKit.git', :branch => 'typingIndicatorView'
+  pod 'InputBarAccessoryView'
 
   target 'MVVM-TemplateTests' do
     inherit! :search_paths

@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import PinLayout
 
 final class EULAView: View {
 
@@ -41,7 +40,7 @@ final class EULAView: View {
     }
 
     private let doneButton = FluidButton(style: Stylesheet.FluidButtons.primary) {
-        $0.apply(Stylesheet.Views.rounded)
+        $0.roundingMethod = .complete
         $0.setTitle(.localize(.done), for: .normal)
         $0.addTarget(self, action: Action.didTapDone.selector, for: .touchUpInside)
     }
@@ -53,17 +52,15 @@ final class EULAView: View {
         addSubview(textView)
         addSubview(fadeView)
         addSubview(doneButton)
-    }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let bottomInset = layoutMargins.bottom + 12
-        let buttonHeight: CGFloat = 44
-        textView.pin.left(12).right(12).top().bottom()
-        textView.contentInset.bottom = bottomInset
-        doneButton.pin.bottom(bottomInset).height(44).width(150).hCenter()
-        doneButton.layer.cornerRadius = doneButton.bounds.height / 2
-        fadeView.pin.left().bottom().right().height(bottomInset + buttonHeight)
+        textView.contentInset.top = layoutMargins.top + 12
+        textView.contentInset.bottom = layoutMargins.bottom + 56
+        textView.anchor(topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, leftConstant: 12, rightConstant: 12)
+
+        doneButton.anchorCenterXToSuperview()
+        doneButton.anchor(bottom: layoutMarginsGuide.bottomAnchor, bottomConstant: 12, widthConstant: 150, heightConstant: 44)
+
+        fadeView.anchor(doneButton.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
     }
 
     // MARK: - Methods

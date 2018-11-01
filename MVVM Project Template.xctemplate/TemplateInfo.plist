@@ -115,6 +115,15 @@
 			<key>Path</key>
 			<string>Controllers/DispatchController.swift</string>
 		</dict>
+		<key>Controls/ActivitySpinnerIndicator.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+			</array>
+			<key>Path</key>
+			<string>Controls/ActivitySpinnerIndicator.swift</string>
+		</dict>
 		<key>Controls/ControlElement.swift</key>
 		<dict>
 			<key>Group</key>
@@ -376,14 +385,14 @@
 			<key>Path</key>
 			<string>Protocols/Accessible.swift</string>
 		</dict>
-		<key>Protocols/ReactiveView.swift</key>
+		<key>Protocols/FeedbackGeneratable.swift</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>Protocols</string>
 			</array>
 			<key>Path</key>
-			<string>Protocols/ReactiveView.swift</string>
+			<string>Protocols/FeedbackGeneratable.swift</string>
 		</dict>
 		<key>Protocols/Roundable.swift</key>
 		<dict>
@@ -586,6 +595,36 @@
 			<key>Path</key>
 			<string>ViewModels/ViewModel.swift</string>
 		</dict>
+		<key>Views/Cells/CollectionReusableView.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Cells</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Cells/CollectionReusableView.swift</string>
+		</dict>
+		<key>Views/Cells/CollectionViewCell.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Cells</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Cells/CollectionViewCell.swift</string>
+		</dict>
+		<key>Views/Cells/TableViewCell.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Cells</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Cells/TableViewCell.swift</string>
+		</dict>
 		<key>Views/GradientView.swift</key>
 		<dict>
 			<key>Group</key>
@@ -594,6 +633,15 @@
 			</array>
 			<key>Path</key>
 			<string>Views/GradientView.swift</string>
+		</dict>
+		<key>Views/ImageView.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+			</array>
+			<key>Path</key>
+			<string>Views/ImageView.swift</string>
 		</dict>
 		<key>Views/InputViews/AnimatedTextField.swift</key>
 		<dict>
@@ -738,6 +786,7 @@
 						<string>Extensions/Enum+Extensions.swift</string>
 						<string>Controls/ControlElement.swift</string>
 						<string>Controls/FluidButton.swift</string>
+						<string>Controls/ActivitySpinnerIndicator.swift</string>
 						<string>Theme/Stylesheet.swift</string>
 						<string>Theme/Style.swift</string>
 						<string>Theme/Theme.swift</string>
@@ -759,6 +808,9 @@
 						<string>Controllers/Base/NavigationController.swift</string>
 						<string>Views/View.swift</string>
 						<string>Views/ViewWrapped.swift</string>
+						<string>Views/Cells/TableViewCell.swift</string>
+						<string>Views/Cells/CollectionViewCell.swift</string>
+						<string>Views/Cells/CollectionReusableView.swift</string>
 						<string>Views/NavigationBars/NavigationBar.swift</string>
 						<string>Views/ListView.swift</string>
 						<string>Views/InputViews/SearchBar.swift</string>
@@ -767,9 +819,10 @@
 						<string>Views/ScrollStackView.swift</string>
 						<string>Views/ScrollViewWrapped.swift</string>
 						<string>Views/RoundedView.swift</string>
+						<string>Views/ImageView.swift</string>
 						<string>Views/GradientView.swift</string>
+						<string>Protocols/FeedbackGeneratable.swift</string>
 						<string>Protocols/Accessible.swift</string>
-						<string>Protocols/ReactiveView.swift</string>
 						<string>Protocols/Roundable.swift</string>
 						<string>Info.plist</string>
 						<string>Services/Service.swift</string>

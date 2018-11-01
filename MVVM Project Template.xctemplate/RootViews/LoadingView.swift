@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import PinLayout
 
 final class LoadingView: View {
 
-    private let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+    private let activityIndicator = ActivitySpinnerIndicator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundColor = .primaryColor
         addSubview(activityIndicator)
+        backgroundColor = .primaryColor
+        activityIndicator.tintColor = .white
         activityIndicator.anchorCenterToSuperview()
         activityIndicator.anchor(widthConstant: 50, heightConstant: 50)
     }
@@ -25,5 +25,5 @@ final class LoadingView: View {
         super.viewWillAppear(animated)
         activityIndicator.startAnimating()
     }
-
+    
 }

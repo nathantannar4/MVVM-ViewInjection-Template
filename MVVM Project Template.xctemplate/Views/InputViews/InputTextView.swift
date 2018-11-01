@@ -11,12 +11,6 @@ import UIKit
 
 /**
  A UITextView that has a UILabel embedded for placeholder text
- 
- ## Important Notes ##
- 1. Changing the font, textAlignment or textContainerInset automatically performs the same modifications to the placeholderLabel
- 2. Intended to be used in an `InputBarAccessoryView`
- 3. Default placeholder text is "Aa"
- 4. Will pass a pasted image it's `InputBarAccessoryView`'s `InputPlugin`s
  */
 open class InputTextView: UITextView {
     
@@ -195,7 +189,13 @@ open class InputTextView: UITextView {
     
     @objc
     private func textViewTextDidChange() {
-        placeholderLabel.isHidden = !text.isEmpty
+        let isHidden = !text.isEmpty
+        placeholderLabel.isHidden = isHidden
+        if isHidden {
+            placeholderLabelConstraintSet?.deactivate()
+        } else {
+            placeholderLabelConstraintSet?.activate()
+        }
     }
     
     // MARK: - Image Paste Support

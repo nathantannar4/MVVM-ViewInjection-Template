@@ -421,6 +421,7 @@ enum Stylesheet {
             $0.placeholder = .localize(.email)
             $0.keyboardType = .emailAddress
             $0.autocorrectionType = .no
+            $0.autocapitalizationType = .none
         }
 
         static let phone = Style<UITextField> {
@@ -437,6 +438,7 @@ enum Stylesheet {
             $0.placeholder = .localize(.password)
             $0.isSecureTextEntry = true
             $0.autocorrectionType = .no
+            $0.autocapitalizationType = .none
         }
 
     }

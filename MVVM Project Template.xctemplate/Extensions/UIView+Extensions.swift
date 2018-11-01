@@ -200,7 +200,6 @@ extension UIView {
         border.name = String(describing: BorderLayer.self)
         layer.addSublayer(border)
         border.layoutSublayers()
-        layer.masksToBounds = true
     }
 
     func removeBorders() {

@@ -117,7 +117,7 @@ final class LoginView: View {
 
         subtitleLabel.anchorBelow(titleLabel, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, heightConstant: 30)
 
-        emailField.anchor(titleLabel.bottomAnchor, left: layoutMarginsGuide.leftAnchor, bottom: nil, right: layoutMarginsGuide.rightAnchor, topConstant: 75, leftConstant: 12 + 30 + 8, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 50)
+        emailField.anchor(titleLabel.bottomAnchor, left: layoutMarginsGuide.leftAnchor, bottom: nil, right: layoutMarginsGuide.rightAnchor, topConstant: 75, leftConstant: 50, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 50)
 
         emailIconView.anchorLeftOf(emailField, topConstant: 20, bottomConstant: 0, rightConstant: 8)
         emailIconView.anchorAspectRatio()
@@ -136,15 +136,10 @@ final class LoginView: View {
 
         loginButton.anchor(left: leftAnchor, bottom: keyboardLayoutGuide.topAnchor, right: rightAnchor, heightConstant: 44)
 
-        //        let spacingRedView = UIView()
-        //        spacingRedView.backgroundColor = .primaryColor
-        //        addSubview(spacingRedView)
-        //        spacingRedView.anchor(loginButton.bottomAnchor, left: loginButton.leftAnchor, bottom: facebookLoginButton.topAnchor, right: loginButton.rightAnchor)
-        //
-        //        facebookLoginButton.anchor(left: leftAnchor, bottom: signUpButton.topAnchor, right: googleLoginButton.leftAnchor, heightConstant: 44)
-        //
-        //        googleLoginButton.anchor(left: facebookLoginButton.rightAnchor, bottom: signUpButton.topAnchor, right: rightAnchor, heightConstant: 44)
-        //        googleLoginButton.anchorWidthToItem(facebookLoginButton)
+        let safeAreaView = UIView()
+        safeAreaView.backgroundColor = .primaryColor
+        addSubview(safeAreaView)
+        safeAreaView.anchor(loginButton.bottomAnchor, left: loginButton.leftAnchor, bottom: bottomAnchor, right: loginButton.rightAnchor)
     }
 
     // MARK: - User Actions

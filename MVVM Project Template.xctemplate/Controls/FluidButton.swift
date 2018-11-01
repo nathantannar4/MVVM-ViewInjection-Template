@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import PinLayout
 
-class FluidButton: ControlElement {
+class FluidButton: ControlElement, Roundable {
 
     enum PropertyKey: String, CaseIterable {
         case backgroundColor, title, attributedTitle, titleColor, image
@@ -17,13 +16,9 @@ class FluidButton: ControlElement {
 
     // MARK: - Properties
 
-    var titleLabel: UILabel? {
-        return textLabel
-    }
+    var roundingMethod: RoundingMethod = .none
 
-    var imageView: UIImageView? {
-        return iconView
-    }
+    var roundedCorners: UIRectCorner = .allCorners
 
     private var animator: UIViewPropertyAnimator?
     private var properties: [ElementState:[PropertyKey:Any]] = [
@@ -34,12 +29,18 @@ class FluidButton: ControlElement {
 
     // MARK: - Views
 
-    private let textLabel = UILabel(style: Stylesheet.Labels.description) {
+    let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        return stackView
+    }()
+
+    let titleLabel = UILabel(style: Stylesheet.Labels.description) {
         $0.font = Stylesheet.Fonts.buttonFont
         $0.textAlignment = .center
     }
 
-    private let iconView = UIImageView(style: Stylesheet.ImageViews.fitted)
+    let imageView = UIImageView(style: Stylesheet.ImageViews.fitted)
 
     // MARK: - Init
 
@@ -57,14 +58,19 @@ class FluidButton: ControlElement {
 
         addTarget(self, action: #selector(touchDown), for: [.touchDown, .touchDragEnter])
         addTarget(self, action: #selector(touchUp), for: [.touchUpInside, .touchDragExit, .touchCancel])
-        addSubview(textLabel)
+        addSubview(stackView)
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(imageView)
+        setupConstraints()
     }
 
-    // MARK: - Methods
+    func setupConstraints() {
+        stackView.fillSuperview()
+    }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        textLabel.pin.center().width(100%).height(100%)
+        applyRounding()
     }
 
     // MARK: - State Methods
@@ -75,17 +81,17 @@ class FluidButton: ControlElement {
             backgroundColor = color
         }
         if let color = properties[currentState]?[.titleColor] as? UIColor {
-            textLabel.textColor = color
-            iconView.tintColor = color
+            titleLabel.textColor = color
+            imageView.tintColor = color
         }
         if let title = properties[currentState]?[.title] as? String {
-            textLabel.text = title
+            titleLabel.text = title
         }
         if let attributedTitle = properties[currentState]?[.attributedTitle] as? NSAttributedString {
-            textLabel.attributedText = attributedTitle
+            titleLabel.attributedText = attributedTitle
         }
         if let image = properties[currentState]?[.image] as? UIImage {
-            iconView.image = image
+            imageView.image = image
         }
     }
 
@@ -122,6 +128,8 @@ class FluidButton: ControlElement {
         let accentColor = (color?.isLight ?? true) ? color?.darker() : color?.lighter()
         properties[.highlighted]?[.backgroundColor] = accentColor
         properties[.highlighted]?[.titleColor] = titleColor.withAlphaComponent(0.3)
+        properties[.disabled]?[.backgroundColor] = color?.lighter(by: 5)
+        properties[.disabled]?[.titleColor] = titleColor.withAlphaComponent(0.3)
     }
 
     // MARK: - Animations

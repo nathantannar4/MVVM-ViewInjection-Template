@@ -105,6 +105,11 @@ final class SignUpView: View {
         termsButton.anchorAbove(signUpButton, heightConstant: 30)
 
         signUpButton.anchor(left: leftAnchor, bottom: keyboardLayoutGuide.topAnchor, right: rightAnchor, heightConstant: 44)
+
+        let safeAreaView = UIView()
+        safeAreaView.backgroundColor = .primaryColor
+        addSubview(safeAreaView)
+        safeAreaView.anchor(signUpButton.bottomAnchor, left: signUpButton.leftAnchor, bottom: bottomAnchor, right: signUpButton.rightAnchor)
     }
 
     // MARK: - User Actions
