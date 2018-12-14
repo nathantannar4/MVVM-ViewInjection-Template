@@ -11,6 +11,11 @@ import UIKit
 final class ViewWrapped<ViewType: UIView>: View {
 
     let wrappedView: ViewType!
+    var wrappedViewInsets: UIEdgeInsets = .zero {
+        didSet {
+            layoutSubviews()
+        }
+    }
 
     required override init(frame: CGRect) {
         wrappedView = ViewType(frame: frame)
@@ -31,7 +36,7 @@ final class ViewWrapped<ViewType: UIView>: View {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        wrappedView.frame = bounds
+        wrappedView.frame = bounds.inset(by: wrappedViewInsets)
     }
 }
 

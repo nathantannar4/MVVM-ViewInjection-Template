@@ -9,7 +9,7 @@
 import UIKit
 import IGListKit
 
-class ListController<ViewModelType: IViewModel>: ViewModelController<ViewModelType, ViewWrapped<ListView>> {
+class ListController<ViewModelType: IListViewModel>: ViewModelController<ViewModelType, ViewWrapped<ListView>> {
 
     // MARK: - Properties
 
@@ -17,4 +17,14 @@ class ListController<ViewModelType: IViewModel>: ViewModelController<ViewModelTy
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        adapter.collectionView = rootView.wrappedView
+    }
+
+    override func bindToViewModel() {
+        super.bindToViewModel()
+        adapter.dataSource = viewModel
+        viewModel.bindToAdapter(adapter).disposed(by: disposeBag)
+    }
 }

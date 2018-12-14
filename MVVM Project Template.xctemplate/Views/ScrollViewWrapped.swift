@@ -25,6 +25,7 @@ final class ScrollViewWrapped<ViewType: IView>: UIScrollView, IView {
     }
 
     func viewDidLoad() {
+        registerForThemeChanges()
         keyboardDismissMode = .interactive
         contentInsetAdjustmentBehavior = .never
         addSubview(wrappedView)
@@ -47,5 +48,11 @@ final class ScrollViewWrapped<ViewType: IView>: UIScrollView, IView {
 
     func viewDidDisappear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewDidDisappear(animated) }
+    }
+
+    // MARK: - Theme Updates
+
+    func themeDidChange(_ theme: Theme) {
+
     }
 }

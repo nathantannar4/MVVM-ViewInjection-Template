@@ -17,7 +17,7 @@ final class AppRouter {
     // MARK: - Properties
 
     private let container = Container()
-    private var childRouter: Router?
+    private var coordinator: Coordinator?
 
     // MARK: - Views
 
@@ -55,11 +55,11 @@ final class AppRouter {
         assert(Thread.isMainThread)
         switch route {
         case let authRoute as AuthRoute:
-            if let router = childRouter as? AuthRouter {
+            if let router = coordinator as? AuthCoordinator {
                 router.navigate(to: authRoute)
             } else {
-                let authRouter = AuthRouter(initialRoute: authRoute, in: container)
-                childRouter = authRouter
+                let authRouter = AuthCoordinator(initialRoute: authRoute, in: container)
+                coordinator = authRouter
                 window?.switchRootViewController(authRouter.mainController)
             }
         default:

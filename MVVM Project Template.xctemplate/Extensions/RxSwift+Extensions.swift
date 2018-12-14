@@ -82,7 +82,7 @@ extension Optional: Comparable where Wrapped: Equatable {
     }
 }
 
-// MARK: - PublishSubject
+// MARK: - BehaviorSubject
 
 extension BehaviorSubject {
     var value: Element? {

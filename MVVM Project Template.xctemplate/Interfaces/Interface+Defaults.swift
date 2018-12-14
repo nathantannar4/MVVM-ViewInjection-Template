@@ -1,12 +1,14 @@
 //
 //  Interface+Defaults.swift
-//  MVVM-Template
+//  ___PROJECTNAME___
 //
-//  Created by Nathan Tannar on 2018-10-05.
-//  Copyright © 2018 Nathan Tannar. All rights reserved.
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
+import IGListKit
+import RxSwift
 
 extension IView {
     func viewWillAppear(_ animated: Bool) {
@@ -35,4 +37,8 @@ extension IRoutePresenter {
     func navigate(to route: Route, animated: Bool, completion: (() -> Void)?) {
         AppRouter.shared.navigate(to: route)
     }
+}
+
+extension IReusableView {
+    func prepareForReuse() { }
 }

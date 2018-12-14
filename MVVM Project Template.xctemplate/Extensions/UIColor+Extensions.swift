@@ -110,7 +110,15 @@ extension UIColor {
         return isBlack || isWhite
     }
 
-    public func add(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
+    func darkModeColor() -> UIColor {
+        return isBlackOrWhite ? inverted() : (isLight ? darker() : lighter())
+    }
+
+    func inverted() -> UIColor {
+        return UIColor(red: 1 - RGBA[0], green: 1 - RGBA[1], blue: 1 - RGBA[2], alpha: RGBA[3])
+    }
+
+    func add(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) -> UIColor {
         var (oldHue, oldSat, oldBright, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
         getHue(&oldHue, saturation: &oldSat, brightness: &oldBright, alpha: &oldAlpha)
 
@@ -126,7 +134,7 @@ extension UIColor {
         return UIColor(hue: newHue, saturation: newSat, brightness: newBright, alpha: newAlpha)
     }
 
-    public func add(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
+    func add(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor {
         var (oldRed, oldGreen, oldBlue, oldAlpha) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
         getRed(&oldRed, green: &oldGreen, blue: &oldBlue, alpha: &oldAlpha)
         // make sure new values doesn't overflow

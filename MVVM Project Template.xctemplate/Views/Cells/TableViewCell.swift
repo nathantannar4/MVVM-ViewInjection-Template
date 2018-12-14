@@ -1,5 +1,5 @@
 //
-//  TableViewCellWrapped.swift
+//  TableViewCell.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -8,13 +8,20 @@
 
 import UIKit
 
-final class TableViewCell<ViewType: IReusableView>: UITableViewCell {
+class TableViewCell<ViewType: IReusableView>: UITableViewCell, IReuseIdentifiable {
 
-    let wrappedView: ViewType!
+    class var reuseIdentifier: String {
+        return String(describing: self)
+    }
+
+    override var textLabel: UILabel? { return nil }
+    override var detailTextLabel: UILabel? { return nil }
+
+    let wrappedView: ViewType
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         wrappedView = ViewType()
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: nil)
         cellDidLoad()
     }
 
@@ -31,11 +38,7 @@ final class TableViewCell<ViewType: IReusableView>: UITableViewCell {
 
     func cellDidLoad() {
         contentView.addSubview(wrappedView)
+        wrappedView.fillSuperview()
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        wrappedView.frame = contentView.bounds
-    }
-
+    
 }

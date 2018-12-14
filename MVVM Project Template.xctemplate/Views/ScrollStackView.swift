@@ -58,6 +58,7 @@ final class ScrollStackView: UIScrollView, IView {
     }
 
     func viewDidLoad() {
+        registerForThemeChanges()
         addSubview(stackView)
         stackView.anchor(topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
         stackView.anchorWidthToItem(self)
@@ -88,4 +89,9 @@ final class ScrollStackView: UIScrollView, IView {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
 
+    // MARK: - Theme Updates
+
+    func themeDidChange(_ theme: Theme) {
+
+    }
 }

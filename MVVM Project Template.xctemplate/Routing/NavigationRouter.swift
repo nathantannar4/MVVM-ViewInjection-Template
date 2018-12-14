@@ -9,7 +9,7 @@
 import UIKit
 import Swinject
 
-class NavigationRouter: Router {
+class NavigationCoordinator: Coordinator {
 
     // MARK: - Properties
 

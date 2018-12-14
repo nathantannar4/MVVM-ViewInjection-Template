@@ -13,7 +13,9 @@ class ListView: UICollectionView {
     // MARK: - Init
 
     required init(frame: CGRect) {
-        super.init(frame: frame, collectionViewLayout: UICollectionViewFlowLayout())
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        super.init(frame: frame, collectionViewLayout: layout)
         viewDidLoad()
     }
 

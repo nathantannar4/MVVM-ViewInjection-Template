@@ -142,6 +142,22 @@
 			<key>Path</key>
 			<string>Controls/FluidButton.swift</string>
 		</dict>
+		<key>DevVC.swift</key>
+		<dict>
+			<key>Group</key>
+			<array/>
+			<key>Path</key>
+			<string>DevVC.swift</string>
+		</dict>
+		<key>Extensions/CALayer.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Extensions</string>
+			</array>
+			<key>Path</key>
+			<string>Extensions/CALayer.swift</string>
+		</dict>
 		<key>Extensions/CustomStringConvertible+Extensions.swift</key>
 		<dict>
 			<key>Group</key>
@@ -232,6 +248,15 @@
 			<key>Path</key>
 			<string>Extensions/UIButton+Extensions.swift</string>
 		</dict>
+		<key>Extensions/UICollectionView+Extensions.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Extensions</string>
+			</array>
+			<key>Path</key>
+			<string>Extensions/UICollectionView+Extensions.swift</string>
+		</dict>
 		<key>Extensions/UIColor+Extensions.swift</key>
 		<dict>
 			<key>Group</key>
@@ -276,6 +301,15 @@
 			</array>
 			<key>Path</key>
 			<string>Extensions/UIScrollView+Extensions.swift</string>
+		</dict>
+		<key>Extensions/UITableView+Extensions.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Extensions</string>
+			</array>
+			<key>Path</key>
+			<string>Extensions/UITableView+Extensions.swift</string>
 		</dict>
 		<key>Extensions/UIView+Extensions.swift</key>
 		<dict>
@@ -442,14 +476,23 @@
 			<key>Path</key>
 			<string>RootViews/LoadingView.swift</string>
 		</dict>
-		<key>Routing/AuthRouter.swift</key>
+		<key>Routing/AuthCoordinator.swift</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>Routing</string>
 			</array>
 			<key>Path</key>
-			<string>Routing/AuthRouter.swift</string>
+			<string>Routing/AuthCoordinator.swift</string>
+		</dict>
+		<key>Routing/Coordinator+Coordinatable.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Routing</string>
+			</array>
+			<key>Path</key>
+			<string>Routing/Coordinator+Coordinatable.swift</string>
 		</dict>
 		<key>Routing/NavigationRouter.swift</key>
 		<dict>
@@ -468,15 +511,6 @@
 			</array>
 			<key>Path</key>
 			<string>Routing/Route.swift</string>
-		</dict>
-		<key>Routing/Router+Routable.swift</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Routing</string>
-			</array>
-			<key>Path</key>
-			<string>Routing/Router+Routable.swift</string>
 		</dict>
 		<key>Services/LogService.swift</key>
 		<dict>
@@ -532,6 +566,15 @@
 			<key>Path</key>
 			<string>Supporting Files/NSConstraintLayoutSet.swift</string>
 		</dict>
+		<key>Supporting Files/RxListAdapterDataSource.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Supporting Files</string>
+			</array>
+			<key>Path</key>
+			<string>Supporting Files/RxListAdapterDataSource.swift</string>
+		</dict>
 		<key>Theme/Style.swift</key>
 		<dict>
 			<key>Group</key>
@@ -558,6 +601,24 @@
 			</array>
 			<key>Path</key>
 			<string>Theme/Theme.swift</string>
+		</dict>
+		<key>Transitions/NavigationControllerInteractor.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Transitions</string>
+			</array>
+			<key>Path</key>
+			<string>Transitions/NavigationControllerInteractor.swift</string>
+		</dict>
+		<key>Transitions/NavigationControllerTransitionAnimator.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Transitions</string>
+			</array>
+			<key>Path</key>
+			<string>Transitions/NavigationControllerTransitionAnimator.swift</string>
 		</dict>
 		<key>ViewModels/AppViewModel.swift</key>
 		<dict>
@@ -633,6 +694,15 @@
 			</array>
 			<key>Path</key>
 			<string>Views/GradientView.swift</string>
+		</dict>
+		<key>Views/GridContentView.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+			</array>
+			<key>Path</key>
+			<string>Views/GridContentView.swift</string>
 		</dict>
 		<key>Views/ImageView.swift</key>
 		<dict>
@@ -719,6 +789,15 @@
 			<key>Path</key>
 			<string>Views/ScrollViewWrapped.swift</string>
 		</dict>
+		<key>Views/TableView.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+			</array>
+			<key>Path</key>
+			<string>Views/TableView.swift</string>
+		</dict>
 		<key>Views/View.swift</key>
 		<dict>
 			<key>Group</key>
@@ -763,9 +842,11 @@
 						<string>AppRouter.swift</string>
 						<string>Networking/HttpRequest.swift</string>
 						<string>Managers/Manager.swift</string>
+						<string>DevVC.swift</string>
 						<string>Models/Model.swift</string>
 						<string>Models/Enums/LocalizationIdentifier.swift</string>
 						<string>Models/Errors/JSONError.swift</string>
+						<string>Extensions/CALayer.swift</string>
 						<string>Extensions/UIViewController+Extensions.swift</string>
 						<string>Extensions/UIButton+Extensions.swift</string>
 						<string>Extensions/UIView+Extensions.swift</string>
@@ -779,11 +860,13 @@
 						<string>Extensions/NSAttributedString+Extensions.swift</string>
 						<string>Extensions/UIWindow+Extensions.swift</string>
 						<string>Extensions/CustomStringConvertible+Extensions.swift</string>
+						<string>Extensions/UITableView+Extensions.swift</string>
 						<string>Extensions/UIScrollView+Extensions.swift</string>
 						<string>Extensions/UILabel+Extensions.swift</string>
 						<string>Extensions/Number+Extensions.swift</string>
 						<string>Extensions/Date+Extensions.swift</string>
 						<string>Extensions/Enum+Extensions.swift</string>
+						<string>Extensions/UICollectionView+Extensions.swift</string>
 						<string>Controls/ControlElement.swift</string>
 						<string>Controls/FluidButton.swift</string>
 						<string>Controls/ActivitySpinnerIndicator.swift</string>
@@ -791,13 +874,16 @@
 						<string>Theme/Style.swift</string>
 						<string>Theme/Theme.swift</string>
 						<string>Supporting Files/KeyboardLayoutGuide.swift</string>
+						<string>Supporting Files/RxListAdapterDataSource.swift</string>
 						<string>Supporting Files/Localizable.strings</string>
 						<string>Supporting Files/NSConstraintLayoutSet.swift</string>
-						<string>Routing/Router+Routable.swift</string>
 						<string>Routing/NavigationRouter.swift</string>
-						<string>Routing/AuthRouter.swift</string>
+						<string>Routing/AuthCoordinator.swift</string>
+						<string>Routing/Coordinator+Coordinatable.swift</string>
 						<string>Routing/Route.swift</string>
 						<string>AppDelegate.swift</string>
+						<string>Transitions/NavigationControllerInteractor.swift</string>
+						<string>Transitions/NavigationControllerTransitionAnimator.swift</string>
 						<string>Controllers/Auth/LoginController.swift</string>
 						<string>Controllers/Auth/SignUpController.swift</string>
 						<string>Controllers/Auth/EULAController.swift</string>
@@ -807,6 +893,7 @@
 						<string>Controllers/Base/Controller.swift</string>
 						<string>Controllers/Base/NavigationController.swift</string>
 						<string>Views/View.swift</string>
+						<string>Views/GridContentView.swift</string>
 						<string>Views/ViewWrapped.swift</string>
 						<string>Views/Cells/TableViewCell.swift</string>
 						<string>Views/Cells/CollectionViewCell.swift</string>
@@ -819,6 +906,7 @@
 						<string>Views/ScrollStackView.swift</string>
 						<string>Views/ScrollViewWrapped.swift</string>
 						<string>Views/RoundedView.swift</string>
+						<string>Views/TableView.swift</string>
 						<string>Views/ImageView.swift</string>
 						<string>Views/GradientView.swift</string>
 						<string>Protocols/FeedbackGeneratable.swift</string>

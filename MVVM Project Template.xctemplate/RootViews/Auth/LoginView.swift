@@ -137,11 +137,11 @@ final class LoginView: View {
         loginButton.anchor(left: leftAnchor, bottom: keyboardLayoutGuide.topAnchor, right: rightAnchor, heightConstant: 44)
 
         let safeAreaView = UIView()
-        safeAreaView.backgroundColor = .primaryColor
+        safeAreaView.backgroundColor = .white
         addSubview(safeAreaView)
         safeAreaView.anchor(loginButton.bottomAnchor, left: loginButton.leftAnchor, bottom: bottomAnchor, right: loginButton.rightAnchor)
     }
-
+    
     // MARK: - User Actions
 
     @objc

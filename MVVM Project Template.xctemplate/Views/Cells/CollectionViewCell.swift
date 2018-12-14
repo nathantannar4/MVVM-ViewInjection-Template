@@ -8,9 +8,13 @@
 
 import UIKit
 
-final class CollectionViewCell<ViewType: IReusableView>: UICollectionViewCell {
+class CollectionViewCell<ViewType: IReusableView>: UICollectionViewCell, IReuseIdentifiable {
 
-    let wrappedView: ViewType!
+    class var reuseIdentifier: String {
+        return String(describing: self)
+    }
+
+    let wrappedView: ViewType
 
     override init(frame: CGRect) {
         wrappedView = ViewType(frame: frame)
@@ -31,11 +35,16 @@ final class CollectionViewCell<ViewType: IReusableView>: UICollectionViewCell {
 
     func cellDidLoad() {
         contentView.addSubview(wrappedView)
+        wrappedView.fillSuperview()
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        wrappedView.frame = contentView.bounds
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        setNeedsLayout()
+        layoutIfNeeded()
+        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+        var newFrame = layoutAttributes.frame
+        newFrame.size.height = ceil(size.height)
+        layoutAttributes.frame = newFrame
+        return layoutAttributes
     }
-
 }

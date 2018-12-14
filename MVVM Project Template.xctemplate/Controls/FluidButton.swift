@@ -31,7 +31,10 @@ class FluidButton: ControlElement, Roundable {
 
     let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .horizontal
+        stackView.isUserInteractionEnabled = false
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .center
         return stackView
     }()
 

@@ -171,9 +171,9 @@ public extension Date {
         //Return Result
         return isEqualTo
     }
-    
-    
+
     // MARK:- TIME
+
     var timeWithAMPM: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h:mma"
@@ -181,9 +181,7 @@ public extension Date {
         dateFormatter.pmSymbol = "pm"
         return dateFormatter.string(from: self as Date)
     }
-    
-    
-    
+
     
     // MARK:- YEAR
     
@@ -208,8 +206,6 @@ public extension Date {
         return dateFormatter.string(from: self as Date)
     }
     
-    
-    
     // MARK:- MONTH
     
     var monthOneDigit_Int: Int {
@@ -218,8 +214,7 @@ public extension Date {
     var monthTwoDigit_Int: Int {
         return Int(self.monthTwoDigit)!
     }
-    
-    
+
     var monthOneDigit: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M"
@@ -281,9 +276,6 @@ public extension Date {
         return dateFormatter.string(from: self as Date)
     }
     
-    
-    
-    
     // MARK:- AM PM
     var AM_PM: String {
         let dateFormatter = DateFormatter()
@@ -292,7 +284,6 @@ public extension Date {
     }
     
     // MARK:- HOUR
-    
     
     var hourOneDigit_Int: Int {
         return Int(self.hourOneDigit)!

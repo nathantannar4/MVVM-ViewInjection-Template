@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import IGListKit
+import RxSwift
 import Swinject
 
 protocol Class: class { }
@@ -25,11 +27,21 @@ protocol IViewModel: Interface {
     func viewModelDidLoad()
 }
 
+protocol IListViewModel: IViewModel, ListAdapterDataSource {
+    associatedtype Element: ListDiffable
+    var elements: BehaviorSubject<[Element]> { get }
+    func bindToAdapter(_ adapter: ListAdapter) -> Disposable
+}
+
 protocol IReusableView: Interface, Class where Self: UIView {
     func prepareForReuse()
 }
 
-protocol IView: Interface, Class where Self: UIView {
+protocol IReuseIdentifiable: Interface, Class {
+    static var reuseIdentifier: String { get }
+}
+
+protocol IView: Interface, Class, UIResponderThemable where Self: UIView {
     func viewDidLoad()
     func viewWillAppear(_ animated: Bool)
     func viewDidAppear(_ animated: Bool)

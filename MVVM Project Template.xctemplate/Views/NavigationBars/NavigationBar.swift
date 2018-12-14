@@ -35,6 +35,12 @@ class BaseNavigationBar: UINavigationBar, IView {
     }
 
     func viewDidLoad() {
+        registerForThemeChanges()
+    }
+
+    // MARK: - Theme Updates
+
+    func themeDidChange(_ theme: Theme) {
 
     }
 }

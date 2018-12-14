@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MVVM Project Template.xctemplate/Controls/FluidButton.swift"
-            timestampString = "562799200.107561"
+            timestampString = "563675290.713726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "stateDidChange()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MVVM Project Template.xctemplate/Controls/FluidButton.swift"
-            timestampString = "562799200.107628"
+            timestampString = "563675290.714124"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "stateDidChange()"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MVVM Project Template.xctemplate/Extensions/UIView+Extensions.swift"
-            timestampString = "562799200.107848"
+            timestampString = "565510909.091855"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "layoutSublayers()"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,12 +522,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MVVM Project Template.xctemplate/Views/ViewWrapped.swift"
-            timestampString = "562799200.107898"
+            timestampString = "565508930.892812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "init(frame:)"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "wrappedViewInsets"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HotReload.swift"
+            timestampString = "565332976.578909"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "injected()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

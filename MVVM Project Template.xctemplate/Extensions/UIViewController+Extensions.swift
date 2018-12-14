@@ -35,5 +35,4 @@ extension UIViewController {
         UIViewController.alertWindow?.isHidden = true
         UIViewController.alertWindow = nil
     }
-
 }

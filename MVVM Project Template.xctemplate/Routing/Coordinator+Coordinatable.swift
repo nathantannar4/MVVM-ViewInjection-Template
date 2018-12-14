@@ -1,5 +1,5 @@
 //
-//  Router+Routable.swift
+//  Coordinator+Coordinatable.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -9,13 +9,12 @@
 import UIKit
 import Swinject
 
-protocol Router {
+protocol Coordinator {
     var mainController: UIViewController { get }
     var container: Container { get set }
 }
 
-protocol Routable {
+protocol Coordinatable {
     associatedtype RouteType: Route
     func navigate(to route: RouteType)
 }
-

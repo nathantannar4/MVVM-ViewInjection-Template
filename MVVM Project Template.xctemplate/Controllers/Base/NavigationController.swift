@@ -12,7 +12,7 @@ typealias NavigationController = BaseNavigationController<NavigationBar>
 
 typealias InverseNavigationController = BaseNavigationController<InverseNavigationBar>
 
-class BaseNavigationController<T: UINavigationBar>: UINavigationController {
+class BaseNavigationController<T: UINavigationBar>: UINavigationController, UINavigationControllerDelegate {
 
     // MARK: - Properties
 
@@ -22,6 +22,17 @@ class BaseNavigationController<T: UINavigationBar>: UINavigationController {
         }
         return color.isDark ? .lightContent : .default
     }
+
+    var transitionAnimatorType: NavigationControllerTransitionAnimator.Type? {
+        willSet {
+            delegate = nil
+        }
+        didSet {
+            delegate = transitionAnimatorType != nil ? self : nil
+        }
+    }
+
+    private var interactor: NavigationControllerInteractor?
 
     // MARK: - Init
 
@@ -50,5 +61,17 @@ class BaseNavigationController<T: UINavigationBar>: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor?.isInteracting == true ? interactor : nil
+    }
+
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        if operation == .push {
+            interactor = NavigationControllerInteractor(for: toVC)
+        }
+        return transitionAnimatorType?.init(operation: operation)
     }
 }

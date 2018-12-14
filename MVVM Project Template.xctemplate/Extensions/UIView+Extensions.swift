@@ -8,16 +8,24 @@
 
 import UIKit
 
+enum ConstraintIdentifier: String, CaseIterable {
+    case top, left, leading, right, trailing, bottom, width, height
+}
+
 extension UIView {
-    
+
+    func addSubviews(_ views: UIView...) {
+        views.forEach { addSubview($0) }
+    }
+
     func fillSuperview(inSafeArea: Bool = false) {
-        
+
         guard let superview = self.superview else {
             print("💥 Could not constraints for \(self), did you add it to the view?")
             return
         }
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         if inSafeArea, #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
                 leadingAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.leadingAnchor),
@@ -44,7 +52,106 @@ extension UIView {
                                                        multiplier: 1,
                                                        constant: 0)
         
-        self.addConstraint(aspectRatioConstraint)
+        addConstraint(aspectRatioConstraint)
+    }
+
+    func anchor(to size: CGSize) {
+        _ = anchor(widthConstant: size.width, heightConstant: size.height)
+    }
+
+    @discardableResult
+    private func _anchor(
+        _ top: NSLayoutYAxisAnchor? = nil,
+        left: NSLayoutXAxisAnchor? = nil,
+        leading: NSLayoutXAxisAnchor? = nil,
+        bottom: NSLayoutYAxisAnchor? = nil,
+        right: NSLayoutXAxisAnchor? = nil,
+        trailing: NSLayoutXAxisAnchor? = nil,
+        topConstant: CGFloat = 0,
+        leftConstant: CGFloat = 0,
+        bottomConstant: CGFloat = 0,
+        rightConstant: CGFloat = 0,
+        widthConstant: CGFloat = 0,
+        heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+
+        guard superview != nil else {
+            print("💥 Could not constraints for \(self), did you add it to the view?")
+            return []
+        }
+
+        translatesAutoresizingMaskIntoConstraints = false
+        var anchors = [NSLayoutConstraint]()
+
+        if let top = top {
+            let constraint = topAnchor.constraint(equalTo: top, constant: topConstant)
+            constraint.identifier = ConstraintIdentifier.top.rawValue
+            anchors.append(constraint)
+        }
+
+        if let left = left {
+            let constraint = leftAnchor.constraint(equalTo: left, constant: leftConstant)
+            constraint.identifier = ConstraintIdentifier.left.rawValue
+            anchors.append(constraint)
+        }
+
+        if let leading = leading {
+            let constraint = leadingAnchor.constraint(equalTo: leading, constant: leftConstant)
+            constraint.identifier = ConstraintIdentifier.leading.rawValue
+            anchors.append(constraint)
+        }
+
+        if let bottom = bottom {
+            let constraint = bottomAnchor.constraint(equalTo: bottom, constant: -bottomConstant)
+            constraint.identifier = ConstraintIdentifier.bottom.rawValue
+            anchors.append(constraint)
+        }
+
+        if let right = right {
+            let constraint = rightAnchor.constraint(equalTo: right, constant: -rightConstant)
+            constraint.identifier = ConstraintIdentifier.right.rawValue
+            anchors.append(constraint)
+        }
+
+        if let trailing = trailing {
+            let constraint = trailing.constraint(equalTo: trailing, constant: -rightConstant)
+            constraint.identifier = ConstraintIdentifier.trailing.rawValue
+            anchors.append(constraint)
+        }
+
+        if widthConstant > 0 {
+            let constraint = widthAnchor.constraint(equalToConstant: widthConstant)
+            constraint.identifier = ConstraintIdentifier.width.rawValue
+            anchors.append(constraint)
+        }
+
+        if heightConstant > 0 {
+            let constraint = heightAnchor.constraint(equalToConstant: heightConstant)
+            constraint.identifier = ConstraintIdentifier.height.rawValue
+            anchors.append(constraint)
+        }
+
+        return anchors
+    }
+
+    @discardableResult
+    func anchorIfNeeded(
+        _ top: NSLayoutYAxisAnchor? = nil,
+        left: NSLayoutXAxisAnchor? = nil,
+        leading: NSLayoutXAxisAnchor? = nil,
+        bottom: NSLayoutYAxisAnchor? = nil,
+        right: NSLayoutXAxisAnchor? = nil,
+        trailing: NSLayoutXAxisAnchor? = nil,
+        topConstant: CGFloat = 0,
+        leftConstant: CGFloat = 0,
+        bottomConstant: CGFloat = 0,
+        rightConstant: CGFloat = 0,
+        widthConstant: CGFloat = 0,
+        heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+
+        let anchors = _anchor(top, left: left, leading: leading, bottom: bottom, right: right, trailing: trailing, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: heightConstant)
+        anchors.forEach { $0.priority = .defaultLow }
+        NSLayoutConstraint.activate(anchors)
+        return anchors
     }
     
     @discardableResult
@@ -61,63 +168,8 @@ extension UIView {
         rightConstant: CGFloat = 0,
         widthConstant: CGFloat = 0,
         heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
-        
-        guard superview != nil else {
-            print("💥 Could not constraints for \(self), did you add it to the view?")
-            return []
-        }
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        var anchors = [NSLayoutConstraint]()
-        
-        if let top = top {
-            let constraint = topAnchor.constraint(equalTo: top, constant: topConstant)
-            constraint.identifier = "top"
-            anchors.append(constraint)
-        }
-        
-        if let left = left {
-            let constraint = leftAnchor.constraint(equalTo: left, constant: leftConstant)
-            constraint.identifier = "left"
-            anchors.append(constraint)
-        }
 
-        if let leading = leading {
-            let constraint = leadingAnchor.constraint(equalTo: leading, constant: leftConstant)
-            constraint.identifier = "leading"
-            anchors.append(constraint)
-        }
-        
-        if let bottom = bottom {
-            let constraint = bottomAnchor.constraint(equalTo: bottom, constant: -bottomConstant)
-            constraint.identifier = "bottom"
-            anchors.append(constraint)
-        }
-        
-        if let right = right {
-            let constraint = rightAnchor.constraint(equalTo: right, constant: -rightConstant)
-            constraint.identifier = "right"
-            anchors.append(constraint)
-        }
-
-        if let trailing = trailing {
-            let constraint = trailing.constraint(equalTo: trailing, constant: -rightConstant)
-            constraint.identifier = "trailing"
-            anchors.append(constraint)
-        }
-        
-        if widthConstant > 0 {
-            let constraint = widthAnchor.constraint(equalToConstant: widthConstant)
-            constraint.identifier = "width"
-            anchors.append(constraint)
-        }
-        
-        if heightConstant > 0 {
-            let constraint = heightAnchor.constraint(equalToConstant: heightConstant)
-            constraint.identifier = "height"
-            anchors.append(constraint)
-        }
-        
+        let anchors = _anchor(top, left: left, leading: leading, bottom: bottom, right: right, trailing: trailing, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: heightConstant)
         NSLayoutConstraint.activate(anchors)
         return anchors
     }
@@ -169,19 +221,21 @@ extension UIView {
         anchorCenterXToSuperview()
     }
     
-    func constraint(withIdentifier identifier: String) -> NSLayoutConstraint? {
-        let constraints = self.constraints.filter { $0.identifier == identifier }
+    func constraint(for identifier: ConstraintIdentifier) -> NSLayoutConstraint? {
+        let constraints = self.constraints.filter { $0.identifier == identifier.rawValue }
         return constraints.first
     }
     
     func anchorWidthToItem(_ item: UIView, multiplier: CGFloat = 1) {
         let widthConstraint = widthAnchor.constraint(equalTo: item.widthAnchor, multiplier: multiplier)
+        widthConstraint.identifier = ConstraintIdentifier.width.rawValue
         widthConstraint.isActive = true
     }
     
     func anchorHeightToItem(_ item: UIView, multiplier: CGFloat = 1) {
-        let widthConstraint = heightAnchor.constraint(equalTo: item.heightAnchor, multiplier: multiplier)
-        widthConstraint.isActive = true
+        let heightConstraint = heightAnchor.constraint(equalTo: item.heightAnchor, multiplier: multiplier)
+        heightConstraint.identifier = ConstraintIdentifier.height.rawValue
+        heightConstraint.isActive = true
     }
     
     func removeAllConstraints() {

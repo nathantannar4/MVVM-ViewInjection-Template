@@ -1,5 +1,5 @@
 //
-//  ImageView.swift
+//  TableView.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -7,17 +7,17 @@
 //
 
 import UIKit
-import Kingfisher
 
-class ImageView: UIImageView, IView {
+class TableView: UITableView, IView {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        viewDidLoad()
+    // MARK: - Init
+
+    convenience init(frame: CGRect) {
+        self.init(frame: frame, style: .plain)
     }
 
-    override init(image: UIImage?) {
-        super.init(image: image)
+    override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
         viewDidLoad()
     }
 
@@ -26,14 +26,11 @@ class ImageView: UIImageView, IView {
         viewDidLoad()
     }
 
+    // MARK: - View Life Cycle
+
     func viewDidLoad() {
         registerForThemeChanges()
-        contentMode = .scaleAspectFill
-        kf.indicatorType = .activity
-    }
-
-    func setImage(with resource: Resource) {
-        kf.setImage(with: resource)
+        backgroundColor = .white
     }
 
     // MARK: - Theme Updates

@@ -220,7 +220,7 @@ enum Stylesheet {
     enum FluidButtons {
 
         static let regular = Style<FluidButton> {
-            $0.imageView?.tintColor = .gray
+            $0.imageView.tintColor = .gray
             $0.setTitleColor(UIColor.darkGray, for: .normal)
             $0.setTitleColor(UIColor.darkGray.withAlphaComponent(0.3), for: .highlighted)
         }
@@ -229,30 +229,30 @@ enum Stylesheet {
             $0.apply(FluidButtons.regular)
             $0.setPrimaryColor(to: .primaryColor)
             let titleColor: UIColor = UIColor.primaryColor.isLight ? .black : .white
-            $0.imageView?.tintColor = titleColor
+            $0.imageView.tintColor = titleColor
             $0.setTitleColor(titleColor, for: .normal)
             $0.setTitleColor(titleColor.withAlphaComponent(0.3), for: .highlighted)
-            $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
+            $0.titleLabel.font = .boldSystemFont(ofSize: 14)
         }
 
         static let secondary = Style<FluidButton> {
             $0.apply(FluidButtons.regular)
             $0.setPrimaryColor(to: .secondaryColor)
             let titleColor: UIColor = UIColor.secondaryColor.isLight ? .black : .white
-            $0.imageView?.tintColor = titleColor
+            $0.imageView.tintColor = titleColor
             $0.setTitleColor(titleColor, for: .normal)
             $0.setTitleColor(titleColor.withAlphaComponent(0.3), for: .highlighted)
-            $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
+            $0.titleLabel.font = .boldSystemFont(ofSize: 14)
         }
 
         static let link = Style<FluidButton> {
             $0.apply(FluidButtons.regular)
-            $0.titleLabel?.textAlignment = .left
+            $0.titleLabel.textAlignment = .left
             let titleColor: UIColor = UIColor.primaryColor
-            $0.imageView?.tintColor = titleColor
+            $0.imageView.tintColor = titleColor
             $0.setTitleColor(titleColor, for: .normal)
             $0.setTitleColor(titleColor.withAlphaComponent(0.3), for: .highlighted)
-            $0.titleLabel?.font = .boldSystemFont(ofSize: 14)
+            $0.titleLabel.font = .boldSystemFont(ofSize: 14)
         }
 
         static let roundedWhite = Style<FluidButton> {

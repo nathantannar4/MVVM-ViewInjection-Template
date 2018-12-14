@@ -1,16 +1,16 @@
 //
 //  LoginViewController.swift
-//  RewardWallet
+//  ___PROJECTNAME___
 //
-//  Created by Nathan Tannar on 3/6/18.
-//  Copyright © 2018 Nathan Tannar. All rights reserved.
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import UIKit
 import RxSwift
 
 final class LoginController: ViewModelController<AuthViewModel, ScrollViewWrapped<LoginView>> {
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)

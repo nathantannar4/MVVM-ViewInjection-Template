@@ -9,7 +9,7 @@
 import Foundation
 import Swinject
 
-final class AuthRouter: NavigationRouter, Routable {
+final class AuthCoordinator: NavigationCoordinator, Coordinatable {
 
     private var modelNavigationController: UINavigationController!
 

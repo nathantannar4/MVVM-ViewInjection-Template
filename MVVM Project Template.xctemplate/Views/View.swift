@@ -8,7 +8,7 @@
 
 import UIKit
 
-class View: UIView, IView {
+class View: UIView, IView, IReusableView {
 
     // MARK: - Init
 
@@ -23,6 +23,7 @@ class View: UIView, IView {
     }
 
     func viewDidLoad() {
+        registerForThemeChanges()
         backgroundColor = .white
     }
 
@@ -37,5 +38,15 @@ class View: UIView, IView {
     }
     func viewDidDisappear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewDidDisappear(animated) }
+    }
+
+    func prepareForReuse() {
+        
+    }
+
+    // MARK: - Theme Updates
+
+    func themeDidChange(_ theme: Theme) {
+
     }
 }
