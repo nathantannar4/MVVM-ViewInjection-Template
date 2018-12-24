@@ -9,7 +9,6 @@
 import UIKit
 
 class ControlElement: UIControl, FeedbackGeneratable {
-
     enum ElementState: CaseIterable {
         case normal, highlighted, disabled
     }
@@ -48,7 +47,7 @@ class ControlElement: UIControl, FeedbackGeneratable {
     }
 
     func stateDidChange() {
-
+        sendActions(for: .valueChanged)
     }
 
     private func setupFeedback() {
@@ -56,7 +55,8 @@ class ControlElement: UIControl, FeedbackGeneratable {
     }
 
     @objc
-    func handleFeedbackIfNeeded() {
+    private func handleFeedbackIfNeeded() {
+        guard isFeedbackEnabled else { return }
         generateSelectionFeedback()
     }
 }

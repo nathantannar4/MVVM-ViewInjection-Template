@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewCell<ViewType: IReusableView>: UITableViewCell, IReuseIdentifiable {
+class TableViewCell<ViewType: IReusableView>: UITableViewCell, IReuseIdentifiable, IWrapperView {
 
     class var reuseIdentifier: String {
         return String(describing: self)
@@ -39,6 +39,7 @@ class TableViewCell<ViewType: IReusableView>: UITableViewCell, IReuseIdentifiabl
     func cellDidLoad() {
         contentView.addSubview(wrappedView)
         wrappedView.fillSuperview()
+        selectionStyle = .none
     }
     
 }

@@ -11,7 +11,7 @@ import IGListKit
 import RxSwift
 import Swinject
 
-protocol Class: class { }
+protocol Class: AnyObject { }
 
 protocol Interface: CustomStringConvertible { }
 
@@ -33,6 +33,10 @@ protocol IListViewModel: IViewModel, ListAdapterDataSource {
     func bindToAdapter(_ adapter: ListAdapter) -> Disposable
 }
 
+protocol IThemeable: Interface, Class {
+    func themeDidChange(_ theme: Theme)
+}
+
 protocol IReusableView: Interface, Class where Self: UIView {
     func prepareForReuse()
 }
@@ -41,12 +45,21 @@ protocol IReuseIdentifiable: Interface, Class {
     static var reuseIdentifier: String { get }
 }
 
-protocol IView: Interface, Class, UIResponderThemable where Self: UIView {
+protocol IView: IThemeable where Self: UIView {
     func viewDidLoad()
     func viewWillAppear(_ animated: Bool)
     func viewDidAppear(_ animated: Bool)
     func viewWillDisappear(_ animated: Bool)
     func viewDidDisappear(_ animated: Bool)
+}
+
+protocol IContainerView: IView {
+    func applyConstraints()
+}
+
+protocol IWrapperView: Interface, Class where Self: UIView {
+    associatedtype ViewType: UIView
+    var wrappedView: ViewType { get }
 }
 
 protocol IViewController: Interface, Class where Self: UIViewController {

@@ -35,7 +35,7 @@ final class AppRouter {
     
     func start(with options: [UIApplication.LaunchOptionsKey: Any]? = nil) {
         window = AppWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = container.resolve(DispatchController.self)
+        window?.rootViewController = NavigationController(rootViewController:  DevVC()) //container.resolve(DispatchController.self)
         window?.makeKeyAndVisible()
     }
 
@@ -60,7 +60,9 @@ final class AppRouter {
             } else {
                 let authRouter = AuthCoordinator(initialRoute: authRoute, in: container)
                 coordinator = authRouter
-                window?.switchRootViewController(authRouter.mainController)
+                window?.switchRootViewController(
+                    authRouter.mainController
+                )
             }
         default:
             Log.error("Failed to resolve destination for route: \(route)")
@@ -83,16 +85,19 @@ extension AppRouter {
         container.register(AppViewModel.self) { _ in
             return AppViewModel()
         }.initCompleted(viewModelDidLoad)
+
         container.register(ViewModel.self) { r in
             let viewModel = ViewModel()
             viewModel.appViewModel = r.resolve(AppViewModel.self)
             return viewModel
         }.initCompleted(viewModelDidLoad)
+
         container.register(AuthViewModel.self) { r in
             let viewModel = AuthViewModel()
             viewModel.appViewModel = r.resolve(AppViewModel.self)
             return viewModel
         }.initCompleted(viewModelDidLoad)
+
         container.register(EULAViewModel.self) { r in
             let viewModel = EULAViewModel()
             viewModel.appViewModel = r.resolve(AppViewModel.self)
@@ -108,19 +113,22 @@ extension AppRouter {
         container.register(DispatchController.self) { r in
             return DispatchController()
         }
+
         container.register(EULAController.self) { r in
             let vc = EULAController()
-            vc.viewModel = r.resolve(EULAViewModel.self)
+            vc.viewModel = r.resolve(EULAController.IViewModelType.self)
             return vc
         }
+
         container.register(LoginController.self) { r in
             let vc = LoginController()
-            vc.viewModel = r.resolve(AuthViewModel.self)!
+            vc.viewModel = r.resolve(LoginController.IViewModelType.self)
             return vc
         }
+
         container.register(SignUpController.self) { r in
             let vc = SignUpController()
-            vc.viewModel = r.resolve(AuthViewModel.self)!
+            vc.viewModel = r.resolve(LoginController.IViewModelType.self)
             return vc
         }
     }

@@ -1,5 +1,5 @@
 //
-//  ListView.swift
+//  CollectionView.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ListView: UICollectionView {
+class CollectionView: UICollectionView, IView {
+
+    var flowLayout: UICollectionViewFlowLayout! {
+        return collectionViewLayout as? UICollectionViewFlowLayout
+    }
 
     // MARK: - Init
 
@@ -27,7 +31,13 @@ class ListView: UICollectionView {
     // MARK: - View Life Cycle
 
     func viewDidLoad() {
-        backgroundColor = .white
+        subscribeToThemeChanges()
         alwaysBounceVertical = true
+    }
+
+    // MARK: - Theme Updates
+
+    func themeDidChange(_ theme: Theme) {
+        backgroundColor = .white
     }
 }

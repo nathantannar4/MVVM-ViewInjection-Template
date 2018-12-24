@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class ScrollViewWrapped<ViewType: IView>: UIScrollView, IView {
+final class ScrollViewWrapped<ViewType: IView>: UIScrollView, IView, IWrapperView {
 
-    let wrappedView: ViewType!
+    let wrappedView: ViewType
 
     required override init(frame: CGRect) {
         wrappedView = ViewType(frame: frame)
@@ -19,13 +19,12 @@ final class ScrollViewWrapped<ViewType: IView>: UIScrollView, IView {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        wrappedView = ViewType(coder: aDecoder)
+        wrappedView = ViewType(coder: aDecoder)!
         super.init(coder: aDecoder)
         viewDidLoad()
     }
 
     func viewDidLoad() {
-        registerForThemeChanges()
         keyboardDismissMode = .interactive
         contentInsetAdjustmentBehavior = .never
         addSubview(wrappedView)
@@ -48,11 +47,5 @@ final class ScrollViewWrapped<ViewType: IView>: UIScrollView, IView {
 
     func viewDidDisappear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewDidDisappear(animated) }
-    }
-
-    // MARK: - Theme Updates
-
-    func themeDidChange(_ theme: Theme) {
-
     }
 }

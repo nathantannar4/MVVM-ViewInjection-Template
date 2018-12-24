@@ -15,8 +15,6 @@ final class LoadingView: View {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubview(activityIndicator)
-        backgroundColor = .primaryColor
-        activityIndicator.tintColor = .white
         activityIndicator.anchorCenterToSuperview()
         activityIndicator.anchor(widthConstant: 50, heightConstant: 50)
     }
@@ -25,5 +23,11 @@ final class LoadingView: View {
         super.viewWillAppear(animated)
         activityIndicator.startAnimating()
     }
-    
+
+    override func themeDidChange(_ theme: Theme) {
+        super.themeDidChange(theme)
+        backgroundColor = .primaryColor
+        activityIndicator.tintColor = .white
+    }
+
 }

@@ -10,6 +10,7 @@ target '___PROJECTNAME___' do
   pod 'PromisesSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxKeyboard'
   pod 'Swinject'
   pod 'SwiftyBeaver'
   pod 'SwiftKeychainWrapper'

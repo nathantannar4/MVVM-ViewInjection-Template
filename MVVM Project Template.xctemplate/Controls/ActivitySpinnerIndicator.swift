@@ -42,6 +42,11 @@ final class ActivitySpinnerIndicator: UIView {
     /// the visual layer that gets replicated around the indicator.
     private weak var segmentLayer: CAShapeLayer!
 
+    convenience init() {
+        self.init(frame: .zero)
+        frame.size = intrinsicContentSize
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()

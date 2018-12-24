@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoundedView: UIView, Roundable {
+class RoundedView: UIView, RoundableView {
     
     var roundingMethod: RoundingMethod = .complete {
         didSet {

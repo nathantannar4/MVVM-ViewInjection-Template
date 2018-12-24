@@ -14,7 +14,7 @@ enum RoundingMethod {
     case none
 }
 
-protocol Roundable where Self: UIView {
+protocol RoundableView where Self: UIView {
 
     var roundingMethod: RoundingMethod { get set }
 
@@ -23,7 +23,7 @@ protocol Roundable where Self: UIView {
     func applyRounding()
 }
 
-extension Roundable where Self: UIView {
+extension RoundableView where Self: UIView {
 
     func applyRounding() {
         switch roundingMethod {

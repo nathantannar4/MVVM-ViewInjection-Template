@@ -9,6 +9,7 @@ target 'MVVM-Template' do
   pod 'Alamofire'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxKeyboard'
   pod 'Swinject'
   pod 'SwiftyBeaver'
   pod 'SwiftKeychainWrapper'

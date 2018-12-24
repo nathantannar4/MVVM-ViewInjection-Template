@@ -1,61 +1,12 @@
-//: A UIKit based Playground for presenting user interface
-import UIKit
-import PlaygroundSupport
+//
+//  Slider.swift
+//  ___PROJECTNAME___
+//
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
+//
 
 import UIKit
-
-class ControlElement: UIControl {
-    enum ElementState: CaseIterable {
-        case normal, highlighted, disabled
-    }
-
-    private(set) var currentState: ElementState = .normal
-
-    override var isHighlighted: Bool {
-        didSet {
-            let newState: ElementState = isHighlighted ? .highlighted : .normal
-            setState(newState)
-        }
-    }
-
-    override var isEnabled: Bool {
-        didSet {
-            let newState: ElementState = isEnabled ? .normal : .disabled
-            setState(newState)
-        }
-    }
-
-    var isFeedbackEnabled: Bool = true
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupFeedback()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupFeedback()
-    }
-
-    final func setState(_ newState: ElementState) {
-        currentState = newState
-        stateDidChange()
-    }
-
-    func stateDidChange() {
-        sendActions(for: .valueChanged)
-    }
-
-    private func setupFeedback() {
-        addTarget(self, action: #selector(handleFeedbackIfNeeded), for: [.touchDown, .touchDragEnter])
-    }
-
-    @objc
-    private func handleFeedbackIfNeeded() {
-        guard isFeedbackEnabled else { return }
-    }
-}
-
 
 class Slider: ControlElement {
     var value: Double = 0 {
@@ -304,9 +255,3 @@ class Slider: ControlElement {
             - thumbWidth / 2
     }
 }
-
-let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-view.backgroundColor = .white
-view.addSubview(Slider(frame: CGRect(x: 25, y: 60, width: 150, height: 30)))
-
-PlaygroundPage.current.liveView = view

@@ -12,7 +12,7 @@ typealias NavigationController = BaseNavigationController<NavigationBar>
 
 typealias InverseNavigationController = BaseNavigationController<InverseNavigationBar>
 
-class BaseNavigationController<T: UINavigationBar>: UINavigationController, UINavigationControllerDelegate {
+class BaseNavigationController<T: UINavigationBar>: UINavigationController, UINavigationControllerDelegate, IThemeable {
 
     // MARK: - Properties
 
@@ -61,6 +61,11 @@ class BaseNavigationController<T: UINavigationBar>: UINavigationController, UINa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        subscribeToThemeChanges()
+    }
+
+    func themeDidChange(_ theme: Theme) {
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {

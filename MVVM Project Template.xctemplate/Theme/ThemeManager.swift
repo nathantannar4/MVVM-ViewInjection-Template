@@ -9,32 +9,26 @@
 import UIKit
 import RxSwift
 
-enum Theme {
-    case light
-    case dark
+final class ThemeManager {
+    static let shared = ThemeManager()
 
-    static var `default`: Theme {
-        return .light
-    }
-}
+    fileprivate let currentTheme = BehaviorSubject<Theme>(value: .default)
 
-var CurrentTheme: Theme {
-    return Appearance.shared.theme.value ?? .default
-}
-
-class Appearance {
-    static var shared = Appearance()
-    fileprivate let theme = BehaviorSubject<Theme>(value: .default)
+    private init() { }
 
     func setCurrentTheme(_ theme: Theme, animated: Bool) {
+        guard animated else {
+            currentTheme.onNext(theme)
+            return
+        }
         UIView.animate(
-            withDuration: animated ? 0.5 : 0.0,
+            withDuration: 0.5,
             delay: 0,
             usingSpringWithDamping: 1,
             initialSpringVelocity: 0,
             options: [.transitionCrossDissolve],
             animations: { [weak self] in
-                self?.theme.onNext(theme)
+                self?.currentTheme.onNext(theme)
         })
     }
 }
@@ -43,20 +37,15 @@ private struct AssociatedKeys {
     static var ThemeDisposeBag = "ThemeDisposeBag"
 }
 
-protocol UIResponderThemable: AnyObject {
-    func themeDidChange(_ theme: Theme)
-}
+extension IThemeable where Self: UIResponder {
+    func subscribeToThemeChanges() {
+        ThemeManager.shared.currentTheme.subscribe(onNext: { [weak self] theme in
+            self?.themeDidChange(theme)
+        }).disposed(by: themeDisposeBag)
 
-extension UIResponderThemable where Self: UIResponder {
-    func registerForThemeChanges() {
-        Appearance.shared.theme.subscribe { [weak self] event in
-            switch event {
-            case .next(let theme):
-                self?.themeDidChange(theme)
-            case .error, .completed:
-                break
-            }
-        }.disposed(by: themeDisposeBag)
+        if let theme = ThemeManager.shared.currentTheme.value {
+            themeDidChange(theme)
+        }
     }
 
     private var themeDisposeBag: DisposeBag {

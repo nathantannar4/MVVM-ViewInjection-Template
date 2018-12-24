@@ -14,6 +14,10 @@ private enum Constants {
 }
 
 extension CALayer {
+    enum ShadowPosition {
+        case top(CGFloat), left(CGFloat), bottom(CGFloat), right(CGFloat)
+    }
+
     private func addShadowWithRoundedCorners() {
         if let contents = self.contents {
             masksToBounds = false
@@ -35,11 +39,23 @@ extension CALayer {
         }
     }
 
-    func addShadow() {
-        shadowOffset = CGSize(width: 0, height: 3)
-        shadowOpacity = 0.4
-        shadowRadius = 6
-        shadowColor = UIColor.black.cgColor
+    func addShadow(to position: ShadowPosition = .bottom(3),
+                   opacity: Float = 0.4,
+                   radius: CGFloat = 6,
+                   color: UIColor = .black) {
+        switch position {
+        case .top(let offset):
+            shadowOffset = CGSize(width: 0, height: -offset)
+        case .left(let offset):
+            shadowOffset = CGSize(width: -offset, height: 0)
+        case .bottom(let offset):
+            shadowOffset = CGSize(width: 0, height: offset)
+        case .right(let offset):
+            shadowOffset = CGSize(width: offset, height: 0)
+        }
+        shadowOpacity = opacity
+        shadowRadius = radius
+        shadowColor = color.cgColor
         masksToBounds = false
         if cornerRadius != 0 {
             addShadowWithRoundedCorners()
@@ -57,5 +73,6 @@ extension CALayer {
         shadowOffset = .zero
         shadowOpacity = 0
         shadowRadius = 0
+        shadowColor = UIColor.clear.cgColor
     }
 }

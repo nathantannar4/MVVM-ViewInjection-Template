@@ -6,49 +6,13 @@
 //  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import UIKit
-import FontAwesome_swift
+import Foundation
 
-extension UIColor {
+enum Theme: Int {
+    case light = 0
+    case dark
 
-    static var primaryColor: UIColor {
-        return UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
-    }
-
-    static var secondaryColor: UIColor {
-        return UIColor(red: 0, green: 0.5, blue: 1, alpha: 1).darker()
-    }
-
-    static var tertiaryColor: UIColor {
-        return UIColor(red: 0, green: 0.5, blue: 1, alpha: 1).lighter()
-    }
-
-    static var backgroundColor: UIColor {
-        return UIColor.white
-    }
-
-    static var offWhiteColor: UIColor {
-        return UIColor(white: 0.96, alpha: 1)
-    }
-
-    static var grayColor: UIColor {
-        return UIColor.gray
-    }
-
-    static var shadowColor: UIColor {
-        return UIColor.black
-    }
-}
-
-typealias FA = FontAwesome
-
-extension UIImage {
-    static func icon(named name: FA) -> UIImage {
-        return UIImage.fontAwesomeIcon(
-            name: name,
-            style: .solid,
-            textColor: .primaryColor,
-            size: CGSize(width: 250, height: 250)
-        )
+    static var `default`: Theme {
+        return .light
     }
 }

@@ -27,9 +27,8 @@ class ImageView: UIImageView, IView {
     }
 
     func viewDidLoad() {
-        registerForThemeChanges()
+        subscribeToThemeChanges()
         contentMode = .scaleAspectFill
-        kf.indicatorType = .activity
     }
 
     func setImage(with resource: Resource) {

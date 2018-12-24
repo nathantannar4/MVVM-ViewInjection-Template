@@ -71,13 +71,8 @@ extension UIView {
         leftConstant: CGFloat = 0,
         bottomConstant: CGFloat = 0,
         rightConstant: CGFloat = 0,
-        widthConstant: CGFloat = 0,
-        heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
-
-        guard superview != nil else {
-            print("💥 Could not constraints for \(self), did you add it to the view?")
-            return []
-        }
+        widthConstant: CGFloat = -1,
+        heightConstant: CGFloat = -1) -> [NSLayoutConstraint] {
 
         translatesAutoresizingMaskIntoConstraints = false
         var anchors = [NSLayoutConstraint]()
@@ -118,13 +113,13 @@ extension UIView {
             anchors.append(constraint)
         }
 
-        if widthConstant > 0 {
+        if widthConstant != -1 {
             let constraint = widthAnchor.constraint(equalToConstant: widthConstant)
             constraint.identifier = ConstraintIdentifier.width.rawValue
             anchors.append(constraint)
         }
 
-        if heightConstant > 0 {
+        if heightConstant != -1 {
             let constraint = heightAnchor.constraint(equalToConstant: heightConstant)
             constraint.identifier = ConstraintIdentifier.height.rawValue
             anchors.append(constraint)
@@ -145,8 +140,8 @@ extension UIView {
         leftConstant: CGFloat = 0,
         bottomConstant: CGFloat = 0,
         rightConstant: CGFloat = 0,
-        widthConstant: CGFloat = 0,
-        heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+        widthConstant: CGFloat = -1,
+        heightConstant: CGFloat = -1) -> [NSLayoutConstraint] {
 
         let anchors = _anchor(top, left: left, leading: leading, bottom: bottom, right: right, trailing: trailing, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: heightConstant)
         anchors.forEach { $0.priority = .defaultLow }
@@ -166,8 +161,8 @@ extension UIView {
         leftConstant: CGFloat = 0,
         bottomConstant: CGFloat = 0,
         rightConstant: CGFloat = 0,
-        widthConstant: CGFloat = 0,
-        heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+        widthConstant: CGFloat = -1,
+        heightConstant: CGFloat = -1) -> [NSLayoutConstraint] {
 
         let anchors = _anchor(top, left: left, leading: leading, bottom: bottom, right: right, trailing: trailing, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: heightConstant)
         NSLayoutConstraint.activate(anchors)
@@ -175,43 +170,43 @@ extension UIView {
     }
     
     @discardableResult
-    func anchorAbove(_ view: UIView, top: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
-        return anchor(topAnchor, left: view.leftAnchor, bottom: view.topAnchor, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: 0, heightConstant: heightConstant)
+    func anchorAbove(_ view: UIView, top: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, heightConstant: CGFloat = -1) -> [NSLayoutConstraint] {
+        return anchor(top, left: view.leftAnchor, bottom: view.topAnchor, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: 0, heightConstant: heightConstant)
     }
     
     @discardableResult
-    func anchorBelow(_ view: UIView, bottom: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, heightConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+    func anchorBelow(_ view: UIView, bottom: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, heightConstant: CGFloat = -1) -> [NSLayoutConstraint] {
         return anchor(view.bottomAnchor, left: view.leftAnchor, bottom: bottom, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: 0, heightConstant: heightConstant)
     }
     
     @discardableResult
-    func anchorLeftOf(_ view: UIView, left: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+    func anchorLeftOf(_ view: UIView, left: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = -1) -> [NSLayoutConstraint] {
         return anchor(view.topAnchor, left: left, bottom: view.bottomAnchor, right: view.leftAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: 0)
     }
     
     @discardableResult
-    func anchorRightOf(_ view: UIView, right: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = 0) -> [NSLayoutConstraint] {
+    func anchorRightOf(_ view: UIView, right: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = -1) -> [NSLayoutConstraint] {
         return anchor(view.topAnchor, left: view.rightAnchor, bottom: view.bottomAnchor, right: right, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: 0)
     }
     
     func anchorCenterXToSuperview(constant: CGFloat = 0) {
-        
+
         guard let superview = self.superview else {
             print("💥 Could not constraints for \(self), did you add it to the view?")
             return
         }
-        
+
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: constant).isActive = true
     }
     
     func anchorCenterYToSuperview(constant: CGFloat = 0) {
-        
+
         guard let superview = self.superview else {
             print("💥 Could not constraints for \(self), did you add it to the view?")
             return
         }
-      
+
         translatesAutoresizingMaskIntoConstraints = false
         centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: constant).isActive = true
     }
@@ -225,17 +220,21 @@ extension UIView {
         let constraints = self.constraints.filter { $0.identifier == identifier.rawValue }
         return constraints.first
     }
-    
-    func anchorWidthToItem(_ item: UIView, multiplier: CGFloat = 1) {
+
+    @discardableResult
+    func anchorWidthToItem(_ item: UIView, multiplier: CGFloat = 1) -> NSLayoutConstraint {
         let widthConstraint = widthAnchor.constraint(equalTo: item.widthAnchor, multiplier: multiplier)
         widthConstraint.identifier = ConstraintIdentifier.width.rawValue
         widthConstraint.isActive = true
+        return widthConstraint
     }
-    
-    func anchorHeightToItem(_ item: UIView, multiplier: CGFloat = 1) {
+
+    @discardableResult
+    func anchorHeightToItem(_ item: UIView, multiplier: CGFloat = 1) -> NSLayoutConstraint {
         let heightConstraint = heightAnchor.constraint(equalTo: item.heightAnchor, multiplier: multiplier)
         heightConstraint.identifier = ConstraintIdentifier.height.rawValue
         heightConstraint.isActive = true
+        return heightConstraint
     }
     
     func removeAllConstraints() {
@@ -248,24 +247,113 @@ extension UIView {
         }
     }
 
-    func addBorder(to side: UIRectEdge, color: UIColor, thickness: CGFloat = 1) {
-        let border = BorderLayer(side: side, thickness: thickness)
-        border.backgroundColor = color.cgColor
-        border.name = String(describing: BorderLayer.self)
-        layer.addSublayer(border)
-        border.layoutSublayers()
+    public enum ViewSide {
+        case top
+        case right
+        case bottom
+        case left
     }
 
-    func removeBorders() {
-        self.layer.sublayers?.forEach {
-            guard let name = $0.name else {
-                return
-            }
-
-            if name == String(describing: BorderLayer.self) {
-                $0.removeFromSuperlayer()
-            }
+    public func addBorderLayer(to side: ViewSide, color: UIColor, thickness: CGFloat = 1) {
+        switch side {
+        case .top:
+            let border = _getOneSidedBorder(
+                frame: CGRect(
+                    x: 0,
+                    y: 0,
+                    width: frame.size.width,
+                    height: thickness
+            ), color: color)
+            layer.addSublayer(border)
+        case .right:
+            let border = _getOneSidedBorder(
+                frame: CGRect(
+                    x: frame.size.width - thickness,
+                    y: 0,
+                    width: thickness,
+                    height: frame.size.height
+            ), color: color)
+            layer.addSublayer(border)
+        case .bottom:
+            let border = _getOneSidedBorder(
+                frame: CGRect(
+                    x: 0,
+                    y: frame.size.height - thickness,
+                    width: frame.size.width,
+                    height: thickness
+            ), color: color)
+            layer.addSublayer(border)
+        case .left:
+            let border = _getOneSidedBorder(
+                frame: CGRect(
+                    x: 0,
+                    y: 0,
+                    width: thickness,
+                    height: frame.size.height
+            ), color: color)
+            layer.addSublayer(border)
         }
+    }
+
+    public func addBorderView(to side: ViewSide, color: UIColor, thickness: CGFloat = 1) {
+
+        switch side {
+        case .top:
+            let border = _getViewBackedOneSidedBorder(
+                frame: CGRect(
+                    x: 0,
+                    y: 0,
+                    width: frame.size.width,
+                    height: thickness
+            ), color: color)
+            border.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+            addSubview(border)
+
+        case .right:
+            let border = _getViewBackedOneSidedBorder(frame:
+                CGRect(
+                    x: frame.size.width - thickness,
+                    y: 0,
+                    width: thickness,
+                    height: frame.size.height
+            ), color: color)
+            border.autoresizingMask = [.flexibleHeight, .flexibleLeftMargin]
+            addSubview(border)
+
+        case .bottom:
+            let border: UIView = _getViewBackedOneSidedBorder(
+                frame: CGRect(
+                    x: 0,
+                    y: frame.size.height - thickness,
+                    width: frame.size.width,
+                    height: thickness
+            ), color: color)
+            border.autoresizingMask = [.flexibleWidth, .flexibleTopMargin]
+            addSubview(border)
+        case .left:
+            let border: UIView = _getViewBackedOneSidedBorder(
+                frame: CGRect(
+                    x: 0,
+                    y: 0,
+                    width: thickness,
+                    height: frame.size.height
+            ), color: color)
+            border.autoresizingMask = [.flexibleHeight, .flexibleRightMargin]
+            addSubview(border)
+        }
+    }
+
+    private func _getOneSidedBorder(frame: CGRect, color: UIColor) -> CALayer {
+        let border = CALayer()
+        border.frame = frame
+        border.backgroundColor = color.cgColor
+        return border
+    }
+
+    private func _getViewBackedOneSidedBorder(frame: CGRect, color: UIColor) -> UIView {
+        let border = UIView(frame: frame)
+        border.backgroundColor = color
+        return border
     }
 
     @discardableResult
@@ -281,59 +369,4 @@ extension UIView {
         return subviews.compactMap { $0 as? IView }
     }
 
-}
-
-final class BorderLayer: CALayer {
-    let side: UIRectEdge
-    let thickness: CGFloat
-    init(side: UIRectEdge, thickness: CGFloat) {
-        self.side = side
-        self.thickness = thickness
-        super.init()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-
-    override func layoutSublayers() {
-        super.layoutSublayers()
-        guard let superlayer = superlayer else {
-            return
-        }
-        switch side {
-        case .left, .all:
-            frame = CGRect(
-                x: 0,
-                y: 0,
-                width: thickness,
-                height: superlayer.bounds.height
-            )
-            fallthrough
-        case .right, .all:
-            frame = CGRect(
-                x: superlayer.bounds.width - thickness,
-                y: 0,
-                width: thickness,
-                height: superlayer.bounds.height
-            )
-        case .top, .all:
-            frame = CGRect(
-                x: 0,
-                y: 0,
-                width: superlayer.bounds.width,
-                height: thickness
-            )
-            fallthrough
-        case .bottom, .all:
-            frame = CGRect(
-                x: 0,
-                y: superlayer.bounds.height - thickness,
-                width: superlayer.bounds.width,
-                height: thickness
-            )
-        default:
-            break
-        }
-    }
 }

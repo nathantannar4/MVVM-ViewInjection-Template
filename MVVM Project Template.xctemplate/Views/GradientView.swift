@@ -9,7 +9,7 @@
 import UIKit
 
 /// Simple view for drawing gradients and borders.
-class GradientView: UIView {
+final class GradientView: UIView {
     
     // MARK: - Types
 
@@ -131,6 +131,7 @@ class GradientView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .clear
     }
 
     required init?(coder aDecoder: NSCoder) {

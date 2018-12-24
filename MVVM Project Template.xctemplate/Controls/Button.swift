@@ -1,5 +1,5 @@
 //
-//  FluidButton.swift
+//  Button.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class FluidButton: ControlElement, Roundable {
-
+class Button: ControlElement, RoundableView {
     enum PropertyKey: String, CaseIterable {
         case backgroundColor, title, attributedTitle, titleColor, image
     }
@@ -26,6 +25,10 @@ class FluidButton: ControlElement, Roundable {
         ElementState.highlighted: [:],
         ElementState.disabled: [:],
     ]
+
+    override var intrinsicContentSize: CGSize {
+        return stackView.intrinsicContentSize
+    }
 
     // MARK: - Views
 
@@ -46,6 +49,11 @@ class FluidButton: ControlElement, Roundable {
     let imageView = UIImageView(style: Stylesheet.ImageViews.fitted)
 
     // MARK: - Init
+
+    convenience init() {
+        self.init(frame: .zero)
+        frame.size = intrinsicContentSize
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -80,6 +88,47 @@ class FluidButton: ControlElement, Roundable {
 
     override func stateDidChange() {
         super.stateDidChange()
+        updateViewProperties()
+    }
+
+    func setTitle(_ title: String?, for state: ElementState) {
+        defer { updateViewProperties() }
+        properties[state]?[.title] = title
+    }
+
+    func setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: ElementState) {
+        defer { updateViewProperties() }
+        properties[state]?[.attributedTitle] = attributedTitle
+    }
+
+    func setTitleColor(_ titleColor: UIColor?, for state: ElementState) {
+        defer { updateViewProperties() }
+        properties[state]?[.titleColor] = titleColor
+    }
+
+    func setBackgroundColor(_ backgroundColor: UIColor?, for state: ElementState) {
+        defer { updateViewProperties() }
+        properties[state]?[.backgroundColor] = backgroundColor
+    }
+
+    func setImage(_ image: UIImage?, for state: ElementState) {
+        defer { updateViewProperties() }
+        properties[state]?[.image] = image
+    }
+
+    func setPrimaryColor(to color: UIColor?) {
+        defer { stateDidChange() }
+        properties[.normal]?[.backgroundColor] = color
+        let titleColor = (color?.isLight ?? true) ? UIColor.black : UIColor.white
+        properties[.normal]?[.titleColor] = titleColor
+        let accentColor = (color?.isLight ?? true) ? color?.darker() : color?.lighter()
+        properties[.highlighted]?[.backgroundColor] = accentColor
+        properties[.highlighted]?[.titleColor] = titleColor.withAlphaComponent(0.3)
+        properties[.disabled]?[.backgroundColor] = color?.lighter(by: 5)
+        properties[.disabled]?[.titleColor] = titleColor.withAlphaComponent(0.3)
+    }
+
+    private func updateViewProperties() {
         if let color = properties[currentState]?[.backgroundColor] as? UIColor {
             backgroundColor = color
         }
@@ -96,43 +145,6 @@ class FluidButton: ControlElement, Roundable {
         if let image = properties[currentState]?[.image] as? UIImage {
             imageView.image = image
         }
-    }
-
-    func setTitle(_ title: String?, for state: ElementState) {
-        defer { stateDidChange() }
-        properties[state]?[.title] = title
-    }
-
-    func setAttributedTitle(_ attributedTitle: NSAttributedString?, for state: ElementState) {
-        defer { stateDidChange() }
-        properties[state]?[.attributedTitle] = attributedTitle
-    }
-
-    func setTitleColor(_ titleColor: UIColor?, for state: ElementState) {
-        defer { stateDidChange() }
-        properties[state]?[.titleColor] = titleColor
-    }
-
-    func setBackgroundColor(_ backgroundColor: UIColor?, for state: ElementState) {
-        defer { stateDidChange() }
-        properties[state]?[.backgroundColor] = backgroundColor
-    }
-
-    func setImage(_ image: UIImage?, for state: ElementState) {
-        defer { stateDidChange() }
-        properties[state]?[.image] = image
-    }
-
-    func setPrimaryColor(to color: UIColor?) {
-        defer { stateDidChange() }
-        properties[.normal]?[.backgroundColor] = color
-        let titleColor = (color?.isLight ?? true) ? UIColor.black : UIColor.white
-        properties[.normal]?[.titleColor] = titleColor
-        let accentColor = (color?.isLight ?? true) ? color?.darker() : color?.lighter()
-        properties[.highlighted]?[.backgroundColor] = accentColor
-        properties[.highlighted]?[.titleColor] = titleColor.withAlphaComponent(0.3)
-        properties[.disabled]?[.backgroundColor] = color?.lighter(by: 5)
-        properties[.disabled]?[.titleColor] = titleColor.withAlphaComponent(0.3)
     }
 
     // MARK: - Animations

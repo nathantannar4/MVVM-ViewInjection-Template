@@ -1,5 +1,5 @@
 //
-//  GridContentView.swift
+//  GridView.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GridContentView<TopViewType: UIView, BottomViewType: UIView, LeftViewType: UIView, RightViewType: UIView>: View {
+class GridView<TopViewType: UIView, BottomViewType: UIView, LeftViewType: UIView, RightViewType: UIView>: View {
 
     let topView: TopViewType
     let bottomView: BottomViewType
@@ -49,5 +49,4 @@ class GridContentView<TopViewType: UIView, BottomViewType: UIView, LeftViewType:
         rightView.anchor(left: topView.rightAnchor, right: rightAnchor)
         rightView.anchorCenterYToSuperview()
     }
-
 }

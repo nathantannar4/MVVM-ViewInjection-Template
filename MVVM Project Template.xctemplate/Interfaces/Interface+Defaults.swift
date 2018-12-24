@@ -42,3 +42,7 @@ extension IRoutePresenter {
 extension IReusableView {
     func prepareForReuse() { }
 }
+
+extension IThemeable {
+    func themeDidChange(_ theme: Theme) { }
+}

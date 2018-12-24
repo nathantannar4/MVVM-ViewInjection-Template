@@ -1,5 +1,5 @@
 //
-//  ListController.swift
+//  CollectionController.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -9,7 +9,7 @@
 import UIKit
 import IGListKit
 
-class ListController<ViewModelType: IListViewModel>: ViewModelController<ViewModelType, ViewWrapped<ListView>> {
+class CollectionController<ViewModelType: IListViewModel>: ViewModelController<ViewModelType, CollectionView> {
 
     // MARK: - Properties
 
@@ -19,7 +19,7 @@ class ListController<ViewModelType: IListViewModel>: ViewModelController<ViewMod
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        adapter.collectionView = rootView.wrappedView
+        adapter.collectionView = rootView
     }
 
     override func bindToViewModel() {

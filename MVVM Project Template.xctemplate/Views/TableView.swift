@@ -29,13 +29,13 @@ class TableView: UITableView, IView {
     // MARK: - View Life Cycle
 
     func viewDidLoad() {
-        registerForThemeChanges()
-        backgroundColor = .white
+        subscribeToThemeChanges()
+        separatorStyle = .none
     }
 
     // MARK: - Theme Updates
 
     func themeDidChange(_ theme: Theme) {
-
+        backgroundColor = .white
     }
 }

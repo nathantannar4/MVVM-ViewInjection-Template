@@ -23,19 +23,21 @@ class View: UIView, IView, IReusableView {
     }
 
     func viewDidLoad() {
-        registerForThemeChanges()
-        backgroundColor = .white
+        subscribeToThemeChanges()
     }
 
     func viewWillAppear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewWillAppear(animated) }
     }
+
     func viewDidAppear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewDidAppear(animated) }
     }
+
     func viewWillDisappear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewWillDisappear(animated) }
     }
+
     func viewDidDisappear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewDidDisappear(animated) }
     }

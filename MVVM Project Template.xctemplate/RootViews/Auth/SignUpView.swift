@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class SignUpView: View {
+final class SignUpAccessoryView: View {
 
     enum Action: String {
         case didTapTerms
@@ -19,16 +19,62 @@ final class SignUpView: View {
         var selector: Selector {
             switch self {
             case .didTapTerms:
-                return #selector(SignUpView.didTapTerms)
+                return #selector(SignUpAccessoryView.didTapTerms)
             case .didTapSignUp:
-                return #selector(SignUpView.didTapSignUp)
+                return #selector(SignUpAccessoryView.didTapSignUp)
             }
         }
     }
 
     // MARK: - Properties
 
-    fileprivate var actionEmitter = PublishSubject<SignUpView.Action>()
+    fileprivate var actionEmitter = PublishSubject<SignUpAccessoryView.Action>()
+
+    // MARK: - Subviews
+
+    private lazy var termsButton = UIButton(style: Stylesheet.Buttons.termsAndConditions) {
+        $0.addTarget(self, action: Action.didTapTerms.selector, for: .touchUpInside)
+    }
+
+    fileprivate lazy var signUpButton = Button(style: Stylesheet.AnimatedButtons.primary) {
+        $0.setTitle(.localize(.signUp), for: .normal)
+        $0.addTarget(self, action: Action.didTapSignUp.selector, for: .touchUpInside)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addSubviews(termsButton, signUpButton)
+
+        termsButton.anchorAbove(signUpButton, top: topAnchor, heightConstant: 30)
+        signUpButton.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, heightConstant: 44)
+    }
+
+    // MARK: - User Actions
+
+    @objc
+    private func didTapTerms() {
+        actionEmitter.onNext(.didTapTerms)
+    }
+
+    @objc
+    private func didTapSignUp() {
+        actionEmitter.onNext(.didTapSignUp)
+    }
+}
+
+extension Reactive where Base: SignUpAccessoryView {
+
+    var selector: PublishSubject<SignUpAccessoryView.Action> {
+        return base.actionEmitter
+    }
+
+    var isSignUpEnabled: Binder<Bool> {
+        return base.signUpButton.rx.isEnabled
+    }
+}
+
+
+final class SignUpView: View {
 
     // MARK: - Subviews
 
@@ -71,21 +117,12 @@ final class SignUpView: View {
         $0.image = UIImage.icon(named: FA.lock)
     }
 
-    private lazy var termsButton = UIButton(style: Stylesheet.Buttons.termsAndConditions) {
-        $0.addTarget(self, action: Action.didTapTerms.selector, for: .touchUpInside)
-    }
-
-    fileprivate lazy var signUpButton = FluidButton(style: Stylesheet.FluidButtons.primary) {
-        $0.setTitle(.localize(.signUp), for: .normal)
-        $0.addTarget(self, action: Action.didTapSignUp.selector, for: .touchUpInside)
-    }
-
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        [titleLabel, subtitleLabel, emailField, emailIconView, nameField, nameIconView, phoneField, phoneIconView, passwordField, passwordIconView, confirmPasswordField, confirmPasswordIconView, termsButton, signUpButton].forEach { addSubview($0) }
+        addSubviews(titleLabel, subtitleLabel, emailField, emailIconView, nameField, nameIconView, phoneField, phoneIconView, passwordField, passwordIconView, confirmPasswordField, confirmPasswordIconView)
 
         titleLabel.anchor(layoutMarginsGuide.topAnchor, left: layoutMarginsGuide.leftAnchor, right: layoutMarginsGuide.rightAnchor, topConstant: 12, leftConstant: 12, rightConstant: 12, heightConstant: 25)
 
@@ -102,26 +139,6 @@ final class SignUpView: View {
                 lastView = subview
             }
         }
-        termsButton.anchorAbove(signUpButton, heightConstant: 30)
-
-        signUpButton.anchor(left: leftAnchor, bottom: keyboardLayoutGuide.topAnchor, right: rightAnchor, heightConstant: 44)
-
-        let safeAreaView = UIView()
-        safeAreaView.backgroundColor = .white
-        addSubview(safeAreaView)
-        safeAreaView.anchor(signUpButton.bottomAnchor, left: signUpButton.leftAnchor, bottom: bottomAnchor, right: signUpButton.rightAnchor)
-    }
-
-    // MARK: - User Actions
-
-    @objc
-    private func didTapTerms() {
-        actionEmitter.onNext(.didTapTerms)
-    }
-
-    @objc
-    private func didTapSignUp() {
-        actionEmitter.onNext(.didTapSignUp)
     }
 }
 
@@ -137,9 +154,6 @@ extension SignUpView: UITextFieldDelegate {
         } else if textField == passwordField {
             return confirmPasswordField.becomeFirstResponder()
         } else {
-            if signUpButton.isEnabled {
-                actionEmitter.onNext(.didTapSignUp)
-            }
             return textField.resignFirstResponder()
         }
     }
@@ -147,19 +161,11 @@ extension SignUpView: UITextFieldDelegate {
 
 extension Reactive where Base: SignUpView {
 
-    var selector: PublishSubject<SignUpView.Action> {
-        return base.actionEmitter
-    }
-
     var email: ControlProperty<String?> {
         return base.emailField.rx.text
     }
 
     var password: ControlProperty<String?> {
         return base.passwordField.rx.text
-    }
-
-    var isSignUpEnabled: Binder<Bool> {
-        return base.signUpButton.rx.isEnabled
     }
 }

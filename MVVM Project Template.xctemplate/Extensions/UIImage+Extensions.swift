@@ -23,5 +23,33 @@ public extension UIImage {
     func scale(to size: CGFloat) -> UIImage? {
         return self.resizeImage(width: size, height: size)
     }
-    
+
+    func masked(with color: UIColor) -> UIImage? {
+        let image = resizeImage(width: 250, height: 250) ?? self
+        guard let maskImage = image.cgImage else {
+            return nil
+        }
+
+        let bounds = CGRect(origin: .zero, size: image.size)
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        let context = CGContext(
+            data: nil,
+            width: Int(bounds.width),
+            height: Int(bounds.height),
+            bitsPerComponent: 8,
+            bytesPerRow: 0,
+            space: colorSpace,
+            bitmapInfo: bitmapInfo.rawValue
+        )
+
+        context?.clip(to: bounds, mask: maskImage)
+        context?.setFillColor(color.cgColor)
+        context?.fill(bounds)
+
+        guard let cgImage = context?.makeImage() else {
+            return nil
+        }
+        return UIImage(cgImage: cgImage)
+    }
 }

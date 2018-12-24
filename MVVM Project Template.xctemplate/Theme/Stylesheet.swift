@@ -9,9 +9,14 @@
 import UIKit
 
 enum Stylesheet {
+    enum Layout {
+        enum Padding {
+            static var edgeLeadingTrailing: CGFloat = 16
+            static var edgeTopBottom: CGFloat = 6
+        }
+    }
 
     enum Fonts {
-
         static var titleFont: UIFont {
             return .boldSystemFont(ofSize: 34)
         }
@@ -43,11 +48,9 @@ enum Stylesheet {
         static var footnoteFont: UIFont {
             return .systemFont(ofSize: 12, weight: .medium)
         }
-
     }
 
     enum Labels {
-
         static let title = Style<UILabel> {
             $0.font = Fonts.titleFont
             $0.numberOfLines = 0
@@ -112,11 +115,9 @@ enum Stylesheet {
             $0.numberOfLines = 0
             $0.adjustsFontSizeToFitWidth = true
         }
-
     }
 
     enum Views {
-
         static let rounded = Style<UIView> {
             $0.layer.cornerRadius = 8
         }
@@ -151,20 +152,23 @@ enum Stylesheet {
             $0.layer.shadowColor = UIColor.lightGray.cgColor
             $0.layer.shadowOffset = CGSize(width: 0, height: 4)
         }
-
     }
 
     enum VisualEffectView {
-
         static let regular = Style<UIVisualEffectView> {
             let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
             $0.effect = blurEffect
         }
+    }
 
+    enum GradientViews {
+        static let white = Style<GradientView> {
+            $0.colors = [UIColor.white.withAlphaComponent(0.3), UIColor.white]
+            $0.locations = [0, 1]
+        }
     }
 
     enum ImageViews {
-
         static let fitted = Style<UIImageView> {
             $0.tintColor = .primaryColor
             $0.contentMode = .scaleAspectFit
@@ -187,7 +191,6 @@ enum Stylesheet {
     }
 
     enum NavigationBars {
-
         static let primary = Style<UINavigationBar> {
             $0.barTintColor = .primaryColor
             $0.tintColor = .white
@@ -217,16 +220,15 @@ enum Stylesheet {
         
     }
 
-    enum FluidButtons {
-
-        static let regular = Style<FluidButton> {
+    enum AnimatedButtons {
+        static let regular = Style<Button> {
             $0.imageView.tintColor = .gray
             $0.setTitleColor(UIColor.darkGray, for: .normal)
             $0.setTitleColor(UIColor.darkGray.withAlphaComponent(0.3), for: .highlighted)
         }
 
-        static let primary = Style<FluidButton> {
-            $0.apply(FluidButtons.regular)
+        static let primary = Style<Button> {
+            $0.apply(AnimatedButtons.regular)
             $0.setPrimaryColor(to: .primaryColor)
             let titleColor: UIColor = UIColor.primaryColor.isLight ? .black : .white
             $0.imageView.tintColor = titleColor
@@ -235,8 +237,8 @@ enum Stylesheet {
             $0.titleLabel.font = .boldSystemFont(ofSize: 14)
         }
 
-        static let secondary = Style<FluidButton> {
-            $0.apply(FluidButtons.regular)
+        static let secondary = Style<Button> {
+            $0.apply(AnimatedButtons.regular)
             $0.setPrimaryColor(to: .secondaryColor)
             let titleColor: UIColor = UIColor.secondaryColor.isLight ? .black : .white
             $0.imageView.tintColor = titleColor
@@ -245,8 +247,8 @@ enum Stylesheet {
             $0.titleLabel.font = .boldSystemFont(ofSize: 14)
         }
 
-        static let link = Style<FluidButton> {
-            $0.apply(FluidButtons.regular)
+        static let link = Style<Button> {
+            $0.apply(AnimatedButtons.regular)
             $0.titleLabel.textAlignment = .left
             let titleColor: UIColor = UIColor.primaryColor
             $0.imageView.tintColor = titleColor
@@ -255,15 +257,15 @@ enum Stylesheet {
             $0.titleLabel.font = .boldSystemFont(ofSize: 14)
         }
 
-        static let roundedWhite = Style<FluidButton> {
-            $0.apply(FluidButtons.regular)
+        static let roundedWhite = Style<Button> {
+            $0.apply(AnimatedButtons.regular)
             $0.layer.cornerRadius = 22
             $0.backgroundColor = .white
             $0.setTitleColor(.black, for: .normal)
             $0.setTitleColor(UIColor.black.withAlphaComponent(0.3), for: .highlighted)
         }
 
-        static let termsAndConditions = Style<FluidButton> {
+        static let termsAndConditions = Style<Button> {
             let title = String.localize(.termsOfUsePrompt) + " "
             let normalTitle = NSMutableAttributedString()
                 .normal(title, font: Fonts.buttonFont.withSize(10), color: .black)
@@ -276,8 +278,8 @@ enum Stylesheet {
             $0.backgroundColor = .white
         }
 
-        static let signUp = Style<FluidButton> {
-            $0.apply(FluidButtons.regular)
+        static let signUp = Style<Button> {
+            $0.apply(AnimatedButtons.regular)
             let prompt = String.localize(.signUpPrompt) + " "
             let link = String.localize(.signUpHere)
             let textColor = UIColor.darkGray
@@ -300,7 +302,6 @@ enum Stylesheet {
     }
 
     enum Buttons {
-
         static let regular = Style<UIButton> {
             $0.titleLabel?.font = Fonts.buttonFont
             $0.titleLabel?.numberOfLines = 0
@@ -359,7 +360,6 @@ enum Stylesheet {
                 .bold(.localize(.termsOfUse), size: 10, color: UIColor.primaryColor.withAlphaComponent(0.3))
             $0.setAttributedTitle(normalTitle, for: .normal)
             $0.setAttributedTitle(highlightedTitle, for: .highlighted)
-            $0.backgroundColor = .white
         }
 
         static let signUp = Style<UIButton> {
@@ -382,11 +382,9 @@ enum Stylesheet {
             $0.setAttributedTitle(highlightedTitle, for: .highlighted)
             $0.contentHorizontalAlignment = .center
         }
-
     }
 
     enum TextViews {
-
         static let regular = Style<UITextView> {
             $0.tintColor = .primaryColor
             $0.font = Fonts.descriptionFont
@@ -399,7 +397,6 @@ enum Stylesheet {
     }
 
     enum TextFields {
-
         static let primary = Style<UITextField> {
             $0.tintColor = .primaryColor
             $0.isSecureTextEntry = false
@@ -440,8 +437,6 @@ enum Stylesheet {
             $0.autocorrectionType = .no
             $0.autocapitalizationType = .none
         }
-
     }
-
 }
 

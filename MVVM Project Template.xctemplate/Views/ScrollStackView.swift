@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ScrollStackView: UIScrollView, IView {
+class ScrollStackView: UIScrollView, IView {
 
     // MARK: - Properties
 
@@ -36,6 +36,12 @@ final class ScrollStackView: UIScrollView, IView {
         }
     }
 
+    var arrangedViewInsets: UIEdgeInsets = .zero {
+        didSet {
+            arrangedSubviewInsetsDidChange()
+        }
+    }
+
     // MARK: - Views
 
     private let stackView: UIStackView = {
@@ -46,6 +52,8 @@ final class ScrollStackView: UIScrollView, IView {
         view.distribution = .fill
         return view
     }()
+
+    private var stackViewConstaints: [NSLayoutConstraint]!
 
     required override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,27 +66,35 @@ final class ScrollStackView: UIScrollView, IView {
     }
 
     func viewDidLoad() {
-        registerForThemeChanges()
+        subscribeToThemeChanges()
+        keyboardDismissMode = .interactive
         addSubview(stackView)
-        stackView.anchor(topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
-        stackView.anchorWidthToItem(self)
+        stackViewConstaints = stackView.anchor(topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
+        stackViewConstaints.append(stackView.anchorWidthToItem(self))
     }
 
     func viewWillAppear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewWillAppear(animated) }
     }
+
     func viewDidAppear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewDidAppear(animated) }
     }
+
     func viewWillDisappear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewWillDisappear(animated) }
     }
+
     func viewDidDisappear(_ animated: Bool) {
         interfaceSubviews.forEach { $0.viewDidDisappear(animated) }
     }
-
+    
     func addArrangedSubview(_ subview: UIView) {
         stackView.addArrangedSubview(subview)
+    }
+
+    func addArrangedSubviews(_ subviews: UIView...) {
+        subviews.forEach { addArrangedSubview($0) }
     }
 
     func removeArrangedSubview(_ subview: UIView) {
@@ -87,6 +103,15 @@ final class ScrollStackView: UIScrollView, IView {
 
     func removeAllSubviews() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    }
+
+    private func arrangedSubviewInsetsDidChange() {
+        stackViewConstaints[0].constant = arrangedViewInsets.top
+        stackViewConstaints[1].constant = arrangedViewInsets.left
+        stackViewConstaints[2].constant = -arrangedViewInsets.bottom
+        stackViewConstaints[3].constant = -arrangedViewInsets.right
+        stackViewConstaints[4].constant = -arrangedViewInsets.horizontal
+        layoutIfNeeded()
     }
 
     // MARK: - Theme Updates

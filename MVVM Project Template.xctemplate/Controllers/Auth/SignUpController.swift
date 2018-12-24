@@ -8,13 +8,13 @@
 
 import UIKit
 
-final class SignUpController: ViewModelController<AuthViewModel, ScrollViewWrapped<SignUpView>> {
+final class SignUpController: ViewModelController<AuthViewModel, AccessoryViewWrapped<ScrollViewWrapped<SignUpView>, SignUpAccessoryView>> {
 
     // MARK: - View Life Cycle
 
     override func bindToViewModel() {
         super.bindToViewModel()
-        rootView.wrappedView.rx.selector.subscribe { [weak self] event in
+        rootView.accessoryView.rx.selector.subscribe { [weak self] event in
             switch event {
             case .next(let action):
                 switch action {
@@ -29,8 +29,8 @@ final class SignUpController: ViewModelController<AuthViewModel, ScrollViewWrapp
         }.disposed(by: disposeBag)
 
 
-        (viewModel.email <-> rootView.wrappedView.rx.email).disposed(by: disposeBag)
-        (viewModel.password <-> rootView.wrappedView.rx.password).disposed(by: disposeBag)
-        viewModel.isSignUpEnabled.bind(to: rootView.wrappedView.rx.isSignUpEnabled).disposed(by: disposeBag)
+        (viewModel.email <-> rootView.wrappedView.wrappedView.rx.email).disposed(by: disposeBag)
+        (viewModel.password <-> rootView.wrappedView.wrappedView.rx.password).disposed(by: disposeBag)
+        viewModel.isSignUpEnabled.bind(to: rootView.accessoryView.rx.isSignUpEnabled).disposed(by: disposeBag)
     }
 }

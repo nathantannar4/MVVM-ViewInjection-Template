@@ -33,13 +33,9 @@ final class EULAView: View {
         $0.showsVerticalScrollIndicator = false
     }
 
-    private let fadeView = GradientView(style: Style<GradientView>.native) {
-        $0.colors = [UIColor.white.withAlphaComponent(0.3), UIColor.white]
-        $0.locations = [0, 1]
-        $0.backgroundColor = .clear
-    }
-
-    private let doneButton = FluidButton(style: Stylesheet.FluidButtons.primary) {
+    private let fadeView = GradientView(style: Stylesheet.GradientViews.white)
+    
+    private let doneButton = Button(style: Stylesheet.AnimatedButtons.primary) {
         $0.roundingMethod = .complete
         $0.setTitle(.localize(.done), for: .normal)
         $0.addTarget(self, action: Action.didTapDone.selector, for: .touchUpInside)

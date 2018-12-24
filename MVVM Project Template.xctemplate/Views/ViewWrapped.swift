@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class ViewWrapped<ViewType: UIView>: View {
+class ViewWrapped<ViewType: UIView>: View, IWrapperView {
 
-    let wrappedView: ViewType!
+    let wrappedView: ViewType
     var wrappedViewInsets: UIEdgeInsets = .zero {
         didSet {
             layoutSubviews()
@@ -24,7 +24,7 @@ final class ViewWrapped<ViewType: UIView>: View {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        wrappedView = ViewType(coder: aDecoder)
+        wrappedView = ViewType(coder: aDecoder)!
         super.init(coder: aDecoder)
         viewDidLoad()
     }

@@ -66,6 +66,16 @@
 			<key>Path</key>
 			<string>Controllers/Auth/SignUpController.swift</string>
 		</dict>
+		<key>Controllers/Base/CollectionController.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Controllers</string>
+				<string>Base</string>
+			</array>
+			<key>Path</key>
+			<string>Controllers/Base/CollectionController.swift</string>
+		</dict>
 		<key>Controllers/Base/Controller.swift</key>
 		<dict>
 			<key>Group</key>
@@ -75,16 +85,6 @@
 			</array>
 			<key>Path</key>
 			<string>Controllers/Base/Controller.swift</string>
-		</dict>
-		<key>Controllers/Base/ListController.swift</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Controllers</string>
-				<string>Base</string>
-			</array>
-			<key>Path</key>
-			<string>Controllers/Base/ListController.swift</string>
 		</dict>
 		<key>Controllers/Base/NavigationController.swift</key>
 		<dict>
@@ -124,6 +124,24 @@
 			<key>Path</key>
 			<string>Controls/ActivitySpinnerIndicator.swift</string>
 		</dict>
+		<key>Controls/Button.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+			</array>
+			<key>Path</key>
+			<string>Controls/Button.swift</string>
+		</dict>
+		<key>Controls/Checkbox.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+			</array>
+			<key>Path</key>
+			<string>Controls/Checkbox.swift</string>
+		</dict>
 		<key>Controls/ControlElement.swift</key>
 		<dict>
 			<key>Group</key>
@@ -133,14 +151,23 @@
 			<key>Path</key>
 			<string>Controls/ControlElement.swift</string>
 		</dict>
-		<key>Controls/FluidButton.swift</key>
+		<key>Controls/Slider.swift</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>Controls</string>
 			</array>
 			<key>Path</key>
-			<string>Controls/FluidButton.swift</string>
+			<string>Controls/Slider.swift</string>
+		</dict>
+		<key>Controls/Switch.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+			</array>
+			<key>Path</key>
+			<string>Controls/Switch.swift</string>
 		</dict>
 		<key>DevVC.swift</key>
 		<dict>
@@ -184,6 +211,15 @@
 			</array>
 			<key>Path</key>
 			<string>Extensions/Enum+Extensions.swift</string>
+		</dict>
+		<key>Extensions/IGListKit+Extenions.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Extensions</string>
+			</array>
+			<key>Path</key>
+			<string>Extensions/IGListKit+Extenions.swift</string>
 		</dict>
 		<key>Extensions/NSAttributedString+Extensions.swift</key>
 		<dict>
@@ -274,6 +310,15 @@
 			</array>
 			<key>Path</key>
 			<string>Extensions/UIDevice+Extensions.swift</string>
+		</dict>
+		<key>Extensions/UIEdgeInsets+Extensions.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Extensions</string>
+			</array>
+			<key>Path</key>
+			<string>Extensions/UIEdgeInsets+Extensions.swift</string>
 		</dict>
 		<key>Extensions/UIImage+Extensions.swift</key>
 		<dict>
@@ -428,6 +473,15 @@
 			<key>Path</key>
 			<string>Protocols/FeedbackGeneratable.swift</string>
 		</dict>
+		<key>Protocols/Reflectable.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Protocols</string>
+			</array>
+			<key>Path</key>
+			<string>Protocols/Reflectable.swift</string>
+		</dict>
 		<key>Protocols/Roundable.swift</key>
 		<dict>
 			<key>Group</key>
@@ -539,15 +593,6 @@
 			<key>Path</key>
 			<string>Services/Service.swift</string>
 		</dict>
-		<key>Supporting Files/KeyboardLayoutGuide.swift</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Supporting Files</string>
-			</array>
-			<key>Path</key>
-			<string>Supporting Files/KeyboardLayoutGuide.swift</string>
-		</dict>
 		<key>Supporting Files/Localizable.strings</key>
 		<dict>
 			<key>Group</key>
@@ -566,14 +611,23 @@
 			<key>Path</key>
 			<string>Supporting Files/NSConstraintLayoutSet.swift</string>
 		</dict>
-		<key>Supporting Files/RxListAdapterDataSource.swift</key>
+		<key>Theme/Extensions+Theme.swift</key>
 		<dict>
 			<key>Group</key>
 			<array>
-				<string>Supporting Files</string>
+				<string>Theme</string>
 			</array>
 			<key>Path</key>
-			<string>Supporting Files/RxListAdapterDataSource.swift</string>
+			<string>Theme/Extensions+Theme.swift</string>
+		</dict>
+		<key>Theme/Style+Interface.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Theme</string>
+			</array>
+			<key>Path</key>
+			<string>Theme/Style+Interface.swift</string>
 		</dict>
 		<key>Theme/Style.swift</key>
 		<dict>
@@ -601,6 +655,15 @@
 			</array>
 			<key>Path</key>
 			<string>Theme/Theme.swift</string>
+		</dict>
+		<key>Theme/ThemeManager.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Theme</string>
+			</array>
+			<key>Path</key>
+			<string>Theme/ThemeManager.swift</string>
 		</dict>
 		<key>Transitions/NavigationControllerInteractor.swift</key>
 		<dict>
@@ -647,6 +710,15 @@
 			<key>Path</key>
 			<string>ViewModels/EULAViewModel.swift</string>
 		</dict>
+		<key>ViewModels/ListViewModel.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>ViewModels</string>
+			</array>
+			<key>Path</key>
+			<string>ViewModels/ListViewModel.swift</string>
+		</dict>
 		<key>ViewModels/ViewModel.swift</key>
 		<dict>
 			<key>Group</key>
@@ -655,6 +727,15 @@
 			</array>
 			<key>Path</key>
 			<string>ViewModels/ViewModel.swift</string>
+		</dict>
+		<key>Views/AccessoryViewWrapped.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+			</array>
+			<key>Path</key>
+			<string>Views/AccessoryViewWrapped.swift</string>
 		</dict>
 		<key>Views/Cells/CollectionReusableView.swift</key>
 		<dict>
@@ -686,6 +767,24 @@
 			<key>Path</key>
 			<string>Views/Cells/TableViewCell.swift</string>
 		</dict>
+		<key>Views/CollectionView.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+			</array>
+			<key>Path</key>
+			<string>Views/CollectionView.swift</string>
+		</dict>
+		<key>Views/GaugeView.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+			</array>
+			<key>Path</key>
+			<string>Views/GaugeView.swift</string>
+		</dict>
 		<key>Views/GradientView.swift</key>
 		<dict>
 			<key>Group</key>
@@ -694,15 +793,6 @@
 			</array>
 			<key>Path</key>
 			<string>Views/GradientView.swift</string>
-		</dict>
-		<key>Views/GridContentView.swift</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Views</string>
-			</array>
-			<key>Path</key>
-			<string>Views/GridContentView.swift</string>
 		</dict>
 		<key>Views/ImageView.swift</key>
 		<dict>
@@ -743,14 +833,45 @@
 			<key>Path</key>
 			<string>Views/InputViews/SearchBar.swift</string>
 		</dict>
-		<key>Views/ListView.swift</key>
+		<key>Views/Items/BadgeBarButtonItem.swift</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>Views</string>
+				<string>Items</string>
 			</array>
 			<key>Path</key>
-			<string>Views/ListView.swift</string>
+			<string>Views/Items/BadgeBarButtonItem.swift</string>
+		</dict>
+		<key>Views/Layers/Chevron.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Layers</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Layers/Chevron.swift</string>
+		</dict>
+		<key>Views/Layout Containers/GridView.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Layout Containers</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Layout Containers/GridView.swift</string>
+		</dict>
+		<key>Views/Layout Containers/RowView.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Layout Containers</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Layout Containers/RowView.swift</string>
 		</dict>
 		<key>Views/NavigationBars/NavigationBar.swift</key>
 		<dict>
@@ -839,6 +960,7 @@
 						<string>ViewModels/AuthViewModel.swift</string>
 						<string>ViewModels/EULAViewModel.swift</string>
 						<string>ViewModels/AppViewModel.swift</string>
+						<string>ViewModels/ListViewModel.swift</string>
 						<string>AppRouter.swift</string>
 						<string>Networking/HttpRequest.swift</string>
 						<string>Managers/Manager.swift</string>
@@ -847,10 +969,12 @@
 						<string>Models/Enums/LocalizationIdentifier.swift</string>
 						<string>Models/Errors/JSONError.swift</string>
 						<string>Extensions/CALayer.swift</string>
+						<string>Extensions/IGListKit+Extenions.swift</string>
 						<string>Extensions/UIViewController+Extensions.swift</string>
 						<string>Extensions/UIButton+Extensions.swift</string>
 						<string>Extensions/UIView+Extensions.swift</string>
 						<string>Extensions/String+Extensions.swift</string>
+						<string>Extensions/UIEdgeInsets+Extensions.swift</string>
 						<string>Extensions/UIColor+Extensions.swift</string>
 						<string>Extensions/UIImage+Extensions.swift</string>
 						<string>Extensions/UIDevice+Extensions.swift</string>
@@ -868,13 +992,17 @@
 						<string>Extensions/Enum+Extensions.swift</string>
 						<string>Extensions/UICollectionView+Extensions.swift</string>
 						<string>Controls/ControlElement.swift</string>
-						<string>Controls/FluidButton.swift</string>
+						<string>Controls/Switch.swift</string>
+						<string>Controls/Slider.swift</string>
+						<string>Controls/Checkbox.swift</string>
+						<string>Controls/Button.swift</string>
 						<string>Controls/ActivitySpinnerIndicator.swift</string>
 						<string>Theme/Stylesheet.swift</string>
+						<string>Theme/Extensions+Theme.swift</string>
+						<string>Theme/ThemeManager.swift</string>
 						<string>Theme/Style.swift</string>
 						<string>Theme/Theme.swift</string>
-						<string>Supporting Files/KeyboardLayoutGuide.swift</string>
-						<string>Supporting Files/RxListAdapterDataSource.swift</string>
+						<string>Theme/Style+Interface.swift</string>
 						<string>Supporting Files/Localizable.strings</string>
 						<string>Supporting Files/NSConstraintLayoutSet.swift</string>
 						<string>Routing/NavigationRouter.swift</string>
@@ -889,17 +1017,21 @@
 						<string>Controllers/Auth/EULAController.swift</string>
 						<string>Controllers/DispatchController.swift</string>
 						<string>Controllers/Base/ViewModelController.swift</string>
-						<string>Controllers/Base/ListController.swift</string>
 						<string>Controllers/Base/Controller.swift</string>
+						<string>Controllers/Base/CollectionController.swift</string>
 						<string>Controllers/Base/NavigationController.swift</string>
 						<string>Views/View.swift</string>
-						<string>Views/GridContentView.swift</string>
 						<string>Views/ViewWrapped.swift</string>
 						<string>Views/Cells/TableViewCell.swift</string>
 						<string>Views/Cells/CollectionViewCell.swift</string>
 						<string>Views/Cells/CollectionReusableView.swift</string>
+						<string>Views/AccessoryViewWrapped.swift</string>
 						<string>Views/NavigationBars/NavigationBar.swift</string>
-						<string>Views/ListView.swift</string>
+						<string>Views/Layers/Chevron.swift</string>
+						<string>Views/CollectionView.swift</string>
+						<string>Views/GaugeView.swift</string>
+						<string>Views/Layout Containers/RowView.swift</string>
+						<string>Views/Layout Containers/GridView.swift</string>
 						<string>Views/InputViews/SearchBar.swift</string>
 						<string>Views/InputViews/InputTextView.swift</string>
 						<string>Views/InputViews/AnimatedTextField.swift</string>
@@ -909,6 +1041,8 @@
 						<string>Views/TableView.swift</string>
 						<string>Views/ImageView.swift</string>
 						<string>Views/GradientView.swift</string>
+						<string>Views/Items/BadgeBarButtonItem.swift</string>
+						<string>Protocols/Reflectable.swift</string>
 						<string>Protocols/FeedbackGeneratable.swift</string>
 						<string>Protocols/Accessible.swift</string>
 						<string>Protocols/Roundable.swift</string>

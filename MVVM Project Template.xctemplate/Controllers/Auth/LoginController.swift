@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-final class LoginController: ViewModelController<AuthViewModel, ScrollViewWrapped<LoginView>> {
+final class LoginController: ViewModelController<AuthViewModel, AccessoryViewWrapped<ScrollViewWrapped<LoginView>, LoginAccessoryView>> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,7 +25,21 @@ final class LoginController: ViewModelController<AuthViewModel, ScrollViewWrappe
 
     override func bindToViewModel() {
         super.bindToViewModel()
-        rootView.wrappedView.rx.selector.subscribe { [weak self] event in
+        rootView.wrappedView.wrappedView.rx.selector.subscribe { [weak self] event in
+            switch event {
+            case .next(let action):
+                switch action {
+                case .didTapForgotPassword:
+                    self?.viewModel.presentForgotPassword()
+                case .didTapCancel:
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            case .error, .completed:
+                break
+            }
+        }.disposed(by: disposeBag)
+
+        rootView.accessoryView.rx.selector.subscribe { [weak self] event in
             switch event {
             case .next(let action):
                 switch action {
@@ -35,10 +49,6 @@ final class LoginController: ViewModelController<AuthViewModel, ScrollViewWrappe
                     self?.viewModel.presentSignUp()
                 case .didTapTerms:
                     self?.viewModel.presentTermsOfUse()
-                case .didTapForgotPassword:
-                    self?.viewModel.presentForgotPassword()
-                case .didTapCancel:
-                    self?.dismiss(animated: true, completion: nil)
                 case .didTapFacebookLogin:
                     self?.viewModel.facebookLogin()
                 case .didTapGoogleLogin:
@@ -50,8 +60,8 @@ final class LoginController: ViewModelController<AuthViewModel, ScrollViewWrappe
         }.disposed(by: disposeBag)
 
 
-        (viewModel.email <-> rootView.wrappedView.rx.email).disposed(by: disposeBag)
-        (viewModel.password <-> rootView.wrappedView.rx.password).disposed(by: disposeBag)
-        viewModel.isLoginEnabled.bind(to: rootView.wrappedView.rx.isLoginButtonEnabled).disposed(by: disposeBag)
+        (viewModel.email <-> rootView.wrappedView.wrappedView.rx.email).disposed(by: disposeBag)
+        (viewModel.password <-> rootView.wrappedView.wrappedView.rx.password).disposed(by: disposeBag)
+        viewModel.isLoginEnabled.bind(to: rootView.accessoryView.rx.isLoginButtonEnabled).disposed(by: disposeBag)
     }
 }

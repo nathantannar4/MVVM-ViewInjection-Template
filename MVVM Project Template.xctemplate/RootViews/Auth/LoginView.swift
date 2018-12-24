@@ -10,11 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class LoginView: View {
+final class LoginAccessoryView: View {
 
     enum Action: String {
-        case didTapCancel
-        case didTapForgotPassword
         case didTapTerms
         case didTapLogin
         case didTapFacebookLogin
@@ -23,27 +21,115 @@ final class LoginView: View {
 
         var selector: Selector {
             switch self {
-            case .didTapCancel:
-                return #selector(LoginView.didTapCancel)
-            case .didTapForgotPassword:
-                return #selector(LoginView.didTapForgotPassword)
             case .didTapTerms:
-                return #selector(LoginView.didTapTerms)
+                return #selector(LoginAccessoryView.didTapTerms)
             case .didTapLogin:
-                return #selector(LoginView.didTapLogin)
+                return #selector(LoginAccessoryView.didTapLogin)
             case .didTapFacebookLogin:
-                return #selector(LoginView.didTapFacebookLogin)
+                return #selector(LoginAccessoryView.didTapFacebookLogin)
             case .didTapGoogleLogin:
-                return #selector(LoginView.didTapGoogleLogin)
+                return #selector(LoginAccessoryView.didTapGoogleLogin)
             case .didTapSignUp:
-                return #selector(LoginView.didTapSignUp)
+                return #selector(LoginAccessoryView.didTapSignUp)
             }
         }
     }
 
+    // MARK: - Subviews
+
+    private let fadeView = GradientView(style: Stylesheet.GradientViews.white)
+
+    private lazy var termsButton = UIButton(style: Stylesheet.Buttons.termsAndConditions) {
+        $0.addTarget(self, action: Action.didTapTerms.selector, for: .touchUpInside)
+    }
+
+    fileprivate lazy var loginButton = Button(style: Stylesheet.AnimatedButtons.primary) {
+        $0.setTitle(.localize(.login), for: .normal)
+        $0.addTarget(self, action: Action.didTapLogin.selector, for: .touchUpInside)
+    }
+
+    //    private lazy var facebookLoginButton = UIButton(style: Stylesheet.Buttons.facebook) {
+    //        $0.addTarget(self, action: Action.didTapFacebookLogin.selector, for: .touchUpInside)
+    //    }
+    //
+    //    private lazy var googleLoginButton = UIButton(style: Stylesheet.Buttons.google) {
+    //        $0.addTarget(self, action: Action.didTapLogin.selector, for: .touchUpInside)
+    //    }
+
+    private lazy var signUpButton = UIButton(style: Stylesheet.Buttons.signUp) {
+        $0.addTarget(self, action: Action.didTapSignUp.selector, for: .touchUpInside)
+    }
+
     // MARK: - Properties
 
-    fileprivate var actionEmitter = PublishSubject<LoginView.Action>()
+    fileprivate var actionEmitter = PublishSubject<LoginAccessoryView.Action>()
+
+    // MARK: - View Life Cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addSubviews(fadeView, termsButton, signUpButton, loginButton)
+
+        fadeView.anchor(signUpButton.topAnchor, left: leftAnchor, bottom: loginButton.topAnchor, right: rightAnchor)
+        signUpButton.anchorAbove(termsButton, top: topAnchor, heightConstant: 30)
+        termsButton.anchorAbove(loginButton, heightConstant: 30)
+        loginButton.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, heightConstant: 44)
+    }
+
+    // MARK: - User Actions
+
+    @objc
+    private func didTapTerms() {
+        actionEmitter.onNext(.didTapTerms)
+    }
+
+    @objc
+    private func didTapLogin() {
+        actionEmitter.onNext(.didTapLogin)
+    }
+
+    @objc
+    private func didTapFacebookLogin() {
+        actionEmitter.onNext(.didTapFacebookLogin)
+    }
+
+    @objc
+    private func didTapGoogleLogin() {
+        actionEmitter.onNext(.didTapGoogleLogin)
+    }
+
+    @objc
+    private func didTapSignUp() {
+        actionEmitter.onNext(.didTapSignUp)
+    }
+}
+
+extension Reactive where Base: LoginAccessoryView {
+
+    var selector: PublishSubject<LoginAccessoryView.Action> {
+        return base.actionEmitter
+    }
+
+    var isLoginButtonEnabled: Binder<Bool> {
+        return base.loginButton.rx.isEnabled
+    }
+}
+
+final class LoginView: View {
+
+    enum Action: String {
+        case didTapCancel
+        case didTapForgotPassword
+
+        var selector: Selector {
+            switch self {
+            case .didTapCancel:
+                return #selector(LoginView.didTapCancel)
+            case .didTapForgotPassword:
+                return #selector(LoginView.didTapForgotPassword)
+            }
+        }
+    }
 
     // MARK: - Subviews
 
@@ -79,41 +165,23 @@ final class LoginView: View {
         $0.addTarget(self, action: Action.didTapForgotPassword.selector, for: .touchUpInside)
     }
 
-    private lazy var termsButton = UIButton(style: Stylesheet.Buttons.termsAndConditions) {
-        $0.addTarget(self, action: Action.didTapTerms.selector, for: .touchUpInside)
-    }
+    // MARK: - Properties
 
-    fileprivate lazy var loginButton = FluidButton(style: Stylesheet.FluidButtons.primary) {
-        $0.setTitle(.localize(.login), for: .normal)
-        $0.addTarget(self, action: Action.didTapLogin.selector, for: .touchUpInside)
-    }
-
-    //    private lazy var facebookLoginButton = UIButton(style: Stylesheet.Buttons.facebook) {
-    //        $0.addTarget(self, action: Action.didTapFacebookLogin.selector, for: .touchUpInside)
-    //    }
-    //
-    //    private lazy var googleLoginButton = UIButton(style: Stylesheet.Buttons.google) {
-    //        $0.addTarget(self, action: Action.didTapLogin.selector, for: .touchUpInside)
-    //    }
-
-    private lazy var signUpButton = UIButton(style: Stylesheet.Buttons.signUp) {
-        $0.addTarget(self, action: Action.didTapSignUp.selector, for: .touchUpInside)
-    }
+    fileprivate var actionEmitter = PublishSubject<LoginView.Action>()
 
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        [cancelButton, titleLabel, subtitleLabel, emailIconView, emailField,
-         passwordField, passwordIconView, forgotPasswordButton, termsButton,
-         signUpButton, loginButton].forEach { addSubview($0) }
+        addSubviews(cancelButton, titleLabel, subtitleLabel, emailIconView, emailField,
+         passwordField, passwordIconView, forgotPasswordButton)
 
         emailField.delegate = self
         passwordField.delegate = self
 
         cancelButton.anchor(layoutMarginsGuide.topAnchor, left: layoutMarginsGuide.leftAnchor, topConstant: 6, leftConstant: 6, widthConstant: 50, heightConstant: 30)
 
-        titleLabel.anchor(layoutMarginsGuide.topAnchor, left: layoutMarginsGuide.leftAnchor, right: layoutMarginsGuide.rightAnchor, topConstant: 50, leftConstant: 12, rightConstant: 12, heightConstant: 40)
+        titleLabel.anchor(cancelButton.bottomAnchor, left: layoutMarginsGuide.leftAnchor, right: layoutMarginsGuide.rightAnchor, topConstant: 14, leftConstant: 12, rightConstant: 12, heightConstant: 40)
 
         subtitleLabel.anchorBelow(titleLabel, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, heightConstant: 30)
 
@@ -128,20 +196,9 @@ final class LoginView: View {
         passwordIconView.anchorAspectRatio()
 
         forgotPasswordButton.anchorCenterXToSuperview()
-        forgotPasswordButton.anchor(passwordField.bottomAnchor, topConstant: 12, heightConstant: 15)
-
-        signUpButton.anchorAbove(termsButton, heightConstant: 30)
-
-        termsButton.anchorAbove(loginButton, heightConstant: 30)
-
-        loginButton.anchor(left: leftAnchor, bottom: keyboardLayoutGuide.topAnchor, right: rightAnchor, heightConstant: 44)
-
-        let safeAreaView = UIView()
-        safeAreaView.backgroundColor = .white
-        addSubview(safeAreaView)
-        safeAreaView.anchor(loginButton.bottomAnchor, left: loginButton.leftAnchor, bottom: bottomAnchor, right: loginButton.rightAnchor)
+        forgotPasswordButton.anchor(passwordField.bottomAnchor, topConstant: 12, heightConstant: 30)
     }
-    
+
     // MARK: - User Actions
 
     @objc
@@ -153,31 +210,6 @@ final class LoginView: View {
     private func didTapForgotPassword() {
         actionEmitter.onNext(.didTapForgotPassword)
     }
-
-    @objc
-    private func didTapTerms() {
-        actionEmitter.onNext(.didTapTerms)
-    }
-
-    @objc
-    private func didTapLogin() {
-        actionEmitter.onNext(.didTapLogin)
-    }
-
-    @objc
-    private func didTapFacebookLogin() {
-        actionEmitter.onNext(.didTapFacebookLogin)
-    }
-
-    @objc
-    private func didTapGoogleLogin() {
-        actionEmitter.onNext(.didTapGoogleLogin)
-    }
-
-    @objc
-    private func didTapSignUp() {
-        actionEmitter.onNext(.didTapSignUp)
-    }
 }
 
 extension LoginView: UITextFieldDelegate {
@@ -186,9 +218,6 @@ extension LoginView: UITextFieldDelegate {
         if textField == emailField {
             return passwordField.becomeFirstResponder()
         } else {
-            if loginButton.isEnabled {
-                actionEmitter.onNext(.didTapLogin)
-            }
             return textField.resignFirstResponder()
         }
     }
@@ -206,9 +235,5 @@ extension Reactive where Base: LoginView {
 
     var password: ControlProperty<String?> {
         return base.passwordField.rx.text
-    }
-
-    var isLoginButtonEnabled: Binder<Bool> {
-        return base.loginButton.rx.isEnabled
     }
 }

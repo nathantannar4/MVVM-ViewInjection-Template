@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewCell<ViewType: IReusableView>: UICollectionViewCell, IReuseIdentifiable {
+class CollectionViewCell<ViewType: IReusableView>: UICollectionViewCell, IReuseIdentifiable, IWrapperView {
 
     class var reuseIdentifier: String {
         return String(describing: self)
