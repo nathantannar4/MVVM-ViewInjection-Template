@@ -14,7 +14,6 @@ target 'MVVM-Template' do
   pod 'SwiftyBeaver'
   pod 'SwiftKeychainWrapper'
   pod 'IGListKit'
-  pod 'SVProgressHUD'
   pod 'Kingfisher'
   pod 'FontAwesome.swift'
   pod 'MessageKit', :git => 'https://github.com/MessageKit/MessageKit.git', :branch => 'typingIndicatorView'

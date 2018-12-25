@@ -18,6 +18,12 @@ final class ActivitySpinnerIndicator: UIView {
     var animationDuration: Double = 1
     var rotationDuration: Double = 10
 
+    var spinnerInset: UIEdgeInsets = .zero {
+        didSet {
+            layoutSubviews()
+        }
+    }
+
     var lineWidth: CGFloat = 6 {
         didSet {
             segmentLayer?.lineWidth = lineWidth
@@ -26,11 +32,14 @@ final class ActivitySpinnerIndicator: UIView {
     }
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 30, height: 30)
+        return CGSize(
+            width: 30 + spinnerInset.horizontal,
+            height: 30 + spinnerInset.vertical
+        )
     }
 
     private var numberOfSegments: Int {
-        return 2 * Int(bounds.width)
+        return 2 * Int(bounds.width - spinnerInset.horizontal)
     }
 
     /// A Boolean value that returns whether the indicator is animating or not.
@@ -82,9 +91,8 @@ final class ActivitySpinnerIndicator: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        let maxSize = min(bounds.width, bounds.height)
-        replicatorLayer.bounds = CGRect(x: 0, y: 0, width: maxSize, height: maxSize)
-        replicatorLayer.position = CGPoint(x: bounds.width/2, y:bounds.height/2)
+        replicatorLayer.frame = bounds.inset(by: spinnerInset)
+        replicatorLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
         drawSegments()
     }
 

@@ -8,7 +8,6 @@
 
 import UIKit
 import Swinject
-import SVProgressHUD
 
 final class AppRouter {
     
@@ -40,11 +39,11 @@ final class AppRouter {
     }
 
     func showProgressHUD() {
-        SVProgressHUD.show()
+        window?.isActivityIndicatorVisible = true
     }
 
-    func dismissProgressHUD(_ completion: (() -> Void)?) {
-        SVProgressHUD.dismiss(completion: completion)
+    func dismissProgressHUD() {
+        window?.isActivityIndicatorVisible = false
     }
     
     func navigate(to route: Route, animated: Bool = true, completion: (() -> Void)? = nil) {
