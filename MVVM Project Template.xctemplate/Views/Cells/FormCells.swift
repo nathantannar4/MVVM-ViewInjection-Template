@@ -8,22 +8,27 @@
 
 import UIKit
 
-class TextFieldRow: RowView<UILabel, TextField, UIView> {
+class TextFieldCell: RowView<UILabel, TextField, UIView> {
     var label: UILabel { return leftView }
     var textField: TextField { return rightView }
 }
 
-class DetailRow<AccessoryViewType: UIView>: RowView<UILabel, UILabel, AccessoryViewType> {
+class TextViewCell: RowView<UILabel, InputTextView, UIView> {
+    var label: UILabel { return leftView }
+    var textView: InputTextView { return rightView }
+}
+
+class DetailCell<AccessoryViewType: UIView>: RowView<UILabel, UILabel, AccessoryViewType> {
     var label: UILabel { return leftView }
     var detailLabel: UILabel { return rightView }
 }
 
-class CheckboxRow: RowView<UILabel, UIView, Checkbox> {
+class CheckboxCell: RowView<UILabel, UIView, Checkbox> {
     var label: UILabel { return leftView }
     var checkbox: Checkbox { return accessoryView }
 }
 
-class SwitchRow: RowView<UILabel, UIView, Switch> {
+class SwitchCell: RowView<UILabel, UIView, Switch> {
     var label: UILabel { return leftView }
     var `switch`: Switch { return accessoryView }
 }

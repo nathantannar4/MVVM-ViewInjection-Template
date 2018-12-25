@@ -13,6 +13,7 @@ enum Stylesheet {
         enum Padding {
             static var edgeLeadingTrailing: CGFloat = 16
             static var edgeTopBottom: CGFloat = 6
+            static var subviewSpacing: CGFloat = 6
         }
     }
 

@@ -103,7 +103,7 @@ open class InputTextView: UITextView {
             }
         }
     }
-    
+
     /// The constraints of the placeholderLabel
     private var placeholderLabelConstraintSet: NSLayoutConstraintSet?
  

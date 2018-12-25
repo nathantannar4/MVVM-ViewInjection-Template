@@ -14,10 +14,6 @@ class RowView<LeftViewType: UIView, RightViewType: UIView, AccessoryViewType: UI
     let rightView: RightViewType
     let accessoryView: AccessoryViewType
 
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 60)
-    }
-
     override init(frame: CGRect) {
         leftView = LeftViewType()
         rightView = RightViewType()
@@ -38,30 +34,37 @@ class RowView<LeftViewType: UIView, RightViewType: UIView, AccessoryViewType: UI
 
         let xInset = Stylesheet.Layout.Padding.edgeLeadingTrailing
         let yInset = Stylesheet.Layout.Padding.edgeTopBottom
+        let spacing = Stylesheet.Layout.Padding.subviewSpacing
 
         leftView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, topConstant: yInset, bottomConstant: yInset)
         leftView.anchorCenterYToSuperview()
-        leftView.anchor(left: leftAnchor, right: rightView.leftAnchor, leftConstant: xInset, rightConstant: xInset)
+        leftView.anchor(left: leftAnchor, right: accessoryView.leftAnchor, leftConstant: xInset, rightConstant: spacing)
         leftView.setContentCompressionResistancePriority(
-            .required,
+            .defaultHigh,
+            for: .horizontal
+        )
+        leftView.setContentHuggingPriority(
+            .defaultHigh,
             for: .horizontal
         )
 
         rightView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, topConstant: yInset, bottomConstant: yInset)
-        rightView.anchor(left: leftView.rightAnchor, right: accessoryView.leftAnchor, leftConstant: xInset, rightConstant: 6)
+        rightView.anchor(left: leftView.rightAnchor, right: rightAnchor, leftConstant: spacing, rightConstant: xInset)
         rightView.anchorCenterYToSuperview()
 
         accessoryView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, topConstant: yInset, bottomConstant: yInset, widthConstant: 0)
         accessoryView.anchorCenterYToSuperview()
         accessoryView.anchor(right: rightAnchor, rightConstant: xInset)
         accessoryView.setContentCompressionResistancePriority(
-            .required,
+            .defaultHigh,
             for: .horizontal
         )
         accessoryView.setContentHuggingPriority(
             .defaultHigh,
             for: .horizontal
         )
+
+        heightAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
     }
 }
 

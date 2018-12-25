@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class EditProfileView: FormView {
+final class EditProfileView: ListView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,20 +19,32 @@ final class EditProfileView: FormView {
 
     private func loadRows() {
 
-        let firstNameRow = TextFieldRow()
+        let header = SectionHeaderView<UILabel, Button>()
+        header.leftView.text = "Header"
+        header.rightView.setTitle("Action", for: .normal)
+
+        let firstNameRow = TextFieldCell()
         firstNameRow.label.text = "First Name"
         firstNameRow.textField.placeholder = "First Name"
 
-        let lastNameRow = TextFieldRow()
+        let lastNameRow = TextFieldCell()
         lastNameRow.label.text = "Last Name"
         lastNameRow.textField.placeholder = "Last Name"
 
-        let cityRow = DetailRow<DisclosureIndicator>()
+        let bioRow = TextViewCell()
+        bioRow.label.text = "Bio"
+        bioRow.anchor(heightConstant: 120)
+
+        let cityRow = DetailCell<DisclosureIndicator>()
         cityRow.label.text = "City"
 
-        let notificationsRow = SwitchRow()
+        let notificationsRow = SwitchCell()
         notificationsRow.label.text = "Notifications"
 
-        appendRows(firstNameRow, lastNameRow, cityRow, notificationsRow)
+        let footer = SectionFooterView<UILabel>()
+        footer.centerView.numberOfLines = 0
+        footer.centerView.text = "Multi\nLine\nFooter"
+
+        appendRows(header, firstNameRow, lastNameRow, bioRow, cityRow, notificationsRow, footer)
     }
 }

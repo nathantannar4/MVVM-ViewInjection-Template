@@ -73,6 +73,8 @@ class Button: ControlElement, RoundableView {
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(imageView)
         setupConstraints()
+        setTitleColor(.primaryColor, for: .normal)
+        setTitleColor(UIColor.primaryColor.withAlphaComponent(0.3), for: .highlighted)
     }
 
     func setupConstraints() {

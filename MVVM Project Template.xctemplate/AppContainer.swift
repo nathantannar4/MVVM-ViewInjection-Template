@@ -8,7 +8,6 @@
 
 import UIKit
 import Swinject
-import SVProgressHUD
 
 typealias AppContainer = Container
 

@@ -1,5 +1,5 @@
 //
-//  FormView.swift
+//  ListView.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class FormView: ScrollStackView {
+class ListView: ScrollStackView {
     enum SeparatorStyle {
         case none
         case single(UIColor)
@@ -18,7 +18,6 @@ class FormView: ScrollStackView {
 
     private(set) var rows = [UIView]()
 
-    var estimatedRowHeight: CGFloat = 60
     var separatorStyle: SeparatorStyle = .single(.lightGrayColor)
 
     func appendRow(_ row: UIView) {
@@ -30,7 +29,6 @@ class FormView: ScrollStackView {
     }
 
     func insertRow(_ row: UIView, at index: Int, animated: Bool) {
-        row.anchorIfNeeded(heightConstant: estimatedRowHeight)
         switch separatorStyle {
         case .single(let color):
             row.addBorderView(to: .bottom, color: color, thickness: 1)
