@@ -113,13 +113,13 @@ extension UIView {
             anchors.append(constraint)
         }
 
-        if widthConstant != -1 {
+        if widthConstant >= 0 {
             let constraint = widthAnchor.constraint(equalToConstant: widthConstant)
             constraint.identifier = ConstraintIdentifier.width.rawValue
             anchors.append(constraint)
         }
 
-        if heightConstant != -1 {
+        if heightConstant >= 0 {
             let constraint = heightAnchor.constraint(equalToConstant: heightConstant)
             constraint.identifier = ConstraintIdentifier.height.rawValue
             anchors.append(constraint)
@@ -171,22 +171,22 @@ extension UIView {
     
     @discardableResult
     func anchorAbove(_ view: UIView, top: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, heightConstant: CGFloat = -1) -> [NSLayoutConstraint] {
-        return anchor(top, left: view.leftAnchor, bottom: view.topAnchor, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: 0, heightConstant: heightConstant)
+        return anchor(top, left: view.leftAnchor, bottom: view.topAnchor, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: -1, heightConstant: heightConstant)
     }
     
     @discardableResult
     func anchorBelow(_ view: UIView, bottom: NSLayoutYAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, heightConstant: CGFloat = -1) -> [NSLayoutConstraint] {
-        return anchor(view.bottomAnchor, left: view.leftAnchor, bottom: bottom, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: 0, heightConstant: heightConstant)
+        return anchor(view.bottomAnchor, left: view.leftAnchor, bottom: bottom, right: view.rightAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: -1, heightConstant: heightConstant)
     }
     
     @discardableResult
     func anchorLeftOf(_ view: UIView, left: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = -1) -> [NSLayoutConstraint] {
-        return anchor(view.topAnchor, left: left, bottom: view.bottomAnchor, right: view.leftAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: 0)
+        return anchor(view.topAnchor, left: left, bottom: view.bottomAnchor, right: view.leftAnchor, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: -1)
     }
     
     @discardableResult
     func anchorRightOf(_ view: UIView, right: NSLayoutXAxisAnchor? = nil, topConstant: CGFloat = 0, leftConstant: CGFloat = 0, bottomConstant: CGFloat = 0, rightConstant: CGFloat = 0, widthConstant: CGFloat = -1) -> [NSLayoutConstraint] {
-        return anchor(view.topAnchor, left: view.rightAnchor, bottom: view.bottomAnchor, right: right, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: 0)
+        return anchor(view.topAnchor, left: view.rightAnchor, bottom: view.bottomAnchor, right: right, topConstant: topConstant, leftConstant: leftConstant, bottomConstant: bottomConstant, rightConstant: rightConstant, widthConstant: widthConstant, heightConstant: -1)
     }
     
     func anchorCenterXToSuperview(constant: CGFloat = 0) {

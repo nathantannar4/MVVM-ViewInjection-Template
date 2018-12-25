@@ -14,6 +14,10 @@ class RowView<LeftViewType: UIView, RightViewType: UIView, AccessoryViewType: UI
     let rightView: RightViewType
     let accessoryView: AccessoryViewType
 
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 60)
+    }
+
     override init(frame: CGRect) {
         leftView = LeftViewType()
         rightView = RightViewType()
@@ -47,7 +51,7 @@ class RowView<LeftViewType: UIView, RightViewType: UIView, AccessoryViewType: UI
         rightView.anchor(left: leftView.rightAnchor, right: accessoryView.leftAnchor, leftConstant: xInset, rightConstant: 6)
         rightView.anchorCenterYToSuperview()
 
-        accessoryView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, topConstant: yInset, bottomConstant: yInset)
+        accessoryView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, topConstant: yInset, bottomConstant: yInset, widthConstant: 0)
         accessoryView.anchorCenterYToSuperview()
         accessoryView.anchor(right: rightAnchor, rightConstant: xInset)
         accessoryView.setContentCompressionResistancePriority(

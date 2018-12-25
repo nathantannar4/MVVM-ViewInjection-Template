@@ -12,6 +12,7 @@
 "cancel" = "Cancel";
 "search" = "Search";
 "delete" = "Delete";
+"save" = "Save";
 
 // Auth
 "email" = "Email";

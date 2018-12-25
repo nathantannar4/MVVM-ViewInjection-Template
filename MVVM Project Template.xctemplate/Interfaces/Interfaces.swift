@@ -23,6 +23,8 @@ protocol IService: Interface {
     func serviceDidLoad()
 }
 
+protocol IModel: Interface, Reflectable { }
+
 protocol IViewModel: Interface {
     func viewModelDidLoad()
 }
@@ -69,7 +71,8 @@ protocol IViewController: Interface, Class where Self: UIViewController {
 
 protocol IViewModelViewController: IViewController {
     associatedtype IViewModelType: IViewModel
-    var viewModel: IViewModelType! { get set }
+    var viewModel: IViewModelType { get }
+    init(viewModel: IViewModelType)
     func bindToViewModel()
 }
 

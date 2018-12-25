@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AnimatedTextField: UITextField {
+class AnimatedTextField: TextField {
     
     /**
      The type of animation a TextFieldEffect can perform.
@@ -16,7 +16,7 @@ open class AnimatedTextField: UITextField {
      - TextEntry: animation that takes effect when the textfield has focus.
      - TextDisplay: animation that takes effect when the textfield loses focus.
      */
-    public enum AnimationType: Int {
+    enum AnimationType: Int {
         case textEntry
         case textDisplay
     }
@@ -24,29 +24,29 @@ open class AnimatedTextField: UITextField {
     /**
      Closure executed when an animation has been completed.
      */
-    public typealias AnimationCompletionHandler = (_ type: AnimationType)->Void
+    typealias AnimationCompletionHandler = (_ type: AnimationType)->Void
     
     /**
      UILabel that holds all the placeholder information
      */
-    public let placeholderLabel = UILabel()
+    let placeholderLabel = UILabel()
     
     /**
      The animation completion handler is the best place to be notified when the text field animation has ended.
      */
-    open var animationCompletionHandler: AnimationCompletionHandler?
+    var animationCompletionHandler: AnimationCompletionHandler?
     
     // MARK: - Overrides
     
-    override open func draw(_ rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         drawViewsForRect(rect)
     }
     
-    override open func drawPlaceholder(in rect: CGRect) {
+    override func drawPlaceholder(in rect: CGRect) {
         // Don't draw any placeholders
     }
     
-    override open var text: String? {
+    override var text: String? {
         didSet {
             if let text = text, !text.isEmpty {
                 animateViewsForTextEntry()
@@ -60,7 +60,7 @@ open class AnimatedTextField: UITextField {
      The textfield has started an editing session.
      */
     @objc
-    open func textFieldDidBeginEditing() {
+    func textFieldDidBeginEditing() {
         animateViewsForTextEntry()
     }
     
@@ -69,7 +69,7 @@ open class AnimatedTextField: UITextField {
      */
     
     @objc
-    open func textFieldDidEndEditing() {
+    func textFieldDidEndEditing() {
         animateViewsForTextDisplay()
     }
     
@@ -78,7 +78,7 @@ open class AnimatedTextField: UITextField {
      
      This property applies a color to the lower edge of the control. The default value for this property is a gray color.
      */
-    open var borderInactiveColor: UIColor? = .lightGray {
+    var borderInactiveColor: UIColor? = .lightGray {
         didSet {
             updateBorder()
         }
@@ -89,7 +89,7 @@ open class AnimatedTextField: UITextField {
      
      This property applies a color to the lower edge of the control. The default value for this property is a clear color.
      */
-    open var borderActiveColor: UIColor? = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1) {
+    var borderActiveColor: UIColor? = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1) {
         didSet {
             updateBorder()
         }
@@ -99,7 +99,7 @@ open class AnimatedTextField: UITextField {
      The color of the placeholder text.
      This property applies a color to the complete placeholder string. The default value for this property is a black color.
      */
-    open var placeholderColor: UIColor = .lightGray {
+    var placeholderColor: UIColor = .lightGray {
         didSet {
             updatePlaceholder()
         }
@@ -110,33 +110,33 @@ open class AnimatedTextField: UITextField {
      
      This property determines the size of the placeholder label relative to the font size of the text field.
      */
-    open var placeholderFontScale: CGFloat = 0.8 {
+    var placeholderFontScale: CGFloat = 0.8 {
         didSet {
             updatePlaceholder()
         }
     }
     
-    override open var placeholder: String? {
+    override var placeholder: String? {
         didSet {
             updatePlaceholder()
         }
     }
     
-    override open var bounds: CGRect {
+    override var bounds: CGRect {
         didSet {
             updateBorder()
             updatePlaceholder()
         }
     }
     
-    open var borderThickness: (active: CGFloat, inactive: CGFloat) = (active: 2, inactive: 0.5)
-    open var placeholderInsets = CGPoint(x: 0, y: 12)
-    open var textFieldInsets = CGPoint(x: 0, y: 4)
+    var borderThickness: (active: CGFloat, inactive: CGFloat) = (active: 2, inactive: 0.5)
+    var placeholderInsets = CGPoint(x: 0, y: 12)
+    var textFieldInsets = CGPoint(x: 0, y: 4)
     private let inactiveBorderLayer = CALayer()
     private let activeBorderLayer = CALayer()
     private var activePlaceholderPoint: CGPoint = .zero
     
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(textFieldDidEndEditing),
@@ -149,7 +149,7 @@ open class AnimatedTextField: UITextField {
                                                object: self)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -157,14 +157,14 @@ open class AnimatedTextField: UITextField {
         NotificationCenter.default.removeObserver(self)
     }
     
-    open override func tintColorDidChange() {
+    override func tintColorDidChange() {
         super.tintColorDidChange()
         borderActiveColor = tintColor
     }
     
     // MARK: - TextFieldEffects
     
-    open func drawViewsForRect(_ rect: CGRect) {
+    func drawViewsForRect(_ rect: CGRect) {
         let frame = CGRect(origin: CGPoint.zero, size: CGSize(width: rect.size.width, height: rect.size.height))
         
         placeholderLabel.frame = frame.insetBy(dx: placeholderInsets.x, dy: placeholderInsets.y)
@@ -178,7 +178,7 @@ open class AnimatedTextField: UITextField {
         addSubview(placeholderLabel)
     }
     
-    open func animateViewsForTextEntry() {
+    func animateViewsForTextEntry() {
         if text!.isEmpty {
             UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .beginFromCurrentState, animations: ({
                 self.placeholderLabel.frame.origin = CGPoint(x: 10, y: self.placeholderLabel.frame.origin.y)
@@ -198,7 +198,7 @@ open class AnimatedTextField: UITextField {
         activeBorderLayer.frame = rectForBorder(borderThickness.active, isFilled: true)
     }
     
-    open func animateViewsForTextDisplay() {
+    func animateViewsForTextDisplay() {
         if text!.isEmpty {
             UIView.animate(withDuration: 0.35, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 2.0, options: .beginFromCurrentState, animations: ({
                 self.layoutPlaceholderInTextRect()
@@ -261,11 +261,11 @@ open class AnimatedTextField: UITextField {
         
     }
     
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.offsetBy(dx: textFieldInsets.x, dy: textFieldInsets.y)
     }
     
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.offsetBy(dx: textFieldInsets.x, dy: textFieldInsets.y)
     }
 }

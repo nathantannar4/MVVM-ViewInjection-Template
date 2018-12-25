@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MVVM Project Template.xctemplate/ViewModels/EULAViewModel.swift"
-            timestampString = "561399993.4509979"
+            timestampString = "567415047.0928349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -473,22 +473,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MVVM Project Template.xctemplate/Views/ViewWrapped.swift"
-            timestampString = "567147099.64601"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "init(frame:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HotReload.swift"
             timestampString = "565332976.578909"
             startingColumnNumber = "9223372036854775807"
@@ -506,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MVVM Project Template.xctemplate/RootViews/Auth/LoginView.swift"
-            timestampString = "566954032.68893"
+            timestampString = "567415047.09295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -522,7 +506,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MVVM Project Template.xctemplate/RootViews/Auth/LoginView.swift"
-            timestampString = "566954032.689025"
+            timestampString = "567415047.092999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -554,11 +538,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MVVM Project Template.xctemplate/Views/ScrollStackView.swift"
-            timestampString = "567130772.379711"
+            timestampString = "567415047.093067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "arrangedSubviewInsetsDidChange()"
             landmarkType = "7">
          </BreakpointContent>

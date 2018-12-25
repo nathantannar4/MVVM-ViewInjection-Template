@@ -8,14 +8,18 @@
 
 import Foundation
 
-class ViewModel: NSObject, IViewModel {
+typealias ViewModel = BaseViewModel & IViewModel
+
+class BaseViewModel: NSObject {
 
     // MARK: - Properties
 
-    var appViewModel: AppViewModel!
+    let appViewModel: AppViewModel
 
-    override init() {
+    required init(appViewModel: AppViewModel) {
+        self.appViewModel = appViewModel
         super.init()
+        viewModelDidLoad()
     }
 
     func viewModelDidLoad() {

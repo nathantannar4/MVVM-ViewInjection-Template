@@ -19,8 +19,17 @@ class BaseViewModelController<ViewModelType: IViewModel, ViewType: IView>: Contr
 
     let disposeBag = DisposeBag()
 
-    var viewModel: ViewModelType!
+    let viewModel: ViewModelType
 
+    required init(viewModel: ViewModelType) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Methods
 
     override func viewDidLoad() {

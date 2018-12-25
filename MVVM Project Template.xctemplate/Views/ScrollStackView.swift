@@ -67,6 +67,7 @@ class ScrollStackView: UIScrollView, IView {
 
     func viewDidLoad() {
         subscribeToThemeChanges()
+        alwaysBounceVertical = true
         keyboardDismissMode = .interactive
         addSubview(stackView)
         stackViewConstaints = stackView.anchor(topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
@@ -97,6 +98,10 @@ class ScrollStackView: UIScrollView, IView {
         subviews.forEach { addArrangedSubview($0) }
     }
 
+    func insertArrangedSubview(_ view: UIView, at index: Int) {
+        stackView.insertArrangedSubview(view, at: index)
+    }
+
     func removeArrangedSubview(_ subview: UIView) {
         stackView.removeArrangedSubview(subview)
     }
@@ -117,6 +122,6 @@ class ScrollStackView: UIScrollView, IView {
     // MARK: - Theme Updates
 
     func themeDidChange(_ theme: Theme) {
-
+        backgroundColor = .white
     }
 }

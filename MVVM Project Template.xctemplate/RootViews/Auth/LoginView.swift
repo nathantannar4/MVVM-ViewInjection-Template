@@ -183,16 +183,16 @@ final class LoginView: View {
 
         titleLabel.anchor(cancelButton.bottomAnchor, left: layoutMarginsGuide.leftAnchor, right: layoutMarginsGuide.rightAnchor, topConstant: 14, leftConstant: 12, rightConstant: 12, heightConstant: 40)
 
-        subtitleLabel.anchorBelow(titleLabel, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, heightConstant: 30)
+        subtitleLabel.anchorBelow(titleLabel, rightConstant: 0, heightConstant: 30)
 
-        emailField.anchor(titleLabel.bottomAnchor, left: layoutMarginsGuide.leftAnchor, bottom: nil, right: layoutMarginsGuide.rightAnchor, topConstant: 75, leftConstant: 50, bottomConstant: 0, rightConstant: 12, widthConstant: 0, heightConstant: 50)
+        emailField.anchor(titleLabel.bottomAnchor, left: layoutMarginsGuide.leftAnchor, bottom: nil, right: layoutMarginsGuide.rightAnchor, topConstant: 75, leftConstant: 50, rightConstant: 12, heightConstant: 50)
 
-        emailIconView.anchorLeftOf(emailField, topConstant: 20, bottomConstant: 0, rightConstant: 8)
+        emailIconView.anchorLeftOf(emailField, topConstant: 20, rightConstant: 8)
         emailIconView.anchorAspectRatio()
 
-        passwordField.anchorBelow(emailField, bottom: nil, topConstant: 16, bottomConstant: 0, heightConstant: 50)
+        passwordField.anchorBelow(emailField, topConstant: 16, heightConstant: 50)
 
-        passwordIconView.anchorLeftOf(passwordField, topConstant: 20, bottomConstant: 0, rightConstant: 8)
+        passwordIconView.anchorLeftOf(passwordField, topConstant: 20, rightConstant: 8)
         passwordIconView.anchorAspectRatio()
 
         forgotPasswordButton.anchorCenterXToSuperview()

@@ -11,7 +11,7 @@ import RxSwift
 
 final class EULAViewModel: ViewModel {
 
-    var eula = BehaviorSubject<NSAttributedString?>(value: nil)
+    let eula = BehaviorSubject<NSAttributedString?>(value: nil)
 
     override func viewModelDidLoad() {
         super.viewModelDidLoad()

@@ -9,19 +9,22 @@
 import UIKit
 
 class SearchBar: UISearchBar {
+    private enum KeyPath: String {
+        case searchField, clearButton, cancelButton
+    }
 
     // MARK: - Views
 
     var textField: UITextField? {
-        return value(forKey: "searchField") as? UITextField
+        return value(forKey: KeyPath.searchField.rawValue) as? UITextField
     }
 
     var clearButton: UIButton? {
-        return value(forKey: "clearButton") as? UIButton
+        return value(forKey: KeyPath.clearButton.rawValue) as? UIButton
     }
 
     var cancelButton: UIButton? {
-        return value(forKey: "cancelButton") as? UIButton
+        return value(forKey: KeyPath.cancelButton.rawValue) as? UIButton
     }
 
     // MARK: - Init

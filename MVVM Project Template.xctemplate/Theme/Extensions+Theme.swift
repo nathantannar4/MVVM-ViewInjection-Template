@@ -35,6 +35,10 @@ extension UIColor {
         return UIColor.gray
     }
 
+    static var lightGrayColor: UIColor {
+        return UIColor(white: 0.922, alpha: 1)
+    }
+
     static var shadowColor: UIColor {
         return UIColor.black
     }

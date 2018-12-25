@@ -77,6 +77,12 @@
 		383986F6216AC08700172D66 /* ScrollViewWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383986F5216AC08700172D66 /* ScrollViewWrapped.swift */; };
 		383986FA216C043B00172D66 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383986F9216C043B00172D66 /* UIScrollView+Extensions.swift */; };
 		383986FC216C4E6C00172D66 /* ViewWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383986FB216C4E6C00172D66 /* ViewWrapped.swift */; };
+		383A540B21D18B5D001B9D63 /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A540A21D18B5D001B9D63 /* EditProfileController.swift */; };
+		383A540E21D18B79001B9D63 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A540D21D18B79001B9D63 /* EditProfileView.swift */; };
+		383A541121D1923C001B9D63 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A541021D1923C001B9D63 /* EditProfileViewModel.swift */; };
+		383A541421D1958F001B9D63 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A541321D1958F001B9D63 /* FormView.swift */; };
+		383A541621D195CB001B9D63 /* Rows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A541521D195CB001B9D63 /* Rows.swift */; };
+		383A541921D20554001B9D63 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383A541821D20554001B9D63 /* TextField.swift */; };
 		384E6F2321CB2B5200515363 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E6F2221CB2B5200515363 /* Switch.swift */; };
 		384E6F2B21CC5DD400515363 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E6F2A21CC5DD400515363 /* RowView.swift */; };
 		385701442187C82200589A30 /* ActivitySpinnerIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385701432187C82200589A30 /* ActivitySpinnerIndicator.swift */; };
@@ -92,7 +98,7 @@
 		389592B5216466F600E31AE4 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389592B4216466F600E31AE4 /* AuthCoordinator.swift */; };
 		389592B9216491DC00E31AE4 /* ControlElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389592B8216491DC00E31AE4 /* ControlElement.swift */; };
 		38981A5521D07B5200518B88 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38981A5421D07B5200518B88 /* Slider.swift */; };
-		38981A5721D07BA000518B88 /* Style+Interface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38981A5621D07BA000518B88 /* Style+Interface.swift */; };
+		38981A5921D08E3C00518B88 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38981A5821D08E3C00518B88 /* AppContainer.swift */; };
 		389FB1C92176A9B80038DD8A /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389FB1C82176A9B80038DD8A /* NavigationRouter.swift */; };
 		389FB1CC2176B0070038DD8A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389FB1CB2176B0070038DD8A /* SignUpView.swift */; };
 		38B5D543218B99B900C2464F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B5D542218B99B900C2464F /* TableViewCell.swift */; };
@@ -212,6 +218,12 @@
 		383986F5216AC08700172D66 /* ScrollViewWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWrapped.swift; sourceTree = "<group>"; };
 		383986F9216C043B00172D66 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		383986FB216C4E6C00172D66 /* ViewWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWrapped.swift; sourceTree = "<group>"; };
+		383A540A21D18B5D001B9D63 /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
+		383A540D21D18B79001B9D63 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		383A541021D1923C001B9D63 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		383A541321D1958F001B9D63 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		383A541521D195CB001B9D63 /* Rows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rows.swift; sourceTree = "<group>"; };
+		383A541821D20554001B9D63 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		384E6F2221CB2B5200515363 /* Switch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		384E6F2A21CC5DD400515363 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		385701432187C82200589A30 /* ActivitySpinnerIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivitySpinnerIndicator.swift; sourceTree = "<group>"; };
@@ -227,7 +239,7 @@
 		389592B4216466F600E31AE4 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		389592B8216491DC00E31AE4 /* ControlElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlElement.swift; sourceTree = "<group>"; };
 		38981A5421D07B5200518B88 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
-		38981A5621D07BA000518B88 /* Style+Interface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Style+Interface.swift"; sourceTree = "<group>"; };
+		38981A5821D08E3C00518B88 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		389FB1C82176A9B80038DD8A /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		389FB1CB2176B0070038DD8A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		38B5D542218B99B900C2464F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -303,6 +315,7 @@
 				382025B821617CCE00A0490B /* AppDelegate.swift */,
 				3820259121617CCE00A0490B /* AppRouter.swift */,
 				382026902161B10C00A0490B /* AppWindow.swift */,
+				38981A5821D08E3C00518B88 /* AppContainer.swift */,
 				38631F1321AE79ED00522E68 /* Transitions */,
 				382025B921617CCE00A0490B /* Controllers */,
 				3820268B2161A0C800A0490B /* Controls */,
@@ -326,11 +339,10 @@
 		3820258F21617CCE00A0490B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				3820259021617CCE00A0490B /* AppViewModel.swift */,
-				383986A121685AE500172D66 /* ViewModel.swift */,
-				387C922321B4D5560084AC65 /* ListViewModel.swift */,
+				383A540F21D1922E001B9D63 /* Base */,
 				382C79432170793300F4FAF5 /* AuthViewModel.swift */,
 				38D78C2F21755C8A00322AB6 /* EULAViewModel.swift */,
+				383A541021D1923C001B9D63 /* EditProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -347,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				383986B9216985C200172D66 /* Manager.swift */,
+				381BA75621C2D08F0072C963 /* ThemeManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -411,10 +424,8 @@
 			isa = PBXGroup;
 			children = (
 				382025B021617CCE00A0490B /* Style.swift */,
-				38981A5621D07BA000518B88 /* Style+Interface.swift */,
 				382025AF21617CCE00A0490B /* Stylesheet.swift */,
 				3874B73921CD9FAE00F0896C /* Theme.swift */,
-				381BA75621C2D08F0072C963 /* ThemeManager.swift */,
 				382025B121617CCE00A0490B /* Extensions+Theme.swift */,
 			);
 			path = Theme;
@@ -446,6 +457,7 @@
 			children = (
 				3820268521619E2700A0490B /* DispatchController.swift */,
 				383986EC216AB1A500172D66 /* Auth */,
+				383A540921D18B43001B9D63 /* Profile */,
 				383986A621685CA100172D66 /* Base */,
 			);
 			path = Controllers;
@@ -465,6 +477,7 @@
 				3874B73B21CDACC200F0896C /* Layers */,
 				384E6F2921CC5DAD00515363 /* Wrapper Containers */,
 				384E6F2821CC5D6A00515363 /* Layout Containers */,
+				383A541221D19580001B9D63 /* Forms */,
 				381BA76221C583830072C963 /* Items */,
 				38B5D541218B99A900C2464F /* Cells */,
 				383986E9216AA89000172D66 /* NavigationBars */,
@@ -545,6 +558,41 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		383A540921D18B43001B9D63 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				383A540A21D18B5D001B9D63 /* EditProfileController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		383A540C21D18B67001B9D63 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				383A540D21D18B79001B9D63 /* EditProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		383A540F21D1922E001B9D63 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3820259021617CCE00A0490B /* AppViewModel.swift */,
+				383986A121685AE500172D66 /* ViewModel.swift */,
+				387C922321B4D5560084AC65 /* ListViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		383A541221D19580001B9D63 /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				383A541321D1958F001B9D63 /* FormView.swift */,
+				383A541521D195CB001B9D63 /* Rows.swift */,
+			);
+			path = Forms;
+			sourceTree = "<group>";
+		};
 		384E6F2821CC5D6A00515363 /* Layout Containers */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +634,7 @@
 			children = (
 				3820268721619E6700A0490B /* LoadingView.swift */,
 				389FB1CA2176AFFA0038DD8A /* Auth */,
+				383A540C21D18B67001B9D63 /* Profile */,
 			);
 			path = RootViews;
 			sourceTree = "<group>";
@@ -595,6 +644,7 @@
 			children = (
 				382026942161E15C00A0490B /* SearchBar.swift */,
 				382026892161A0B300A0490B /* InputTextView.swift */,
+				383A541821D20554001B9D63 /* TextField.swift */,
 				382026922161E0F500A0490B /* AnimatedTextField.swift */,
 			);
 			path = InputViews;
@@ -889,6 +939,7 @@
 				382025F021617CCE00A0490B /* GradientView.swift in Sources */,
 				38C7079021A8DA6E00ED335A /* TableView.swift in Sources */,
 				38631F1521AE7A0F00522E68 /* NavigationControllerTransitionAnimator.swift in Sources */,
+				383A541921D20554001B9D63 /* TextField.swift in Sources */,
 				382025E321617CCE00A0490B /* Extensions+Theme.swift in Sources */,
 				3820268D2161A16A00A0490B /* NSConstraintLayoutSet.swift in Sources */,
 				382025D921617CCE00A0490B /* UIAlertController+Extensions.swift in Sources */,
@@ -902,6 +953,7 @@
 				382025DA21617CCE00A0490B /* NSAttributedString+Extensions.swift in Sources */,
 				383986F0216AB1D500172D66 /* SignUpController.swift in Sources */,
 				383986F4216ABDC300172D66 /* LoginView.swift in Sources */,
+				383A540E21D18B79001B9D63 /* EditProfileView.swift in Sources */,
 				382025CA21617CCE00A0490B /* AppRouter.swift in Sources */,
 				382025CC21617CCE00A0490B /* HttpRequest.swift in Sources */,
 				382025EC21617CCE00A0490B /* NavigationController.swift in Sources */,
@@ -927,11 +979,13 @@
 				387C922421B4D5560084AC65 /* ListViewModel.swift in Sources */,
 				383986B02168702000172D66 /* Interface+Defaults.swift in Sources */,
 				3820268821619E6700A0490B /* LoadingView.swift in Sources */,
+				383A540B21D18B5D001B9D63 /* EditProfileController.swift in Sources */,
 				383986BA216985C200172D66 /* Manager.swift in Sources */,
 				382025D221617CCE00A0490B /* UIButton+Extensions.swift in Sources */,
 				382025DF21617CCE00A0490B /* Date+Extensions.swift in Sources */,
 				383986E32169D99400172D66 /* Service.swift in Sources */,
 				382025D821617CCE00A0490B /* UIApplication+Extensions.swift in Sources */,
+				383A541621D195CB001B9D63 /* Rows.swift in Sources */,
 				381BA75721C2D08F0072C963 /* ThemeManager.swift in Sources */,
 				382025EA21617CCE00A0490B /* CollectionController.swift in Sources */,
 				38981A5521D07B5200518B88 /* Slider.swift in Sources */,
@@ -942,8 +996,10 @@
 				382025E821617CCE00A0490B /* AppDelegate.swift in Sources */,
 				382025E721617CCE00A0490B /* Coordinator+Coordinatable.swift in Sources */,
 				382025CE21617CCE00A0490B /* Model.swift in Sources */,
+				383A541421D1958F001B9D63 /* FormView.swift in Sources */,
 				38D78C3021755C8A00322AB6 /* EULAViewModel.swift in Sources */,
 				389FB1CC2176B0070038DD8A /* SignUpView.swift in Sources */,
+				383A541121D1923C001B9D63 /* EditProfileViewModel.swift in Sources */,
 				382025D721617CCE00A0490B /* UIDevice+Extensions.swift in Sources */,
 				3874B73A21CD9FAE00F0896C /* Theme.swift in Sources */,
 				389592B5216466F600E31AE4 /* AuthCoordinator.swift in Sources */,
@@ -966,10 +1022,10 @@
 				38C7079521A9E33F00ED335A /* UITableView+Extensions.swift in Sources */,
 				382026972161E22F00A0490B /* EULAController.swift in Sources */,
 				382025CB21617CCE00A0490B /* NetworkService.swift in Sources */,
-				38981A5721D07BA000518B88 /* Style+Interface.swift in Sources */,
 				382025EF21617CCE00A0490B /* RoundedView.swift in Sources */,
 				383986EF216AB1D500172D66 /* LoginController.swift in Sources */,
 				3820268A2161A0B300A0490B /* InputTextView.swift in Sources */,
+				38981A5921D08E3C00518B88 /* AppContainer.swift in Sources */,
 				382026992161E35600A0490B /* EULAView.swift in Sources */,
 				38739A4921C8663E0032957A /* Checkbox.swift in Sources */,
 				383986FC216C4E6C00172D66 /* ViewWrapped.swift in Sources */,

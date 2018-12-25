@@ -16,6 +16,7 @@ enum LocalizableIdentifier: String {
     case cancel
     case delete
     case search
+    case save
 
     // Auth
     case email

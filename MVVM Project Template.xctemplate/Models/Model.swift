@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Model: Decodable, Equatable, CustomStringConvertible {
+protocol Model: Decodable, Equatable, IModel {
     
     associatedtype ID
     
