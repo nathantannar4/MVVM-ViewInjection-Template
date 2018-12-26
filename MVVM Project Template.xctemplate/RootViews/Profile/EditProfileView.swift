@@ -40,10 +40,12 @@ final class EditProfileView: ListView {
 
         let notificationsRow = SwitchCell()
         notificationsRow.label.text = "Notifications"
+        notificationsRow.detailLabel.textAlignment = .right
+        notificationsRow.detailLabel.text = "Detail"
 
         let footer = SectionFooterView<UILabel>()
         footer.centerView.numberOfLines = 0
-        footer.centerView.text = "Multi\nLine\nFooter"
+        footer.centerView.text = "Footer"
 
         appendRows(header, firstNameRow, lastNameRow, bioRow, cityRow, notificationsRow, footer)
     }

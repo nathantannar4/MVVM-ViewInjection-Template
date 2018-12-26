@@ -28,7 +28,8 @@ class CheckboxCell: RowView<UILabel, UIView, Checkbox> {
     var checkbox: Checkbox { return accessoryView }
 }
 
-class SwitchCell: RowView<UILabel, UIView, Switch> {
+class SwitchCell: RowView<UILabel, UILabel, Switch> {
     var label: UILabel { return leftView }
+    var detailLabel: UILabel { return rightView }
     var `switch`: Switch { return accessoryView }
 }

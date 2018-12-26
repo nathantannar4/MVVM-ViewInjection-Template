@@ -10,17 +10,7 @@ import UIKit
 
 class SectionFooterView<ViewType: UIView>: View {
 
-    let centerView: ViewType
-
-    override init(frame: CGRect) {
-        centerView = ViewType()
-        super.init(frame: frame)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        centerView = ViewType()
-        super.init(coder: aDecoder)
-    }
+    let centerView = ViewType()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,20 +10,8 @@ import UIKit
 
 class SectionHeaderView<LeftViewType: UIView, RightViewType: UIView>: View {
 
-    let leftView: LeftViewType
-    let rightView: RightViewType
-
-    override init(frame: CGRect) {
-        leftView = LeftViewType()
-        rightView = RightViewType()
-        super.init(frame: frame)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        leftView = LeftViewType()
-        rightView = RightViewType()
-        super.init(coder: aDecoder)
-    }
+    let leftView = LeftViewType()
+    let rightView = RightViewType()
 
     override func viewDidLoad() {
         super.viewDidLoad()

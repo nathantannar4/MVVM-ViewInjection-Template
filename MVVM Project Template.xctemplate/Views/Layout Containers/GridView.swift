@@ -10,26 +10,10 @@ import UIKit
 
 class GridView<TopViewType: UIView, BottomViewType: UIView, LeftViewType: UIView, RightViewType: UIView>: View {
 
-    let topView: TopViewType
-    let bottomView: BottomViewType
-    let leftView: LeftViewType
-    let rightView: RightViewType
-
-    override init(frame: CGRect) {
-        topView = TopViewType()
-        bottomView = BottomViewType()
-        leftView = LeftViewType()
-        rightView = RightViewType()
-        super.init(frame: frame)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        topView = TopViewType()
-        bottomView = BottomViewType()
-        leftView = LeftViewType()
-        rightView = RightViewType()
-        super.init(coder: aDecoder)
-    }
+    let topView = TopViewType()
+    let bottomView = BottomViewType()
+    let leftView = LeftViewType()
+    let rightView = RightViewType()
 
     override func viewDidLoad() {
         super.viewDidLoad()

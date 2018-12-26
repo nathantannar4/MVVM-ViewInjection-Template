@@ -10,23 +10,9 @@ import UIKit
 
 class RowView<LeftViewType: UIView, RightViewType: UIView, AccessoryViewType: UIView>: View {
 
-    let leftView: LeftViewType
-    let rightView: RightViewType
-    let accessoryView: AccessoryViewType
-
-    override init(frame: CGRect) {
-        leftView = LeftViewType()
-        rightView = RightViewType()
-        accessoryView = AccessoryViewType()
-        super.init(frame: frame)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        leftView = LeftViewType()
-        rightView = RightViewType()
-        accessoryView = AccessoryViewType()
-        super.init(coder: aDecoder)
-    }
+    let leftView = LeftViewType()
+    let rightView = RightViewType()
+    let accessoryView = AccessoryViewType()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +24,7 @@ class RowView<LeftViewType: UIView, RightViewType: UIView, AccessoryViewType: UI
 
         leftView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, topConstant: yInset, bottomConstant: yInset)
         leftView.anchorCenterYToSuperview()
-        leftView.anchor(left: leftAnchor, right: accessoryView.leftAnchor, leftConstant: xInset, rightConstant: spacing)
+        leftView.anchor(left: leftAnchor, right: rightView.leftAnchor, leftConstant: xInset, rightConstant: spacing)
         leftView.setContentCompressionResistancePriority(
             .defaultHigh,
             for: .horizontal
@@ -48,13 +34,13 @@ class RowView<LeftViewType: UIView, RightViewType: UIView, AccessoryViewType: UI
             for: .horizontal
         )
 
-        rightView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, topConstant: yInset, bottomConstant: yInset)
-        rightView.anchor(left: leftView.rightAnchor, right: rightAnchor, leftConstant: spacing, rightConstant: xInset)
+        rightView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: yInset, bottomConstant: yInset)
+        rightView.anchor(left: leftView.rightAnchor, leftConstant: spacing)
         rightView.anchorCenterYToSuperview()
 
         accessoryView.anchorIfNeeded(topAnchor, bottom: bottomAnchor, topConstant: yInset, bottomConstant: yInset, widthConstant: 0)
         accessoryView.anchorCenterYToSuperview()
-        accessoryView.anchor(right: rightAnchor, rightConstant: xInset)
+        accessoryView.anchor(left: rightView.rightAnchor, right: rightAnchor, leftConstant: spacing,  rightConstant: xInset)
         accessoryView.setContentCompressionResistancePriority(
             .defaultHigh,
             for: .horizontal

@@ -17,16 +17,14 @@ class TableViewCell<ViewType: IReusableView>: UITableViewCell, IReuseIdentifiabl
     override var textLabel: UILabel? { return nil }
     override var detailTextLabel: UILabel? { return nil }
 
-    let wrappedView: ViewType
+    let wrappedView = ViewType()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        wrappedView = ViewType()
         super.init(style: style, reuseIdentifier: nil)
         cellDidLoad()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        wrappedView = ViewType()
         super.init(coder: aDecoder)
         cellDidLoad()
     }
