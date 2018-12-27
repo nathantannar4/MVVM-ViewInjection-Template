@@ -53,4 +53,3 @@ class RowView<LeftViewType: UIView, RightViewType: UIView, AccessoryViewType: UI
         heightAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
     }
 }
-

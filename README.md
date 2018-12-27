@@ -1,6 +1,14 @@
-# Nathan's MVVM Project Template
+# MVVM "View Injection" Template
 
-MVVM Template that utilizes RxSwift, Generics and more
+When it comes to implementing the architecture of a mobile iOS application there are many patterns one could follow. There is MVC, MVVM, VIPER, Clean Swift and countless more patterns to help keep your applications data layer robust and testable. But what about your apps view layer architecture?
+
+This was a question that I never thought much of in my earlier days of developing apps. Like most, I used some base UI classes to help reduce duplicate code when it came to theming a views colours, font, etc. While something like this and MVC are good enough solution to small apps, as it grows they quicly become a pain point in your apps architecture. It's commonly understood that you should never write duplicate code; however, when it comes to the UI I often see exactly that.
+
+I begin trying to come up with a way to abstract views so they could be used with any component. Define layout view classes with generics to reduce boiler plate layout code and ensure consistency. And lastly a definition class where the components to be used in the previously mentioned layout view are "injected".
+
+> TLDR result; View "Injection" with Generics
+
+[Read the full Medium article](https://medium.com/p/22f82c073165)
 
 ## Installation
 
@@ -13,6 +21,10 @@ Clone this repo and to your XCodes project template directory. You can then crea
 3. Run `swift XCodeTemplateGenerator.swift MVVM\ Project\ Template.xctemplate` to update the `TemplateInfo.plist`
 
 ## Why use this architecture? 
+
+I have written a complete article on Medium that discusses the problems this view layer architecture is trying to solve. You can read it [here](https://medium.com/p/22f82c073165).
+
+### Brief Overview
 
 Through the use of generics and view models, your controllers can be kept very clean and minimal while also leaving your app highly testable. I create all my views via code, so a `UIViewController` can tend to become massive! By keeping all the subview and layout in a separate file/class, we can abstract all of it away from the controller. It can then also make your views highly reusable!
 

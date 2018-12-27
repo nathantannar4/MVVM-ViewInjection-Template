@@ -20,7 +20,7 @@ class TableViewCell<ViewType: IReusableView>: UITableViewCell, IReuseIdentifiabl
     let wrappedView = ViewType()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: nil)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         cellDidLoad()
     }
 
