@@ -23,7 +23,9 @@ class SectionFooterView<ViewType: UIView>: View {
         centerView.anchorIfNeeded(topAnchor, topConstant: yInset)
         centerView.anchorCenterXToSuperview()
 
-        heightAnchor.constraint(greaterThanOrEqualToConstant: 28).isActive = true
+        heightAnchor.constraint(greaterThanOrEqualToConstant: 28)
+            .withPriority(.defaultHigh)
+            .activated()
     }
 
     override func themeDidChange(_ theme: Theme) {

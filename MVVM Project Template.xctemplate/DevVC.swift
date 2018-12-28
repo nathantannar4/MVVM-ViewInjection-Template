@@ -15,13 +15,13 @@ class DevVC: Controller<CollectionView>, UICollectionViewDataSource, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         rootView.dataSource = self
-        rootView.delegate = self
+//        rootView.delegate = self
 
         rootView.registerCellClass(
             CollectionViewCell<TextFieldCell>.self
         )
 
-        rootView.transform = CGAffineTransform(rotationAngle: -.pi)
+//        rootView.transform = CGAffineTransform(rotationAngle: -.pi)
         rootView.refreshControl = UIRefreshControl()
     }
 
@@ -42,7 +42,7 @@ class DevVC: Controller<CollectionView>, UICollectionViewDataSource, UICollectio
         let cell = collectionView.dequeueReusableCell(CollectionViewCell<TextFieldCell>.self, for: indexPath)
         cell.wrappedView.label.text = "\(indexPath)"
         cell.wrappedView.backgroundColor = indexPath.row % 2 == 0 ? .lightGrayColor : .white
-        cell.contentView.transform = CGAffineTransform(rotationAngle: .pi)
+//        cell.contentView.transform = CGAffineTransform(rotationAngle: .pi)
         return cell
     }
 

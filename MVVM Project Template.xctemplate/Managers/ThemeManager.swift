@@ -16,6 +16,10 @@ final class ThemeManager {
 
     private init() { }
 
+    func getCurrentTheme() -> Theme {
+        return currentTheme.value ?? .default
+    }
+
     func setCurrentTheme(_ theme: Theme, animated: Bool) {
         guard animated else {
             currentTheme.onNext(theme)

@@ -47,6 +47,10 @@ class ControlElement: UIControl, FeedbackGeneratable {
     }
 
     func stateDidChange() {
+        
+    }
+
+    func valueDidChange() {
         sendActions(for: .valueChanged)
     }
 

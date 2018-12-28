@@ -12,6 +12,7 @@ class Slider: ControlElement {
     var value: Double = 0 {
         didSet {
             stateDidChange()
+            valueDidChange()
         }
     }
 

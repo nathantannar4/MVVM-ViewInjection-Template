@@ -34,7 +34,7 @@ final class AppRouter {
     
     func start(with options: [UIApplication.LaunchOptionsKey: Any]? = nil) {
         window = AppWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = DevVC() // NavigationController(rootViewController: container.resolve(EditProfileController.self)!)
+        window?.rootViewController = NavigationController(rootViewController: container.resolve(EditProfileController.self)!)
         window?.makeKeyAndVisible()
     }
 

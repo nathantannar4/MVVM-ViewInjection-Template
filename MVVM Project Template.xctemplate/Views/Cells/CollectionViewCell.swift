@@ -43,7 +43,7 @@ class CollectionViewCell<ViewType: IReusableView>: UICollectionViewCell, IReuseI
         layoutIfNeeded()
         let size = wrappedView.systemLayoutSizeFitting(layoutAttributes.size)
         var newFrame = layoutAttributes.frame
-        newFrame.size.height = ceil(size.height)
+        newFrame.size = size
         layoutAttributes.frame = newFrame
         return layoutAttributes
     }

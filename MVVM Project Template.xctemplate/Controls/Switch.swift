@@ -13,6 +13,7 @@ class Switch: ControlElement {
     var isOn: Bool = false {
         didSet {
             stateDidChange()
+            valueDidChange()
         }
     }
 

@@ -37,7 +37,9 @@ class SectionHeaderView<LeftViewType: UIView, RightViewType: UIView>: View {
 
         rightView.leftAnchor.constraint(greaterThanOrEqualTo: leftView.rightAnchor, constant: spacing).isActive = true
 
-        heightAnchor.constraint(greaterThanOrEqualToConstant: 38).isActive = true
+        heightAnchor.constraint(greaterThanOrEqualToConstant: 38)
+            .withPriority(.defaultHigh)
+            .activated()
     }
 
     override func themeDidChange(_ theme: Theme) {

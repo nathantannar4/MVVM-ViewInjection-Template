@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit.UIColor
 
 enum Theme: Int {
     case light = 0
@@ -14,5 +15,11 @@ enum Theme: Int {
 
     static var `default`: Theme {
         return .light
+    }
+}
+
+extension UIColor {
+    func adjustedForTheme(_ theme: Theme) -> UIColor {
+        return theme == .dark ? self.darkModeColor() : self
     }
 }

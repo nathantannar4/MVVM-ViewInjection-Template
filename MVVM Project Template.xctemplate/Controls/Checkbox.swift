@@ -24,6 +24,7 @@ class Checkbox: ControlElement {
     var isOn: Bool = false {
         didSet {
             stateDidChange()
+            valueDidChange()
         }
     }
 

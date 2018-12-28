@@ -49,6 +49,5 @@ class View: UIView, IView, IReusableView {
     // MARK: - Theme Updates
 
     func themeDidChange(_ theme: Theme) {
-        backgroundColor = .white
-    }
+        backgroundColor = UIColor.white    }
 }
