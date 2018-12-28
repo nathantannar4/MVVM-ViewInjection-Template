@@ -17,6 +17,10 @@ class CollectionController<ViewModelType: IListViewModel>: ViewModelController<V
         return ListAdapter(updater: ListAdapterUpdater(), viewController: self)
     }()
 
+    var collectionView: CollectionView {
+        return rootView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         adapter.collectionView = rootView

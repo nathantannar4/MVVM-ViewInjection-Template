@@ -41,7 +41,7 @@ class CollectionViewCell<ViewType: IReusableView>: UICollectionViewCell, IReuseI
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         setNeedsLayout()
         layoutIfNeeded()
-        let size = contentView.systemLayoutSizeFitting(layoutAttributes.size)
+        let size = wrappedView.systemLayoutSizeFitting(layoutAttributes.size)
         var newFrame = layoutAttributes.frame
         newFrame.size.height = ceil(size.height)
         layoutAttributes.frame = newFrame

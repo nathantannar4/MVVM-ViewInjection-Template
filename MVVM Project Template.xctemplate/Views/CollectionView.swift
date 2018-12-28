@@ -19,6 +19,7 @@ class CollectionView: UICollectionView, IView {
     required init(frame: CGRect) {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumLineSpacing = 0
         super.init(frame: frame, collectionViewLayout: layout)
         viewDidLoad()
     }
