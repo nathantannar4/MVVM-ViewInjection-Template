@@ -155,4 +155,11 @@ extension UIColor {
         UIGraphicsEndImageContext()
         return img
     }
+
+    static func random() -> UIColor {
+        let r = CGFloat(Int.random(in: 0...255)) / 255
+        let g = CGFloat(Int.random(in: 0...255)) / 255
+        let b = CGFloat(Int.random(in: 0...255)) / 255
+        return UIColor(red: r, green: g, blue: b, alpha: 1)
+    }
 }

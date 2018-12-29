@@ -39,8 +39,6 @@ class AppWindow: UIWindow {
         return view
     }()
 
-    private let darkModeSwitch = Switch()
-
     // MARK: - Init
 
     override init(frame: CGRect) {
@@ -55,17 +53,12 @@ class AppWindow: UIWindow {
 
     func viewDidLoad() {
         backgroundColor = .white
-        addSubview(darkModeSwitch)
-        darkModeSwitch.anchorCenterXToSuperview()
-        darkModeSwitch.anchor(bottom: bottomAnchor, bottomConstant: 100)
-        darkModeSwitch.addTarget(self, action: #selector(didToggleDarkMode), for: .valueChanged)
     }
 
     // MARK: - Methods
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        bringSubviewToFront(darkModeSwitch)
         if isActivityIndicatorVisible {
             activityIndicator.startAnimating()
             bringSubviewToFront(activityIndicator)
@@ -108,11 +101,5 @@ class AppWindow: UIWindow {
                 self?.activityIndicator.removeFromSuperview()
             }
         }
-    }
-
-    @objc
-    func didToggleDarkMode() {
-        let newTheme: Theme = ThemeManager.shared.getCurrentTheme() == .dark ? .light : .dark
-        ThemeManager.shared.setCurrentTheme(newTheme, animated: true)
     }
 }

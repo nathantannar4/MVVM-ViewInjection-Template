@@ -24,9 +24,6 @@ class BaseNavigationController<T: UINavigationBar>: UINavigationController, UINa
     }
 
     var transitionAnimatorType: NavigationControllerTransitionAnimator.Type? {
-        willSet {
-            delegate = nil
-        }
         didSet {
             delegate = transitionAnimatorType != nil ? self : nil
         }

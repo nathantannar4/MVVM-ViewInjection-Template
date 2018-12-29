@@ -15,13 +15,13 @@ final class BadgeBarButtonItem: UIBarButtonItem {
 
     var badgePosition: Position = .right {
         didSet {
-            setBadge(text: isBadgeHidden ? nil : "")
+            setBadge(text: badgeValue)
         }
     }
 
-    var isBadgeHidden: Bool = true {
+    var badgeValue: String? = nil {
         didSet {
-            setBadge(text: isBadgeHidden ? nil : "")
+            setBadge(text: badgeValue)
         }
     }
 

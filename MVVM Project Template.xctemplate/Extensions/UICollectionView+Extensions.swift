@@ -18,11 +18,7 @@ extension UICollectionView {
     func registerCellClass<T>(_ cellClass: T.Type) where T: IReuseIdentifiable {
         register(T.self, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
-
-    func registerCellClasses<T>(_ cellClasses: [T.Type]) where T: IReuseIdentifiable {
-        cellClasses.forEach { registerCellClass($0) }
-    }
-
+    
     func dequeueReusableCell<T>(_ cellClass: T.Type, for indexPath: IndexPath) -> T where T: IReuseIdentifiable {
         return dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as! T
     }

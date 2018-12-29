@@ -116,6 +116,10 @@
 		38C7079721A9E34B00ED335A /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C7079621A9E34B00ED335A /* UICollectionView+Extensions.swift */; };
 		38C7079921AA528500ED335A /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C7079821AA528500ED335A /* CALayer.swift */; };
 		38D015A121D5F5250052FD2C /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015A021D5F5250052FD2C /* NSLayoutConstraint+Extensions.swift */; };
+		38D015A321D5FEB30052FD2C /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015A221D5FEB30052FD2C /* AvatarView.swift */; };
+		38D015A621D6E7640052FD2C /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015A521D6E7630052FD2C /* TabBarController.swift */; };
+		38D015A821D6E8C50052FD2C /* TabBarControllerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015A721D6E8C50052FD2C /* TabBarControllerTransitionAnimator.swift */; };
+		38D015AA21D6E8EC0052FD2C /* ControllerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015A921D6E8EC0052FD2C /* ControllerTransitionAnimator.swift */; };
 		38D78C2E217554E400322AB6 /* FeedbackGeneratable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78C2D217554E400322AB6 /* FeedbackGeneratable.swift */; };
 		38D78C3021755C8A00322AB6 /* EULAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78C2F21755C8A00322AB6 /* EULAViewModel.swift */; };
 		38D78C322175656D00322AB6 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78C312175656D00322AB6 /* RxSwift+Extensions.swift */; };
@@ -262,6 +266,10 @@
 		38C7079621A9E34B00ED335A /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		38C7079821AA528500ED335A /* CALayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		38D015A021D5F5250052FD2C /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		38D015A221D5FEB30052FD2C /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		38D015A521D6E7630052FD2C /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		38D015A721D6E8C50052FD2C /* TabBarControllerTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerTransitionAnimator.swift; sourceTree = "<group>"; };
+		38D015A921D6E8EC0052FD2C /* ControllerTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerTransitionAnimator.swift; sourceTree = "<group>"; };
 		38D78C2D217554E400322AB6 /* FeedbackGeneratable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGeneratable.swift; sourceTree = "<group>"; };
 		38D78C2F21755C8A00322AB6 /* EULAViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewModel.swift; sourceTree = "<group>"; };
 		38D78C312175656D00322AB6 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
@@ -475,6 +483,7 @@
 			children = (
 				382025BF21617CCE00A0490B /* View.swift */,
 				38B5D548218BA32B00C2464F /* ImageView.swift */,
+				38D015A221D5FEB30052FD2C /* AvatarView.swift */,
 				382025C021617CCE00A0490B /* CollectionView.swift */,
 				38C7078F21A8DA6E00ED335A /* TableView.swift */,
 				383A541321D1958F001B9D63 /* ListView.swift */,
@@ -544,6 +553,7 @@
 				382025BB21617CCE00A0490B /* CollectionController.swift */,
 				382025BC21617CCE00A0490B /* Controller.swift */,
 				382025BD21617CCE00A0490B /* NavigationController.swift */,
+				38D015A521D6E7630052FD2C /* TabBarController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -623,8 +633,10 @@
 		38631F1321AE79ED00522E68 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
+				38D015A921D6E8EC0052FD2C /* ControllerTransitionAnimator.swift */,
 				38631F1421AE7A0F00522E68 /* NavigationControllerTransitionAnimator.swift */,
 				38631F1621AE7A8300522E68 /* NavigationControllerInteractor.swift */,
+				38D015A721D6E8C50052FD2C /* TabBarControllerTransitionAnimator.swift */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -956,6 +968,7 @@
 				383986A221685AE500172D66 /* ViewModel.swift in Sources */,
 				383986FA216C043B00172D66 /* UIScrollView+Extensions.swift in Sources */,
 				385701442187C82200589A30 /* ActivitySpinnerIndicator.swift in Sources */,
+				38D015A621D6E7640052FD2C /* TabBarController.swift in Sources */,
 				3874B73D21CDACD700F0896C /* Chevron.swift in Sources */,
 				382025DA21617CCE00A0490B /* NSAttributedString+Extensions.swift in Sources */,
 				383986F0216AB1D500172D66 /* SignUpController.swift in Sources */,
@@ -993,9 +1006,11 @@
 				383986E32169D99400172D66 /* Service.swift in Sources */,
 				382025D821617CCE00A0490B /* UIApplication+Extensions.swift in Sources */,
 				383A541621D195CB001B9D63 /* FormCells.swift in Sources */,
+				38D015AA21D6E8EC0052FD2C /* ControllerTransitionAnimator.swift in Sources */,
 				381BA75721C2D08F0072C963 /* ThemeManager.swift in Sources */,
 				382025EA21617CCE00A0490B /* CollectionController.swift in Sources */,
 				38981A5521D07B5200518B88 /* Slider.swift in Sources */,
+				38D015A821D6E8C50052FD2C /* TabBarControllerTransitionAnimator.swift in Sources */,
 				382025E121617CCE00A0490B /* Stylesheet.swift in Sources */,
 				383986AA21685FFC00172D66 /* ScrollStackView.swift in Sources */,
 				382025D421617CCE00A0490B /* String+Extensions.swift in Sources */,
@@ -1042,6 +1057,7 @@
 				384E6F2B21CC5DD400515363 /* RowView.swift in Sources */,
 				382025DB21617CCE00A0490B /* UIWindow+Extensions.swift in Sources */,
 				382026912161B10C00A0490B /* AppWindow.swift in Sources */,
+				38D015A321D5FEB30052FD2C /* AvatarView.swift in Sources */,
 				38B5D547218B99D600C2464F /* CollectionReusableView.swift in Sources */,
 				38C7078E21A8D9F200ED335A /* DevVC.swift in Sources */,
 				383A541B21D2E0E0001B9D63 /* SectionHeaderView.swift in Sources */,
