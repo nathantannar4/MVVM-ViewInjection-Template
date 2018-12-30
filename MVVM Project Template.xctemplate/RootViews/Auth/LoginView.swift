@@ -45,6 +45,7 @@ final class LoginAccessoryView: View {
 
     fileprivate lazy var loginButton = Button(style: Stylesheet.AnimatedButtons.primary) {
         $0.setTitle(.localize(.login), for: .normal)
+        $0.setImage(UIImage.icon(named: FA.addressBook), for: .normal)
         $0.addTarget(self, action: Action.didTapLogin.selector, for: .touchUpInside)
     }
 
