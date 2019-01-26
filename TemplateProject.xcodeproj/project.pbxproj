@@ -122,6 +122,7 @@
 		38D015AA21D6E8EC0052FD2C /* ControllerTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015A921D6E8EC0052FD2C /* ControllerTransitionAnimator.swift */; };
 		38D015AC21D8954F0052FD2C /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015AB21D8954F0052FD2C /* Star.swift */; };
 		38D015AE21D8957B0052FD2C /* RatingSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015AD21D8957B0052FD2C /* RatingSlider.swift */; };
+		38D015B021DAB86F0052FD2C /* ControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D015AF21DAB86F0052FD2C /* ControllerInteractor.swift */; };
 		38D78C2E217554E400322AB6 /* FeedbackGeneratable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78C2D217554E400322AB6 /* FeedbackGeneratable.swift */; };
 		38D78C3021755C8A00322AB6 /* EULAViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78C2F21755C8A00322AB6 /* EULAViewModel.swift */; };
 		38D78C322175656D00322AB6 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D78C312175656D00322AB6 /* RxSwift+Extensions.swift */; };
@@ -274,6 +275,7 @@
 		38D015A921D6E8EC0052FD2C /* ControllerTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerTransitionAnimator.swift; sourceTree = "<group>"; };
 		38D015AB21D8954F0052FD2C /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		38D015AD21D8957B0052FD2C /* RatingSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingSlider.swift; sourceTree = "<group>"; };
+		38D015AF21DAB86F0052FD2C /* ControllerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerInteractor.swift; sourceTree = "<group>"; };
 		38D78C2D217554E400322AB6 /* FeedbackGeneratable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGeneratable.swift; sourceTree = "<group>"; };
 		38D78C2F21755C8A00322AB6 /* EULAViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EULAViewModel.swift; sourceTree = "<group>"; };
 		38D78C312175656D00322AB6 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 			isa = PBXGroup;
 			children = (
 				38D015A921D6E8EC0052FD2C /* ControllerTransitionAnimator.swift */,
+				38D015AF21DAB86F0052FD2C /* ControllerInteractor.swift */,
 				38631F1421AE7A0F00522E68 /* NavigationControllerTransitionAnimator.swift */,
 				38631F1621AE7A8300522E68 /* NavigationControllerInteractor.swift */,
 				38D015A721D6E8C50052FD2C /* TabBarControllerTransitionAnimator.swift */,
@@ -1028,6 +1031,7 @@
 				383A541421D1958F001B9D63 /* ListView.swift in Sources */,
 				38D78C3021755C8A00322AB6 /* EULAViewModel.swift in Sources */,
 				389FB1CC2176B0070038DD8A /* SignUpView.swift in Sources */,
+				38D015B021DAB86F0052FD2C /* ControllerInteractor.swift in Sources */,
 				383A541121D1923C001B9D63 /* EditProfileViewModel.swift in Sources */,
 				382025D721617CCE00A0490B /* UIDevice+Extensions.swift in Sources */,
 				3874B73A21CD9FAE00F0896C /* Theme.swift in Sources */,

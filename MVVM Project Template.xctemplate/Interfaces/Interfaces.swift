@@ -76,6 +76,19 @@ protocol IViewModelViewController: IViewController {
     func bindToViewModel()
 }
 
+protocol IControllerInteractor: Interface where Self: UIPercentDrivenInteractiveTransition {
+    var isInteracting: Bool { get }
+}
+
+protocol IControllerTransitionAnimator: Interface, Class, UIViewControllerAnimatedTransitioning {
+    var isPresenting: Bool { get }
+    init(isPresenting: Bool)
+}
+
+protocol INavigationControllerTransitionAnimator: IControllerTransitionAnimator {
+    init(operation: UINavigationController.Operation)
+}
+
 protocol IError: Interface, Error {
     var title: String?  { get set }
     var body: String? { get set }
@@ -85,8 +98,4 @@ protocol IPresenter: Interface where Self: UIViewController { }
 
 protocol IErrorPresenter: IPresenter {
     func presentError(_ error: IError, animated: Bool, completion: (() -> Void)?)
-}
-
-protocol IRoutePresenter: IPresenter {
-    func navigate(to route: Route, animated: Bool, completion: (() -> Void)?)
 }

@@ -1,5 +1,5 @@
 //
-//  NavigationControllerInteractor.swift
+//  ControllerInteractor.swift
 //  ___PROJECTNAME___
 //
 //  Created by ___FULLUSERNAME___ on ___DATE___.
@@ -8,22 +8,20 @@
 
 import UIKit
 
-class NavigationControllerInteractor: UIPercentDrivenInteractiveTransition, IControllerInteractor {
+class ControllerInteractor: UIPercentDrivenInteractiveTransition, IControllerInteractor {
 
     // MARK: - Properties
 
-    var isInteracting: Bool = false
+    private(set) var isInteracting: Bool = false
     private var isAtLeastHalfway: Bool = false
-    private weak var navigationController: UINavigationController!
+
+    private(set) weak var viewController: UIViewController!
 
     // MARK: - Initialization
 
-    init?(for viewController: UIViewController) {
-        guard let navigationController = viewController.navigationController else {
-            return nil
-        }
+    init(for viewController: UIViewController) {
         super.init()
-        self.navigationController = navigationController
+        self.viewController = viewController
         addSwipeGesture(in: viewController.view)
     }
 
@@ -35,14 +33,14 @@ class NavigationControllerInteractor: UIPercentDrivenInteractiveTransition, ICon
 
     @objc private func handlePanGesture(_ gesture: UIScreenEdgePanGestureRecognizer) {
         let translation = gesture.translation(in: gesture.view?.superview)
-        let progress = translation.x / navigationController.view.bounds.width
+        let progress = translation.x / viewController.view.bounds.width
 
         switch gesture.state {
         case .possible:
             break
         case .began:
             isInteracting = true
-            navigationController.popViewController(animated: true)
+            viewController.dismiss(animated: true, completion: nil)
         case .changed:
             isAtLeastHalfway = progress > 0.5
             update(progress)

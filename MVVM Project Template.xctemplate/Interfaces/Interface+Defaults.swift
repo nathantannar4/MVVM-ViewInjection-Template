@@ -33,12 +33,6 @@ extension IErrorPresenter {
     }
 }
 
-extension IRoutePresenter {
-    func navigate(to route: Route, animated: Bool, completion: (() -> Void)?) {
-        AppRouter.shared.navigate(to: route)
-    }
-}
-
 extension IReusableView {
     func prepareForReuse() { }
 }

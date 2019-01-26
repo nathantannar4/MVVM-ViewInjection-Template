@@ -13,6 +13,8 @@ class TabBarControllerTransitionAnimator: ControllerTransitionAnimator {
         case left, right
     }
 
+    // MARK: - Properties
+
     override var duration: TimeInterval {
         return 0.3
     }
@@ -23,10 +25,19 @@ class TabBarControllerTransitionAnimator: ControllerTransitionAnimator {
 
     let direction: Direction
 
+    // MARK: - Initialization
+
     required init(direction: Direction) {
         self.direction = direction
         super.init(isPresenting: true)
     }
+
+    required init(isPresenting: Bool) {
+        self.direction = .right
+        super.init(isPresenting: isPresenting)
+    }
+
+    // MARK: - Transition
 
     override func prepareTransition(using transitionContext: UIViewControllerContextTransitioning) {
 
@@ -36,10 +47,8 @@ class TabBarControllerTransitionAnimator: ControllerTransitionAnimator {
         let container = transitionContext.containerView
         container.addSubview(toView)
 
-        var frame = contentView.frame
-        frame.origin.x = direction == .right ? bounceOffset : -bounceOffset
-        contentView.frame = frame
-        contentView.layoutIfNeeded()
+        let offset = direction == .right ? bounceOffset : -bounceOffset
+        contentView.transform = CGAffineTransform(translationX: offset, y: 0)
         toView.alpha = 0
     }
 
@@ -48,7 +57,7 @@ class TabBarControllerTransitionAnimator: ControllerTransitionAnimator {
         guard let toView = transitionContext.view(forKey: .to) else { return }
         guard let contentView = transitionContext.contentView(forKey: .to) else { return }
 
-        contentView.frame = CGRect(origin: CGPoint(x: 0, y: contentView.frame.origin.y), size: contentView.frame.size)
+        contentView.transform = .identity
         toView.alpha = 1
     }
 }

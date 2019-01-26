@@ -8,19 +8,25 @@
 
 import UIKit
 
-class NavigationControllerTransitionAnimator: ControllerTransitionAnimator {
+class NavigationControllerTransitionAnimator: ControllerTransitionAnimator, INavigationControllerTransitionAnimator {
+
+    // MARK: - Properties
 
     override var duration: TimeInterval {
         return TimeInterval(UINavigationController.hideShowBarDuration)
     }
 
-    override var options: UIView.AnimationOptions {
-        return [.allowUserInteraction, .beginFromCurrentState, .curveLinear]
-    }
+    // MARK: - Initialization
 
     required init(operation: UINavigationController.Operation) {
         super.init(isPresenting: operation == .push)
     }
+
+    required init(isPresenting: Bool) {
+        super.init(isPresenting: isPresenting)
+    }
+
+    // MARK: - Transition
 
     override func prepareTransition(using transitionContext: UIViewControllerContextTransitioning) {
 
@@ -44,7 +50,6 @@ class NavigationControllerTransitionAnimator: ControllerTransitionAnimator {
 
         dismissingView.frame = dismissingViewStartFrame
         presentingView.frame = presentingViewStartFrame
-        presentingView.layer.addShadow()
         presentingView.layoutIfNeeded()
     }
 

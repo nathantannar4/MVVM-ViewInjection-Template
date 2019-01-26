@@ -10,7 +10,8 @@ import UIKit
 
 typealias Controller<RootViewType: IView> = BaseController<RootViewType> & IViewController
 
-class BaseController<RootViewType: IView>: UIViewController {
+class BaseController<RootViewType: IView>: UIViewController, UIViewControllerTransitioningDelegate {
+
 
     typealias IViewType = RootViewType
 
@@ -35,10 +36,38 @@ class BaseController<RootViewType: IView>: UIViewController {
         }
     }
 
+    var transitionAnimatorType: IControllerTransitionAnimator.Type? = ModelControllerTransitionAnimator.self {
+        didSet {
+            transitioningDelegate = transitionAnimatorType != nil ? self : nil
+        }
+    }
+
+    var interactor: (IControllerInteractor & UIViewControllerInteractiveTransitioning)?
+
     // MARK: - Views
 
     var rootView: RootViewType! {
         return view as? RootViewType
+    }
+
+    // MARK: - Initialization
+
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    private func setup() {
+        transitioningDelegate = self
     }
 
     // MARK: - View Life Cycle
@@ -110,5 +139,22 @@ class BaseController<RootViewType: IView>: UIViewController {
         }
 
         navigationItem.titleView = titleView
+    }
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        guard let animator = transitionAnimatorType else { return nil }
+        interactor = ControllerInteractor(for: presented)
+        return animator.init(isPresenting: true)
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        guard let animator = transitionAnimatorType else { return nil }
+        return animator.init(isPresenting: false)
+    }
+
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor?.isInteracting == true ? interactor : nil
     }
 }

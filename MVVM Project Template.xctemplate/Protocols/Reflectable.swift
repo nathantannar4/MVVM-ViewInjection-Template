@@ -1,9 +1,11 @@
 //
 //  Reflectable.swift
-//  
+//  ___PROJECTNAME___
 //
-//  Created by Nathan Tannar on 2018-12-04.
+//  Created by ___FULLUSERNAME___ on ___DATE___.
+//  Copyright © ___YEAR___ ___ORGANIZATIONNAME___. All rights reserved.
 //
+
 
 import Foundation
 

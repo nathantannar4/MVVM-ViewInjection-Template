@@ -103,6 +103,16 @@
 			<key>Path</key>
 			<string>Controllers/Base/NavigationController.swift</string>
 		</dict>
+		<key>Controllers/Base/TabBarController.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Controllers</string>
+				<string>Base</string>
+			</array>
+			<key>Path</key>
+			<string>Controllers/Base/TabBarController.swift</string>
+		</dict>
 		<key>Controllers/Base/ViewModelController.swift</key>
 		<dict>
 			<key>Group</key>
@@ -167,6 +177,15 @@
 			</array>
 			<key>Path</key>
 			<string>Controls/ControlElement.swift</string>
+		</dict>
+		<key>Controls/RatingSlider.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Controls</string>
+			</array>
+			<key>Path</key>
+			<string>Controls/RatingSlider.swift</string>
 		</dict>
 		<key>Controls/Slider.swift</key>
 		<dict>
@@ -246,6 +265,15 @@
 			</array>
 			<key>Path</key>
 			<string>Extensions/NSAttributedString+Extensions.swift</string>
+		</dict>
+		<key>Extensions/NSLayoutConstraint+Extensions.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Extensions</string>
+			</array>
+			<key>Path</key>
+			<string>Extensions/NSLayoutConstraint+Extensions.swift</string>
 		</dict>
 		<key>Extensions/Number+Extensions.swift</key>
 		<dict>
@@ -683,6 +711,24 @@
 			<key>Path</key>
 			<string>Theme/Theme.swift</string>
 		</dict>
+		<key>Transitions/ControllerInteractor.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Transitions</string>
+			</array>
+			<key>Path</key>
+			<string>Transitions/ControllerInteractor.swift</string>
+		</dict>
+		<key>Transitions/ControllerTransitionAnimator.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Transitions</string>
+			</array>
+			<key>Path</key>
+			<string>Transitions/ControllerTransitionAnimator.swift</string>
+		</dict>
 		<key>Transitions/NavigationControllerInteractor.swift</key>
 		<dict>
 			<key>Group</key>
@@ -700,6 +746,15 @@
 			</array>
 			<key>Path</key>
 			<string>Transitions/NavigationControllerTransitionAnimator.swift</string>
+		</dict>
+		<key>Transitions/TabBarControllerTransitionAnimator.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Transitions</string>
+			</array>
+			<key>Path</key>
+			<string>Transitions/TabBarControllerTransitionAnimator.swift</string>
 		</dict>
 		<key>ViewModels/AuthViewModel.swift</key>
 		<dict>
@@ -758,14 +813,14 @@
 			<key>Path</key>
 			<string>ViewModels/EditProfileViewModel.swift</string>
 		</dict>
-		<key>Views/AccessoryViewWrapped.swift</key>
+		<key>Views/AvatarView.swift</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>Views</string>
 			</array>
 			<key>Path</key>
-			<string>Views/AccessoryViewWrapped.swift</string>
+			<string>Views/AvatarView.swift</string>
 		</dict>
 		<key>Views/Cells/CollectionReusableView.swift</key>
 		<dict>
@@ -903,6 +958,16 @@
 			<key>Path</key>
 			<string>Views/Layers/Chevron.swift</string>
 		</dict>
+		<key>Views/Layers/Star.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Layers</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Layers/Star.swift</string>
+		</dict>
 		<key>Views/Layout Containers/GridView.swift</key>
 		<dict>
 			<key>Group</key>
@@ -980,15 +1045,6 @@
 			<key>Path</key>
 			<string>Views/ScrollStackView.swift</string>
 		</dict>
-		<key>Views/ScrollViewWrapped.swift</key>
-		<dict>
-			<key>Group</key>
-			<array>
-				<string>Views</string>
-			</array>
-			<key>Path</key>
-			<string>Views/ScrollViewWrapped.swift</string>
-		</dict>
 		<key>Views/TableView.swift</key>
 		<dict>
 			<key>Group</key>
@@ -1007,14 +1063,35 @@
 			<key>Path</key>
 			<string>Views/View.swift</string>
 		</dict>
-		<key>Views/ViewWrapped.swift</key>
+		<key>Views/Wrapper Containers/AccessoryViewWrapped.swift</key>
 		<dict>
 			<key>Group</key>
 			<array>
 				<string>Views</string>
+				<string>Wrapper Containers</string>
 			</array>
 			<key>Path</key>
-			<string>Views/ViewWrapped.swift</string>
+			<string>Views/Wrapper Containers/AccessoryViewWrapped.swift</string>
+		</dict>
+		<key>Views/Wrapper Containers/ScrollViewWrapped.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Wrapper Containers</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Wrapper Containers/ScrollViewWrapped.swift</string>
+		</dict>
+		<key>Views/Wrapper Containers/ViewWrapped.swift</key>
+		<dict>
+			<key>Group</key>
+			<array>
+				<string>Views</string>
+				<string>Wrapper Containers</string>
+			</array>
+			<key>Path</key>
+			<string>Views/Wrapper Containers/ViewWrapped.swift</string>
 		</dict>
 	</dict>
 	<key>Description</key>
@@ -1063,6 +1140,7 @@
 						<string>Extensions/UIAlertController+Extensions.swift</string>
 						<string>Extensions/RxSwift+Extensions.swift</string>
 						<string>Extensions/NSAttributedString+Extensions.swift</string>
+						<string>Extensions/NSLayoutConstraint+Extensions.swift</string>
 						<string>Extensions/UIWindow+Extensions.swift</string>
 						<string>Extensions/CustomStringConvertible+Extensions.swift</string>
 						<string>Extensions/UITableView+Extensions.swift</string>
@@ -1077,6 +1155,7 @@
 						<string>Controls/Slider.swift</string>
 						<string>Controls/Checkbox.swift</string>
 						<string>Controls/Button.swift</string>
+						<string>Controls/RatingSlider.swift</string>
 						<string>Controls/ActivitySpinnerIndicator.swift</string>
 						<string>Theme/Stylesheet.swift</string>
 						<string>Theme/Extensions+Theme.swift</string>
@@ -1090,8 +1169,11 @@
 						<string>Routing/Coordinator+Coordinatable.swift</string>
 						<string>Routing/Route.swift</string>
 						<string>AppDelegate.swift</string>
+						<string>Transitions/TabBarControllerTransitionAnimator.swift</string>
 						<string>Transitions/NavigationControllerInteractor.swift</string>
 						<string>Transitions/NavigationControllerTransitionAnimator.swift</string>
+						<string>Transitions/ControllerInteractor.swift</string>
+						<string>Transitions/ControllerTransitionAnimator.swift</string>
 						<string>Controllers/Auth/LoginController.swift</string>
 						<string>Controllers/Auth/SignUpController.swift</string>
 						<string>Controllers/Auth/EULAController.swift</string>
@@ -1101,15 +1183,15 @@
 						<string>Controllers/Base/Controller.swift</string>
 						<string>Controllers/Base/CollectionController.swift</string>
 						<string>Controllers/Base/NavigationController.swift</string>
+						<string>Controllers/Base/TabBarController.swift</string>
 						<string>Views/View.swift</string>
-						<string>Views/ViewWrapped.swift</string>
 						<string>Views/Cells/TableViewCell.swift</string>
 						<string>Views/Cells/CollectionViewCell.swift</string>
 						<string>Views/Cells/FormCells.swift</string>
 						<string>Views/Cells/CollectionReusableView.swift</string>
-						<string>Views/AccessoryViewWrapped.swift</string>
 						<string>Views/NavigationBars/NavigationBar.swift</string>
 						<string>Views/Layers/Chevron.swift</string>
+						<string>Views/Layers/Star.swift</string>
 						<string>Views/CollectionView.swift</string>
 						<string>Views/GaugeView.swift</string>
 						<string>Views/Layout Containers/SectionHeaderView.swift</string>
@@ -1122,9 +1204,12 @@
 						<string>Views/InputViews/TextField.swift</string>
 						<string>Views/InputViews/AnimatedTextField.swift</string>
 						<string>Views/ScrollStackView.swift</string>
-						<string>Views/ScrollViewWrapped.swift</string>
+						<string>Views/Wrapper Containers/ViewWrapped.swift</string>
+						<string>Views/Wrapper Containers/AccessoryViewWrapped.swift</string>
+						<string>Views/Wrapper Containers/ScrollViewWrapped.swift</string>
 						<string>Views/RoundedView.swift</string>
 						<string>Views/TableView.swift</string>
+						<string>Views/AvatarView.swift</string>
 						<string>Views/ImageView.swift</string>
 						<string>Views/GradientView.swift</string>
 						<string>Views/Items/BadgeBarButtonItem.swift</string>

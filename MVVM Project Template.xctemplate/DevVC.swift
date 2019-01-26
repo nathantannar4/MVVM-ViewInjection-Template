@@ -14,14 +14,38 @@ import RxCocoa
 class DevVC: Controller<View> {
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = String.randomOfLength(10)
+        view.backgroundColor = UIColor.random()
 
-        let searchBar = UISearchBar(frame: .zero)
-        if #available(iOS 11.0, *) {
-            searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        }
-        searchBar.searchBarStyle = .prominent
-        searchBar.placeholder = "Search"
-        navigationItem.titleView = searchBar
+        let button = UIButton()
+        view.addSubview(button)
+        button.setTitle("Next", for: .normal)
+        button.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+        button.addTarget(self, action: #selector(next_), for: .touchUpInside)
+
+        let bttn = UIButton()
+        view.addSubview(bttn)
+        bttn.setTitle("Back", for: .normal)
+        bttn.frame = CGRect(x: 100, y: 200, width: 100, height: 100)
+        bttn.addTarget(self, action: #selector(back_), for: .touchUpInside)
+
+        let buttn = UIButton()
+        view.addSubview(buttn)
+        buttn.setTitle("Push", for: .normal)
+        buttn.frame = CGRect(x: 100, y: 300, width: 100, height: 100)
+        buttn.addTarget(self, action: #selector(push_), for: .touchUpInside)
+    }
+
+    @objc func next_() {
+        present(DevVC(), animated: true, completion: nil)
+    }
+
+    @objc func back_() {
+        dismiss(animated: true, completion: nil)
+    }
+
+    @objc func push_() {
+        navigationController?.pushViewController(DevVC(), animated: true)
     }
 }
 

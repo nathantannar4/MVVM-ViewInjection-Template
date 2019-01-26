@@ -23,13 +23,13 @@ class BaseNavigationController<T: UINavigationBar>: UINavigationController, UINa
         return color.isDark ? .lightContent : .default
     }
 
-    var transitionAnimatorType: NavigationControllerTransitionAnimator.Type? {
+    var transitionAnimatorType: INavigationControllerTransitionAnimator.Type? = NavigationControllerTransitionAnimator.self {
         didSet {
             delegate = transitionAnimatorType != nil ? self : nil
         }
     }
 
-    private var interactor: NavigationControllerInteractor?
+    var interactor: (IControllerInteractor & UIViewControllerInteractiveTransitioning)?
 
     // MARK: - Init
 
@@ -44,14 +44,21 @@ class BaseNavigationController<T: UINavigationBar>: UINavigationController, UINa
 
     override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
         super.init(navigationBarClass: navigationBarClass, toolbarClass: toolbarClass)
+        setup()
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
+        setup()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
+    }
+
+    private func setup() {
+        delegate = self
     }
 
     // MARK: - View Life Cycle
@@ -71,9 +78,10 @@ class BaseNavigationController<T: UINavigationBar>: UINavigationController, UINa
 
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
 
+        guard let animator = transitionAnimatorType else { return nil }
         if operation == .push {
             interactor = NavigationControllerInteractor(for: toVC)
         }
-        return transitionAnimatorType?.init(operation: operation)
+        return animator.init(operation: operation)
     }
 }

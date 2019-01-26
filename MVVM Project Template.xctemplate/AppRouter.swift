@@ -34,7 +34,9 @@ final class AppRouter {
     
     func start(with options: [UIApplication.LaunchOptionsKey: Any]? = nil) {
         window = AppWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = container.resolve(DispatchController.self)!
+        let vc = TabBarController(viewControllers: [NavigationController(rootViewController: DevVC()), NavigationController(rootViewController: DevVC()), DevVC()])
+        vc.transitionAnimatorType = TabBarControllerTransitionAnimator.self
+        window?.rootViewController = vc //container.resolve(DispatchController.self)!
         window?.makeKeyAndVisible()
     }
 
