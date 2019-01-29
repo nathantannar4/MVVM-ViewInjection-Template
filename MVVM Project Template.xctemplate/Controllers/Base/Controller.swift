@@ -36,7 +36,7 @@ class BaseController<RootViewType: IView>: UIViewController, UIViewControllerTra
         }
     }
 
-    var transitionAnimatorType: IControllerTransitionAnimator.Type? = ModelControllerTransitionAnimator.self {
+    var transitionAnimatorType: IControllerTransitionAnimator.Type? = ControllerTransitionAnimator.self {
         didSet {
             transitioningDelegate = transitionAnimatorType != nil ? self : nil
         }

@@ -331,7 +331,6 @@
 			children = (
 				382025F521617CF000A0490B /* Podfile */,
 				382025C321617CCE00A0490B /* Info.plist */,
-				38C7078D21A8D9F200ED335A /* DevVC.swift */,
 				382025B821617CCE00A0490B /* AppDelegate.swift */,
 				3820259121617CCE00A0490B /* AppRouter.swift */,
 				382026902161B10C00A0490B /* AppWindow.swift */,
@@ -726,6 +725,7 @@
 			isa = PBXGroup;
 			children = (
 				38C2584F215DFDDB00223FFA /* Assets.xcassets */,
+				38C7078D21A8D9F200ED335A /* DevVC.swift */,
 				38C25850215DFDDB00223FFA /* LaunchScreen.storyboard */,
 			);
 			path = TemplateProjectFiles;

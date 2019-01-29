@@ -205,13 +205,6 @@
 			<key>Path</key>
 			<string>Controls/Switch.swift</string>
 		</dict>
-		<key>DevVC.swift</key>
-		<dict>
-			<key>Group</key>
-			<array/>
-			<key>Path</key>
-			<string>DevVC.swift</string>
-		</dict>
 		<key>Extensions/CALayer.swift</key>
 		<dict>
 			<key>Group</key>
@@ -1122,7 +1115,6 @@
 						<string>Networking/HttpRequest.swift</string>
 						<string>Managers/Manager.swift</string>
 						<string>Managers/ThemeManager.swift</string>
-						<string>DevVC.swift</string>
 						<string>Models/Model.swift</string>
 						<string>Models/Enums/LocalizationIdentifier.swift</string>
 						<string>Models/Errors/JSONError.swift</string>

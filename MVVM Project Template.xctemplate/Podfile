@@ -7,24 +7,22 @@ target '___PROJECTNAME___' do
   # Pods for ___PROJECTNAME___
   pod 'Moya'
   pod 'Alamofire'
-  pod 'PromisesSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxKeyboard'
   pod 'Swinject'
   pod 'SwiftyBeaver'
-  pod 'SwiftKeychainWrapper'
+  # pod 'SwiftKeychainWrapper'
   pod 'IGListKit'
   pod 'Kingfisher'
-  pod 'FontAwesome.swift'
-  pod 'MessageKit', :git => 'https://github.com/MessageKit/MessageKit.git', :branch => 'typingIndicatorView'
-  pod 'InputBarAccessoryView'
+  # pod 'MessageKit'
+  # pod 'InputBarAccessoryView'
 
-  target '___PROJECTNAME___Tests' do
-    inherit! :search_paths
-    pod 'Quick'
-    pod 'Nimble'
-    pod 'OHHTTPStubs'
-  end
+  # target '___PROJECTNAME___Tests' do
+    # inherit! :search_paths
+    # pod 'Quick'
+    # pod 'Nimble'
+    # pod 'OHHTTPStubs'
+  # end
 
 end
